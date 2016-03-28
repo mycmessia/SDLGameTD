@@ -19,8 +19,8 @@ InputHandler::~InputHandler()
 
 void InputHandler::bindCommand()
 {
-    buttonA_.reset(new FireCommand ());
-    buttonB_.reset(new JumpCommand ());
+    buttonA_ = new FireCommand ();
+    buttonB_ = new JumpCommand ();
 }
 
 void InputHandler::handleInput(SDL_Event e)

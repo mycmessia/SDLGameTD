@@ -20,8 +20,8 @@ public:
     void handleInput (SDL_Event e);
     void bindCommand ();
 private:
-    std::unique_ptr<Command> buttonA_;
-    std::unique_ptr<Command> buttonB_;
+    Command* buttonA_;
+    Command* buttonB_;
 };
 
 #endif /* InputHandler_hpp */

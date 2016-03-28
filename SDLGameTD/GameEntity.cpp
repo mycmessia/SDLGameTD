@@ -7,3 +7,8 @@
 //
 
 #include "GameEntity.hpp"
+
+void GameEntity::addChild(GameEntity *child)
+{
+    children[children.size()] = child;
+}

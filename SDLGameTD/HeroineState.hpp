@@ -9,8 +9,7 @@
 #ifndef HeroineState_hpp
 #define HeroineState_hpp
 
-#include <SDL2/SDL.h>
-#include "Heroine.hpp"
+#include "GameEntity.hpp"
 
 /**
  * There are four types of state: stand, walking, attack, skill, underAttack
@@ -19,8 +18,8 @@ class HeroineState
 {
 public:
     virtual ~HeroineState () {}
-    virtual void handleInput (Heroine& heroine, SDL_Event e) {}
-    virtual void update (Heroine& heroine) {}
+    virtual void handleInput (GameEntity& heroine, SDL_Event e) {}
+    virtual void update (GameEntity& heroine) {}
 };
 
 #endif /* HeroineState_hpp */

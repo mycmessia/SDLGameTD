@@ -10,19 +10,27 @@
 #include <SDL2_image/SDL_image.h>
 #include <SDL2_ttf/SDL_ttf.h>
 
+#include "Component.hpp"
+#include "Transform.hpp"
+
+
 #ifndef Window_hpp
 #define Window_hpp
+
+class GameEntity;
 
 //What we think our window class should look like
 class Window {
 public:
+    
+    GameEntity* _currentScene;
+    
     /**
      *  Initialize SDL, setup the window and renderer
      *  @param title The window title
      */
     static void Init(std::string title = "Window");
     
-    //Quit SDL and TTF
     static void Quit();
 
     /**

@@ -10,10 +10,10 @@
 #define Heroine_hpp
 
 #include <iostream>
-#include <SDL2/SDL.h>
+
 #include "HeroineState.hpp"
 
-class Heroine
+class Heroine : public GameEntity
 {
 private:
     HeroineState* _state;

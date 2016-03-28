@@ -9,14 +9,17 @@
 #ifndef GameEntity_hpp
 #define GameEntity_hpp
 
-#include <iostream>
-#include <list>
+#include <vector>
+#include "Window.hpp"
 
 class GameEntity
 {
 public:
-    std::unique_ptr<GameEntity> parent;
-    std::list<std::unique_ptr<GameEntity>> children;
+    GameEntity* parent;
+    std::vector<GameEntity*> children;
+    std::vector<Component*> components;
+    
+    void addChild (GameEntity* child);
 };
 
 #endif /* GameEntity_hpp */
