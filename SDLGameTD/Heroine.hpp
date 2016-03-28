@@ -9,8 +9,6 @@
 #ifndef Heroine_hpp
 #define Heroine_hpp
 
-#include <iostream>
-
 #include "HeroineState.hpp"
 
 class Heroine : public GameEntity

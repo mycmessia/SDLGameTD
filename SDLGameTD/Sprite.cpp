@@ -10,6 +10,8 @@
 
 Sprite::Sprite (std::string texture, float x, float y)
 {
+    _visible = true;
+    
     _texture = Window::LoadImage(texture);
     
     components[components.size()]= new Transform (x, y);

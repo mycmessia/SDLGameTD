@@ -6,6 +6,9 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 #include <iostream>
+#include <vector>
+#include <queue>
+
 #include <SDL2/SDL.h>
 #include <SDL2_image/SDL_image.h>
 #include <SDL2_ttf/SDL_ttf.h>
@@ -23,7 +26,7 @@ class GameEntity;
 class Window {
 public:
     
-    GameEntity* _currentScene;
+    static GameEntity* currentScene;
     
     /**
      *  Initialize SDL, setup the window and renderer

@@ -9,17 +9,24 @@
 #ifndef GameEntity_hpp
 #define GameEntity_hpp
 
-#include <vector>
 #include "Window.hpp"
 
 class GameEntity
 {
 public:
+    GameEntity ();
+    
     GameEntity* parent;
     std::vector<GameEntity*> children;
     std::vector<Component*> components;
     
     void addChild (GameEntity* child);
+    Component* getComponent (std::string name);
+    
+    bool isVisible ();
+    
+protected:
+    bool _visible;
 };
 
 #endif /* GameEntity_hpp */

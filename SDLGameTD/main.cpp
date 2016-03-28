@@ -1,5 +1,8 @@
-#include "Window.hpp"
+#include "Sprite.hpp"
 #include "InputHandler.hpp"
+
+void drawSprite (Sprite* ge);
+void levelOrderDraw (GameEntity* root);
 
 int main(int argc, char* args[])
 {
@@ -42,10 +45,52 @@ int main(int argc, char* args[])
         
         Window::Clear();
         
-        //遍历 Director::instance() 绘制每一个可见节点;
+        //level order traverse the gameEntity tree, draw visible gameEntity
+        levelOrderDraw(Window::currentScene);
         
         Window::Present();
     }
     
     return 0;
+}
+
+void drawSprite (Sprite* ge)
+{
+    Transform* trans = (Transform *)ge->getComponent("Transform");
+    
+    int x = trans->x;
+    int y = trans->y;
+    
+    int w, h;
+    SDL_Texture* texture = ge->getTexture();
+    SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
+    
+    SDL_Rect dest = {x, y, w, h};
+    
+    Window::Draw(texture, dest);
+}
+
+void levelOrderDraw (GameEntity* root)
+{
+    std::queue<GameEntity*> queue;
+    
+    if (root != nullptr)
+    {
+        queue.push(root);
+        
+        while(!queue.empty())
+        {
+            GameEntity* ge = queue.front();
+            
+            if (ge->isVisible())
+            {
+                drawSprite((Sprite*)ge);
+            }
+            
+            for (int i = 0; i < ge->children.size(); i++)
+            {
+                queue.push(ge->children[i]);
+            }
+        }
+    }
 }
