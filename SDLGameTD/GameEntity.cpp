@@ -11,17 +11,17 @@
 GameEntity::GameEntity ()
 {
     _visible = false;
-    _handleEvent = false;
+    _handleInput = false;
 }
 
-bool GameEntity::isVisible()
+bool GameEntity::isVisible ()
 {
     return _visible;
 }
 
-bool GameEntity::isHandleEvent()
+bool GameEntity::isHandleInput ()
 {
-    return _handleEvent;
+    return _handleInput;
 }
 
 void GameEntity::addChild(GameEntity *child)
@@ -41,4 +41,24 @@ Component* GameEntity::getComponent(std::string name)
     
     std::cout<< "Could not find component " << name << std::endl;
     return components[0];
+}
+
+bool GameEntity::init()
+{
+    return true;
+}
+
+GameEntity* GameEntity::create()
+{
+    GameEntity *ge = new GameEntity ();
+    if (ge && ge->init())
+    {
+//        ge->autorelease();
+        return ge;
+    }
+    else
+    {
+//        CC_SAFE_DELETE(ge);
+        return nullptr;
+    }
 }

@@ -8,16 +8,35 @@
 
 #include "Sprite.hpp"
 
-Sprite::Sprite (std::string texture, float x, float y)
+Sprite::Sprite () {}
+
+SDL_Texture* Sprite::getTexture()
+{
+    return _texture;
+}
+
+bool Sprite::init(std::string texture, int x, int y)
 {
     _visible = true;
     
     _texture = Window::LoadImage(texture);
     
     components.push_back(new Transform (x, y));
+    
+    return true;
 }
 
-SDL_Texture* Sprite::getTexture()
+Sprite* Sprite::create(std::string texture, int x, int y)
 {
-    return _texture;
+    Sprite *ge = new Sprite ();
+    if (ge && ge->init(texture, x, y))
+    {
+        //        ge->autorelease();
+        return ge;
+    }
+    else
+    {
+        delete ge;
+        return nullptr;
+    }
 }

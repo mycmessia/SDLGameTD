@@ -16,20 +16,28 @@ class GameEntity
 {
 protected:
     bool _visible;
-    bool _handleEvent;
+    bool _handleInput;
     
 public:
-    GameEntity ();
-    
     GameEntity* parent;
     std::vector<GameEntity*> children;
     std::vector<Component*> components;
+    
+    GameEntity ();
     
     void addChild (GameEntity* child);
     Component* getComponent (std::string name);
     
     bool isVisible ();
-    bool isHandleEvent ();
+    bool isHandleInput ();
+    
+    static GameEntity* create ();
+    
+    virtual bool init ();
+    
+    virtual void handleInput (SDL_Event e) {};
+    
+    virtual void update () {};
 };
 
 #endif /* GameEntity_hpp */

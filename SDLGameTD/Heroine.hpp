@@ -10,12 +10,19 @@
 #define Heroine_hpp
 
 #include "HeroineState.hpp"
+#include "StandingState.hpp"
 
-class Heroine : public GameEntity
+class Heroine : public Sprite
 {
 private:
     HeroineState* _state;
 public:
+    Heroine ();
+    
+    static Heroine* create (std::string texture, int x, int y);
+    
+    virtual bool init (std::string texture, int x, int y);
+    
     virtual void handleInput (SDL_Event e)
     {
         _state->handleInput (*this, e);

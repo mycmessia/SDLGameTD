@@ -9,7 +9,7 @@
 #ifndef HeroineState_hpp
 #define HeroineState_hpp
 
-#include "GameEntity.hpp"
+#include "Sprite.hpp"
 
 /**
  * There are four types of state: stand, walking, attack, skill, underAttack

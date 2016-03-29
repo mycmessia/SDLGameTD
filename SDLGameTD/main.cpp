@@ -1,4 +1,5 @@
 #include "Director.hpp"
+#include "Heroine.hpp"
 #include "InputHandler.hpp"
 
 int main(int argc, char* args[])
@@ -17,35 +18,16 @@ int main(int argc, char* args[])
     std::unique_ptr<InputHandler> handler(new InputHandler());
     
     GameEntity* currentScene = Director::getInstance()->getCurrentScene();
-    currentScene->addChild(new Sprite ("./images/sprite.png", 100, 100));
+    currentScene->addChild(Heroine::create("./images/sprite.png", 100, 100));
     
     bool quit = false;
     while (!quit)
     {
-        while (SDL_PollEvent(&e))
-        {
-            handler->handleInput(e);
-//            if (e.type == SDL_QUIT)
-//            {
-//                quit = true;
-//            }
-//            if (e.type == SDL_KEYDOWN)
-//            {
-//                switch (e.key.keysym.sym)
-//                {
-//                    case SDLK_d:
-//                        angle += 2;
-//                        break;
-//                    case SDLK_a:
-//                        angle -= 2;
-//                        break;
-//                }
-//            }
-        }
+        SDL_PollEvent(&e);
         
         Window::Clear();
 
-        Director::LevelOrderDraw(currentScene);
+        Director::LevelOrder(currentScene, e);
         
         Window::Present();
     }

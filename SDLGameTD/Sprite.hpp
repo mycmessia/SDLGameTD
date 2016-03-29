@@ -14,13 +14,21 @@
 
 class Sprite : public GameEntity
 {
+private:
+    SDL_Texture* _texture;
+    
 public:
-    Sprite (std::string texture, float x, float y);
+    Sprite ();
     
     SDL_Texture* getTexture ();
     
-private:
-    SDL_Texture* _texture;
+    static Sprite* create (std::string texture, int x, int y);
+    
+    virtual bool init (std::string texture, int x, int y);
+    
+    virtual void handleInput (SDL_Event e) {};
+    
+    virtual void update () {};
 };
 
 #endif /* Sprite_hpp */
