@@ -47,7 +47,7 @@ void Director::DrawSprite (Sprite* ge)
     Window::Draw(texture, dest);
 }
 
-void Director::LevelOrder (GameEntity* root, SDL_Event e)
+void Director::LevelOrderTraversal (GameEntity* root, SDL_Event e)
 {
     std::queue<GameEntity*> queue;
     

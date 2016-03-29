@@ -25,7 +25,7 @@ public:
     GameEntity* getCurrentScene ();
     
     static void DrawSprite (Sprite* ge);
-    static void LevelOrder (GameEntity* root, SDL_Event e);
+    static void LevelOrderTraversal (GameEntity* root, SDL_Event e);
 };
 
 #endif /* Director_hpp */

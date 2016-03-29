@@ -1,7 +1,6 @@
 #include "AutoReleasePool.hpp"
 #include "Director.hpp"
 #include "Heroine.hpp"
-#include "InputHandler.hpp"
 
 int main(int argc, char* args[])
 {
@@ -16,7 +15,6 @@ int main(int argc, char* args[])
     }
     
     SDL_Event e;
-    std::unique_ptr<InputHandler> handler(new InputHandler());
     
     GameEntity* currentScene = Director::getInstance()->getCurrentScene();
     currentScene->addChild(Heroine::create("./images/sprite.png", 100, 100));
@@ -24,15 +22,21 @@ int main(int argc, char* args[])
     bool quit = false;
     while (!quit)
     {
+        long start = Window::GetCurrentTime();
+        
         SDL_PollEvent(&e);
         
         Window::Clear();
 
-        Director::LevelOrder(currentScene, e);
+        Director::LevelOrderTraversal (currentScene, e);
         
         Window::Present();
         
         PoolManager::getInstance()->getCurPool()->autoDelete();
+        
+        long sleepTime = start + 1000 / Window::FPS - Window::GetCurrentTime();
+        
+        Window::Sleep((int)sleepTime);
     }
     
     return 0;

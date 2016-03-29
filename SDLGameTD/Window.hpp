@@ -9,6 +9,11 @@
 #include <vector>
 #include <queue>
 
+#include <chrono>
+#include <thread>
+#include <sys/time.h>
+
+
 #include <SDL2/SDL.h>
 #include <SDL2_image/SDL_image.h>
 #include <SDL2_ttf/SDL_ttf.h>
@@ -19,6 +24,12 @@
 //What we think our window class should look like
 class Window {
 public:
+    
+    const static int FPS = 60;
+    
+    static long GetCurrentTime();
+    
+    static void Sleep (int milliseconds);
     
     /**
      *  Initialize SDL, setup the window and renderer

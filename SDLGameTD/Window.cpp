@@ -18,6 +18,19 @@ std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> Window::mRenderer
 //Other static members
 SDL_Rect Window::mBox;
 
+void Window::Sleep (int milliseconds)
+{
+    std::chrono::milliseconds dura(milliseconds);
+    std::this_thread::sleep_for(dura);
+}
+
+long Window::GetCurrentTime()
+{
+    struct timeval tv;
+    gettimeofday(&tv, nullptr);
+    return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+}
+
 //In window.cpp
 void Window::Init(std::string title)
 {
