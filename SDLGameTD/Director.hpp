@@ -9,7 +9,8 @@
 #ifndef Director_hpp
 #define Director_hpp
 
-#include "GameEntity.hpp"
+#include "Transform.hpp"
+#include "Sprite.hpp"
 
 class Director
 {
@@ -19,8 +20,12 @@ private:
     
 public:
     Director ();
+    
     static Director* getInstance ();
     GameEntity* getCurrentScene ();
+    
+    static void DrawSprite (Sprite* ge);
+    static void LevelOrderDraw (GameEntity* root);
 };
 
 #endif /* Director_hpp */
