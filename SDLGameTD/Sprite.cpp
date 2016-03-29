@@ -14,7 +14,7 @@ Sprite::Sprite (std::string texture, float x, float y)
     
     _texture = Window::LoadImage(texture);
     
-    components[components.size()]= new Transform (x, y);
+    components.push_back(new Transform (x, y));
 }
 
 SDL_Texture* Sprite::getTexture()

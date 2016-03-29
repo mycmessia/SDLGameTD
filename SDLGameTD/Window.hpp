@@ -13,20 +13,12 @@
 #include <SDL2_image/SDL_image.h>
 #include <SDL2_ttf/SDL_ttf.h>
 
-#include "Component.hpp"
-#include "Transform.hpp"
-
-
 #ifndef Window_hpp
 #define Window_hpp
-
-class GameEntity;
 
 //What we think our window class should look like
 class Window {
 public:
-    
-    static GameEntity* currentScene;
     
     /**
      *  Initialize SDL, setup the window and renderer

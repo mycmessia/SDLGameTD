@@ -10,6 +10,7 @@
 #define Sprite_hpp
 
 #include "GameEntity.hpp"
+#include "Transform.hpp"
 
 class Sprite : public GameEntity
 {

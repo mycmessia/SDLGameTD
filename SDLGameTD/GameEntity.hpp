@@ -10,9 +10,14 @@
 #define GameEntity_hpp
 
 #include "Window.hpp"
+#include "Component.hpp"
 
 class GameEntity
 {
+protected:
+    bool _visible;
+    bool _handleEvent;
+    
 public:
     GameEntity ();
     
@@ -24,9 +29,7 @@ public:
     Component* getComponent (std::string name);
     
     bool isVisible ();
-    
-protected:
-    bool _visible;
+    bool isHandleEvent ();
 };
 
 #endif /* GameEntity_hpp */

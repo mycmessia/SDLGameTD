@@ -22,6 +22,7 @@
 		09BB28F81CA394F700BE74A2 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BB28F41CA394F700BE74A2 /* Command.cpp */; };
 		09BB28F91CA394F700BE74A2 /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BB28F61CA394F700BE74A2 /* InputHandler.cpp */; };
 		09BB28FD1CA3974F00BE74A2 /* GameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BB28FB1CA3974F00BE74A2 /* GameEntity.cpp */; };
+		09F178391CAA161D00ECED44 /* Director.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09F178371CAA161D00ECED44 /* Director.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,8 @@
 		09BB28F71CA394F700BE74A2 /* InputHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputHandler.hpp; sourceTree = "<group>"; };
 		09BB28FB1CA3974F00BE74A2 /* GameEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameEntity.cpp; sourceTree = "<group>"; };
 		09BB28FC1CA3974F00BE74A2 /* GameEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameEntity.hpp; sourceTree = "<group>"; };
+		09F178371CAA161D00ECED44 /* Director.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Director.cpp; sourceTree = "<group>"; };
+		09F178381CAA161D00ECED44 /* Director.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Director.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				09BB28FC1CA3974F00BE74A2 /* GameEntity.hpp */,
 				090145B51CA91DEB00EC0C59 /* Sprite.cpp */,
 				090145B61CA91DEB00EC0C59 /* Sprite.hpp */,
+				09F178371CAA161D00ECED44 /* Director.cpp */,
+				09F178381CAA161D00ECED44 /* Director.hpp */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				0985B5A21C9E916A00DF6093 /* main.cpp in Sources */,
 				09BB28F81CA394F700BE74A2 /* Command.cpp in Sources */,
 				090145AD1CA7F4D800EC0C59 /* StandingState.cpp in Sources */,
+				09F178391CAA161D00ECED44 /* Director.cpp in Sources */,
 				090145A71CA7F03000EC0C59 /* Heroine.cpp in Sources */,
 				090145B71CA91DEB00EC0C59 /* Sprite.cpp in Sources */,
 				09BB28FD1CA3974F00BE74A2 /* GameEntity.cpp in Sources */,

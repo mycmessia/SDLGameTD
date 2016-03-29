@@ -19,6 +19,11 @@ int main(int argc, char* args[])
     SDL_Event e;
     std::unique_ptr<InputHandler> handler(new InputHandler());
     
+    GameEntity* currentScene;
+    
+    currentScene = new GameEntity ();
+    currentScene->addChild(new Sprite ("./images/sprite.png", 100, 100));
+    
     bool quit = false;
     while (!quit)
     {
@@ -46,7 +51,7 @@ int main(int argc, char* args[])
         Window::Clear();
         
         //level order traverse the gameEntity tree, draw visible gameEntity
-        levelOrderDraw(Window::currentScene);
+        levelOrderDraw(currentScene);
         
         Window::Present();
     }
@@ -91,6 +96,8 @@ void levelOrderDraw (GameEntity* root)
             {
                 queue.push(ge->children[i]);
             }
+            
+            queue.pop();
         }
     }
 }

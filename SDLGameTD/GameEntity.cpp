@@ -11,6 +11,7 @@
 GameEntity::GameEntity ()
 {
     _visible = false;
+    _handleEvent = false;
 }
 
 bool GameEntity::isVisible()
@@ -18,9 +19,14 @@ bool GameEntity::isVisible()
     return _visible;
 }
 
+bool GameEntity::isHandleEvent()
+{
+    return _handleEvent;
+}
+
 void GameEntity::addChild(GameEntity *child)
 {
-    children[children.size()] = child;
+    children.push_back(child);
 }
 
 Component* GameEntity::getComponent(std::string name)
