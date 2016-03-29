@@ -1,3 +1,4 @@
+#include "AutoReleasePool.hpp"
 #include "Director.hpp"
 #include "Heroine.hpp"
 #include "InputHandler.hpp"
@@ -30,6 +31,8 @@ int main(int argc, char* args[])
         Director::LevelOrder(currentScene, e);
         
         Window::Present();
+        
+        PoolManager::getInstance()->getCurPool()->autoDelete();
     }
     
     return 0;

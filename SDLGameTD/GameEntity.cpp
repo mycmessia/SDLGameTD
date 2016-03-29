@@ -26,7 +26,14 @@ bool GameEntity::isHandleInput ()
 
 void GameEntity::addChild(GameEntity *child)
 {
+    child->retain();
     children.push_back(child);
+}
+
+void GameEntity::addComponent(Component *compo)
+{
+    compo->retain();
+    components.push_back(compo);
 }
 
 Component* GameEntity::getComponent(std::string name)
@@ -39,12 +46,28 @@ Component* GameEntity::getComponent(std::string name)
         }
     }
     
-    std::cout<< "Could not find component " << name << std::endl;
-    return components[0];
+    std::cout << "Could not find component " << name << std::endl;
+    return nullptr;
+}
+
+void GameEntity::removeComponent(std::string name)
+{
+    Component* compo = getComponent(name);
+    
+    if (compo)
+    {
+        compo->release();
+    }
+    else
+    {
+        std::cout << "Could not remove component " << name << std::endl;
+    }
 }
 
 bool GameEntity::init()
 {
+    _referenceCount = 0;
+    
     return true;
 }
 
@@ -53,7 +76,7 @@ GameEntity* GameEntity::create()
     GameEntity *ge = new GameEntity ();
     if (ge && ge->init())
     {
-//        ge->autorelease();
+        ge->autorelease();
         return ge;
     }
     else

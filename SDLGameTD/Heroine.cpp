@@ -35,7 +35,7 @@ Heroine* Heroine::create (std::string texture, int x, int y)
     Heroine *ge = new Heroine ();
     if (ge && ge->init(texture, x, y))
     {
-        //        ge->autorelease();
+        ge->autorelease();
         return ge;
     }
     else

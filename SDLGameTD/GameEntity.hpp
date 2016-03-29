@@ -12,32 +12,41 @@
 #include "Window.hpp"
 #include "Component.hpp"
 
-class GameEntity
+class GameEntity : public Ref
 {
 protected:
     bool _visible;
     bool _handleInput;
+    unsigned int _referenceCount;
     
 public:
-    GameEntity* parent;
-    std::vector<GameEntity*> children;
-    std::vector<Component*> components;
-    
     GameEntity ();
     
+    GameEntity* parent;
+    std::vector<GameEntity*> children;
+    
     void addChild (GameEntity* child);
+    
+    /**
+     * components
+     */
+    std::vector<Component*> components;
+    
     Component* getComponent (std::string name);
+    void addComponent (Component* compo);
+    void removeComponent (std::string name);
     
     bool isVisible ();
+    
     bool isHandleInput ();
-    
-    static GameEntity* create ();
-    
-    virtual bool init ();
     
     virtual void handleInput (SDL_Event e) {};
     
     virtual void update () {};
+    
+    static GameEntity* create ();
+    
+    virtual bool init ();
 };
 
 #endif /* GameEntity_hpp */

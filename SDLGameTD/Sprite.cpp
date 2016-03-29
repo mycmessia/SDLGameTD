@@ -17,11 +17,13 @@ SDL_Texture* Sprite::getTexture()
 
 bool Sprite::init(std::string texture, int x, int y)
 {
+    GameEntity::init();
+    
     _visible = true;
     
     _texture = Window::LoadImage(texture);
     
-    components.push_back(new Transform (x, y));
+    addComponent(Transform::create (x, y));
     
     return true;
 }

@@ -14,7 +14,9 @@
 #include <SDL2_image/SDL_image.h>
 #include <SDL2_ttf/SDL_ttf.h>
 
-class Component
+#include "Ref.hpp"
+
+class Component : public Ref
 {
 public:
     std::string title;

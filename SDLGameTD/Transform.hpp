@@ -17,7 +17,11 @@ public:
     float x;
     float y;
     
-    Transform (float x, float y);
+    Transform ();
+    
+    static Transform* create (float x, float y);
+    
+    virtual bool init (float x, float y);
 };
 
 #endif /* Transform_hpp */

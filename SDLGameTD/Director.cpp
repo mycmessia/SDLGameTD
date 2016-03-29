@@ -13,10 +13,10 @@ Director* Director::_instance = nullptr;
 
 Director::Director ()
 {
-    _currentScene = new GameEntity ();
+    _currentScene = GameEntity::create ();
 }
 
-Director* Director::getInstance()
+Director* Director::getInstance ()
 {
     if (_instance == nullptr)
     {
@@ -26,7 +26,7 @@ Director* Director::getInstance()
     return _instance;
 }
 
-GameEntity* Director::getCurrentScene()
+GameEntity* Director::getCurrentScene ()
 {
     return _currentScene;
 }
