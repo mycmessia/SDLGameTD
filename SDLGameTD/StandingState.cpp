@@ -19,8 +19,6 @@ HeroineState* StandingState::handleInput (Heroine& heroine, SDL_Event e)
             heroine.parent->children[i]->setFocus (false);
         }
         
-//        std::cout << "hero focus" << std::endl;
-        
         heroine.setFocus (true);
     }
     else

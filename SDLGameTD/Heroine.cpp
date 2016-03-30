@@ -21,7 +21,7 @@ bool Heroine::init (std::string texture, int x, int y)
     {
         _handleInput = true;
         
-        _state = new MovingState (320, 160);
+        _state = new StandingState ();
         
         _speed = 1;
     
@@ -49,8 +49,7 @@ void Heroine::handleInput(SDL_Event e)
     HeroineState* state = _state->handleInput(*this, e);
     if (state != NULL)
     {
-        delete _state;
-        _state = state;
+        changeState(state);
     }
 }
 
