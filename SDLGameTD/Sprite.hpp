@@ -18,7 +18,7 @@ private:
     SDL_Texture* _texture;
     
 public:
-    Sprite ();
+    Sprite () {};
     
     SDL_Texture* getTexture ();
     

@@ -8,8 +8,6 @@
 
 #include "Sprite.hpp"
 
-Sprite::Sprite () {}
-
 SDL_Texture* Sprite::getTexture()
 {
     return _texture;
@@ -17,15 +15,18 @@ SDL_Texture* Sprite::getTexture()
 
 bool Sprite::init(std::string texture, int x, int y)
 {
-    GameEntity::init();
+    if(GameEntity::init())
+    {
+        _visible = true;
+        
+        _texture = Window::LoadImage(texture);
+        
+        addComponent(Transform::create (x, y));
+        
+        return true;
+    }
     
-    _visible = true;
-    
-    _texture = Window::LoadImage(texture);
-    
-    addComponent(Transform::create (x, y));
-    
-    return true;
+    return false;
 }
 
 Sprite* Sprite::create(std::string texture, int x, int y)

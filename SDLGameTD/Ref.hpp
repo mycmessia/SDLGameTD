@@ -9,6 +9,8 @@
 #ifndef Ref_hpp
 #define Ref_hpp
 
+#include <vector>
+
 class Ref
 {
 protected:

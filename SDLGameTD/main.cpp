@@ -14,10 +14,9 @@ int main(int argc, char* args[])
         return -1;
     }
     
-    SDL_Event e;
-    
     GameEntity* currentScene = Director::getInstance()->getCurrentScene();
-    currentScene->addChild(Heroine::create("./images/sprite.png", 100, 100));
+    
+    SDL_Event e;
     
     bool quit = false;
     while (!quit)

@@ -9,7 +9,6 @@
 #ifndef AutoReleasePool_hpp
 #define AutoReleasePool_hpp
 
-#include <vector>
 #include "Ref.hpp"
 
 class AutoReleasePool

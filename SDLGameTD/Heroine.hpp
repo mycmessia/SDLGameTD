@@ -19,6 +19,8 @@ private:
 public:
     Heroine ();
     
+//    bool isClickIn (SDL_Event e);
+    
     static Heroine* create (std::string texture, int x, int y);
     
     virtual bool init (std::string texture, int x, int y);

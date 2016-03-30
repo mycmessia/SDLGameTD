@@ -27,6 +27,9 @@ bool GameEntity::isHandleInput ()
 void GameEntity::addChild(GameEntity *child)
 {
     child->retain();
+    
+    child->parent = this;
+    
     children.push_back(child);
 }
 

@@ -39,7 +39,6 @@ public:
     bool isVisible ();
     
     bool isHandleInput ();
-    
     virtual void handleInput (SDL_Event e) {};
     
     virtual void update () {};

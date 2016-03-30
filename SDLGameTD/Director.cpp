@@ -11,19 +11,23 @@
 // 类的静态成员变量必须先初始化再使用，虽然这个静态成员是私有的但是一样可以初始化
 Director* Director::_instance = nullptr;
 
-Director::Director ()
-{
-    _currentScene = GameEntity::create ();
-}
+Director::Director () {}
 
 Director* Director::getInstance ()
 {
     if (_instance == nullptr)
     {
         _instance = new Director ();
+        
+        _instance->InitStartScene();
     }
     
     return _instance;
+}
+
+void Director::InitStartScene()
+{
+    _currentScene = StartScene::create();
 }
 
 GameEntity* Director::getCurrentScene ()

@@ -11,6 +11,7 @@
 
 #include "Transform.hpp"
 #include "Sprite.hpp"
+#include "StartScene.hpp"
 
 class Director
 {
@@ -23,6 +24,8 @@ public:
     
     static Director* getInstance ();
     GameEntity* getCurrentScene ();
+    
+    void InitStartScene ();
     
     static void DrawSprite (Sprite* ge);
     static void LevelOrderTraversal (GameEntity* root, SDL_Event e);

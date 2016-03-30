@@ -6,7 +6,7 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "AutoReleasePool.hpp" // 这句inclue不能放在GameEntity.h里，但是可以放在.cpp里，费解
+#include "AutoReleasePool.hpp" // 这句inclue不能放在Ref.hpp里，但是可以放在.cpp里，费解
 #include "Ref.hpp"
 
 int Ref::getRefCount()
