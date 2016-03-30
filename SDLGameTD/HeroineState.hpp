@@ -9,17 +9,17 @@
 #ifndef HeroineState_hpp
 #define HeroineState_hpp
 
-#include "Sprite.hpp"
+#include "Window.hpp"
 
+class Heroine;
 /**
- * There are four types of state: stand, walking, attack, skill, underAttack
+ * There are four types of state: stand, move, attack, skill, underAttack
  */
 class HeroineState
 {
 public:
-    virtual ~HeroineState () {}
-    virtual void handleInput (GameEntity& heroine, SDL_Event e) {}
-    virtual void update (GameEntity& heroine) {}
+    virtual HeroineState* handleInput (Heroine& heroine, SDL_Event e) {return new HeroineState ();}
+    virtual void update (Heroine& heroine) {}
 };
 
 #endif /* HeroineState_hpp */

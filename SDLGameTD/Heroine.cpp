@@ -7,12 +7,11 @@
 //
 
 #include "Heroine.hpp"
+#include "StandingState.hpp"
+#include "MovingState.hpp"
 
-Heroine::Heroine ()
-{
-    
-}
-
+Heroine::Heroine () {}
+Heroine::~Heroine() {delete _state;}
 
 bool Heroine::init (std::string texture, int x, int y)
 {
@@ -21,10 +20,56 @@ bool Heroine::init (std::string texture, int x, int y)
     if (bo)
     {
         _handleInput = true;
-    
-        _state = new StandingState ();
+        
+        _state = new MovingState (320, 160);
+        
+        _speed = 1;
     
         return true;
+    }
+    
+    return false;
+}
+
+int Heroine::getSpeed()
+{
+    return _speed;
+}
+
+void Heroine::changeState(HeroineState* state)
+{
+    delete _state;
+    _state = state;
+}
+
+void Heroine::handleInput(SDL_Event e)
+{
+//    std::cout << "handle Input Heroine" << std::endl;
+    
+    HeroineState* state = _state->handleInput(*this, e);
+    if (state != NULL)
+    {
+        delete _state;
+        _state = state;
+    }
+}
+
+void Heroine::update ()
+{
+    _state->update (*this);
+}
+
+bool Heroine::isClickIn(SDL_Event e)
+{
+    SDL_Rect rect = this->getRect();
+    
+    if (e.type == SDL_MOUSEBUTTONDOWN)
+    {
+        if (e.button.x >= rect.x && e.button.x <= rect.x + rect.w &&
+            e.button.y >= rect.y && e.button.y <= rect.y + rect.h)
+        {
+            return true;
+        }
     }
     
     return false;

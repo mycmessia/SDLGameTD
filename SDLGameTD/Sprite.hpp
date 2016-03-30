@@ -22,6 +22,8 @@ public:
     
     SDL_Texture* getTexture ();
     
+    const SDL_Rect getRect ();
+    
     static Sprite* create (std::string texture, int x, int y);
     
     virtual bool init (std::string texture, int x, int y);

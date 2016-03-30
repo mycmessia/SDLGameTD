@@ -13,11 +13,27 @@ SDL_Texture* Sprite::getTexture()
     return _texture;
 }
 
+const SDL_Rect Sprite::getRect()
+{
+    Transform* trans = (Transform *)this->getComponent("Transform");
+    
+    int x = trans->x;
+    int y = trans->y;
+    
+    int w, h;
+    SDL_Texture* texture = this->getTexture();
+    SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
+    
+    return {x, y, w, h};
+}
+
 bool Sprite::init(std::string texture, int x, int y)
 {
     if(GameEntity::init())
     {
         _visible = true;
+        
+        _focus = false;
         
         _texture = Window::LoadImage(texture);
         

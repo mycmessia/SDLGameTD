@@ -24,6 +24,16 @@ bool GameEntity::isHandleInput ()
     return _handleInput;
 }
 
+bool GameEntity::getFocus()
+{
+    return _focus;
+}
+
+void GameEntity::setFocus(bool bo)
+{
+    _focus = bo;
+}
+
 void GameEntity::addChild(GameEntity *child)
 {
     child->retain();
@@ -65,6 +75,20 @@ void GameEntity::removeComponent(std::string name)
     {
         std::cout << "Could not remove component " << name << std::endl;
     }
+}
+
+SDL_Point GameEntity::getPosition()
+{
+    Transform* trans = (Transform*)this->getComponent("Transform");
+    
+    return {trans->x, trans->y};
+}
+
+void GameEntity::setPosition (int x, int y)
+{
+    Transform* trans = (Transform*)this->getComponent("Transform");
+    trans->x = x;
+    trans->y = y;
 }
 
 bool GameEntity::init()

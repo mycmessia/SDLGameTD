@@ -11,6 +11,7 @@
 
 #include "Window.hpp"
 #include "Component.hpp"
+#include "Transform.hpp"
 
 class GameEntity : public Ref
 {
@@ -18,6 +19,7 @@ protected:
     bool _visible;
     bool _handleInput;
     unsigned int _referenceCount;
+    bool _focus;
     
 public:
     GameEntity ();
@@ -27,6 +29,9 @@ public:
     
     void addChild (GameEntity* child);
     
+    bool getFocus ();
+    void setFocus (bool bo);
+    
     /**
      * components
      */
@@ -35,6 +40,9 @@ public:
     Component* getComponent (std::string name);
     void addComponent (Component* compo);
     void removeComponent (std::string name);
+    
+    SDL_Point getPosition ();
+    void setPosition (int x, int y);
     
     bool isVisible ();
     

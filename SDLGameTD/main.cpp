@@ -23,11 +23,9 @@ int main(int argc, char* args[])
     {
         long start = Window::GetCurrentTime();
         
-        SDL_PollEvent(&e);
-        
         Window::Clear();
 
-        Director::LevelOrderTraversal (currentScene, e);
+        Director::LevelOrderTraversal (currentScene, e, SDL_PollEvent(&e));
         
         Window::Present();
         

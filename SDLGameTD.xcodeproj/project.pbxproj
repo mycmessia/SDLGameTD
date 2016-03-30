@@ -16,6 +16,7 @@
 		092848DC1CAA6E4B00E95BA0 /* AutoReleasePool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 092848DA1CAA6E4B00E95BA0 /* AutoReleasePool.cpp */; };
 		092848E21CAA9DE100E95BA0 /* Ref.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 092848E01CAA9DE100E95BA0 /* Ref.cpp */; };
 		092848E51CAB5D2E00E95BA0 /* StartScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 092848E31CAB5D2E00E95BA0 /* StartScene.cpp */; };
+		092848E81CABD9DF00E95BA0 /* MovingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 092848E61CABD9DF00E95BA0 /* MovingState.cpp */; };
 		0985B5A21C9E916A00DF6093 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0985B5A11C9E916A00DF6093 /* main.cpp */; };
 		0985B5A91C9E91A700DF6093 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0985B5A81C9E91A700DF6093 /* SDL2.framework */; };
 		09BB28DE1CA236BA00BE74A2 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BB28DB1CA236BA00BE74A2 /* SDL2_image.framework */; };
@@ -59,6 +60,8 @@
 		092848E11CAA9DE100E95BA0 /* Ref.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ref.hpp; sourceTree = "<group>"; };
 		092848E31CAB5D2E00E95BA0 /* StartScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartScene.cpp; sourceTree = "<group>"; };
 		092848E41CAB5D2E00E95BA0 /* StartScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StartScene.hpp; sourceTree = "<group>"; };
+		092848E61CABD9DF00E95BA0 /* MovingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingState.cpp; sourceTree = "<group>"; };
+		092848E71CABD9DF00E95BA0 /* MovingState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MovingState.hpp; sourceTree = "<group>"; };
 		0985B59E1C9E916A00DF6093 /* SDLGameTD */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLGameTD; sourceTree = BUILT_PRODUCTS_DIR; };
 		0985B5A11C9E916A00DF6093 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0985B5A81C9E91A700DF6093 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 				090145AC1CA7F4D800EC0C59 /* StandingState.hpp */,
 				092848E31CAB5D2E00E95BA0 /* StartScene.cpp */,
 				092848E41CAB5D2E00E95BA0 /* StartScene.hpp */,
+				092848E61CABD9DF00E95BA0 /* MovingState.cpp */,
+				092848E71CABD9DF00E95BA0 /* MovingState.hpp */,
 			);
 			name = StatePattern;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				090145B11CA91AE200EC0C59 /* Transform.cpp in Sources */,
+				092848E81CABD9DF00E95BA0 /* MovingState.cpp in Sources */,
 				090145AA1CA7F2DC00EC0C59 /* HeroineState.cpp in Sources */,
 				0985B5A21C9E916A00DF6093 /* main.cpp in Sources */,
 				092848E51CAB5D2E00E95BA0 /* StartScene.cpp in Sources */,

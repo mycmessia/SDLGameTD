@@ -9,31 +9,34 @@
 #ifndef Heroine_hpp
 #define Heroine_hpp
 
-#include "HeroineState.hpp"
-#include "StandingState.hpp"
+#include "Sprite.hpp"
+
+class HeroineState;
 
 class Heroine : public Sprite
 {
 private:
     HeroineState* _state;
+    
+    int _speed;
+    
 public:
     Heroine ();
+    ~Heroine ();
     
-//    bool isClickIn (SDL_Event e);
+    int getSpeed ();
+    
+    void changeState (HeroineState * state);
+    
+    bool isClickIn (SDL_Event e);
     
     static Heroine* create (std::string texture, int x, int y);
     
     virtual bool init (std::string texture, int x, int y);
     
-    virtual void handleInput (SDL_Event e)
-    {
-        _state->handleInput (*this, e);
-    }
+    virtual void handleInput (SDL_Event e);
     
-    virtual void update ()
-    {
-        _state->update (*this);
-    }
+    virtual void update ();
 };
 
 #endif /* Heroine_hpp */

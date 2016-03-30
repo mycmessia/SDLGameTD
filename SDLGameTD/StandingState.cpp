@@ -6,22 +6,35 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
+#include "Heroine.hpp"
+#include "MovingState.hpp"
 #include "StandingState.hpp"
 
-void StandingState::handleInput (GameEntity& heroine, SDL_Event e)
+HeroineState* StandingState::handleInput (Heroine& heroine, SDL_Event e)
 {
-    if (e.type == SDL_KEYDOWN)
+    if (heroine.isClickIn (e))
     {
-        switch (e.key.keysym.sym)
+        for (int i = 0; i < heroine.parent->children.size (); i++)
         {
-            case SDLK_s:
-                std::cout << "handleInput standingState" << std::endl;
-                break;
+            heroine.parent->children[i]->setFocus (false);
+        }
+        
+//        std::cout << "hero focus" << std::endl;
+        
+        heroine.setFocus (true);
+    }
+    else
+    {
+        if (e.type == SDL_MOUSEBUTTONDOWN)
+        {
+            return new MovingState (e.button.x, e.button.y);
         }
     }
+    
+    return nullptr;
 }
 
-void StandingState::update (GameEntity& heroine)
+void StandingState::update (Heroine& heroine)
 {
-    std::cout << "update standingState" << std::endl;
+//    std::cout << "update standingState" << std::endl;
 }

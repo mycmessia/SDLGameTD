@@ -14,14 +14,14 @@
 class Transform : public Component
 {
 public:
-    float x;
-    float y;
+    int x;
+    int y;
     
     Transform ();
     
-    static Transform* create (float x, float y);
+    static Transform* create (int x, int y);
     
-    virtual bool init (float x, float y);
+    virtual bool init (int x, int y);
 };
 
 #endif /* Transform_hpp */

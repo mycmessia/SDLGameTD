@@ -10,7 +10,7 @@
 
 Transform::Transform () {}
 
-bool Transform::init(float x, float y)
+bool Transform::init(int x, int y)
 {
     _referenceCount = 0;
     
@@ -21,7 +21,7 @@ bool Transform::init(float x, float y)
     return true;
 }
 
-Transform* Transform::create(float x, float y)
+Transform* Transform::create(int x, int y)
 {
     Transform* ge = new Transform ();
     if (ge && ge->init(x, y))

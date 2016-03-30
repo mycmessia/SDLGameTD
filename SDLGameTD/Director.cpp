@@ -37,21 +37,13 @@ GameEntity* Director::getCurrentScene ()
 
 void Director::DrawSprite (Sprite* ge)
 {
-    Transform* trans = (Transform *)ge->getComponent("Transform");
-    
-    int x = trans->x;
-    int y = trans->y;
-    
-    int w, h;
     SDL_Texture* texture = ge->getTexture();
-    SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
-    
-    SDL_Rect dest = {x, y, w, h};
+    SDL_Rect dest = ge->getRect();
     
     Window::Draw(texture, dest);
 }
 
-void Director::LevelOrderTraversal (GameEntity* root, SDL_Event e)
+void Director::LevelOrderTraversal (GameEntity* root, SDL_Event e, int isEvent)
 {
     std::queue<GameEntity*> queue;
     
@@ -63,12 +55,14 @@ void Director::LevelOrderTraversal (GameEntity* root, SDL_Event e)
         {
             GameEntity* ge = queue.front();
             
+            ge->update();
+            
             if (ge->isVisible())
             {
                 Director::DrawSprite((Sprite*)ge);
             }
             
-            if (ge->isHandleInput())
+            if (ge->isHandleInput() && isEvent == 1)
             {
                 ge->handleInput (e);
             }

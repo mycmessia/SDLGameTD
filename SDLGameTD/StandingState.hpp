@@ -15,8 +15,8 @@ class StandingState : public HeroineState
 {
 public:
     StandingState () {}
-    virtual void handleInput (GameEntity& heroine, SDL_Event e);
-    virtual void update (GameEntity& heroine);
+    virtual HeroineState* handleInput (Heroine& heroine, SDL_Event e);
+    virtual void update (Heroine& heroine);
 };
 
 #endif /* StandingState_hpp */
