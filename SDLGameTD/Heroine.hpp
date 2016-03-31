@@ -20,6 +20,8 @@ private:
     
     int _speed;
     
+    long _counter;
+    
 public:
     Heroine ();
     ~Heroine ();

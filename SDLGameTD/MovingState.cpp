@@ -40,18 +40,15 @@ void MovingState::update(Heroine &heroine)
         {
             newPos.x += heroine.getSpeed();
         }
-        
-        if (curPos.x > _dest.x)
+        else if (curPos.x > _dest.x)
         {
             newPos.x -= heroine.getSpeed();
         }
-        
-        if (curPos.y < _dest.y)
+        else if (curPos.y < _dest.y)
         {
             newPos.y += heroine.getSpeed();
         }
-        
-        if (curPos.y > _dest.y)
+        else if (curPos.y > _dest.y)
         {
             newPos.y -= heroine.getSpeed();
         }

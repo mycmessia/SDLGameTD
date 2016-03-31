@@ -16,7 +16,7 @@ int main(int argc, char* args[])
     
     GameEntity* currentScene = Director::getInstance()->getCurrentScene();
     
-    SDL_Event e;
+    SDL_Event event;
     
     bool quit = false;
     while (!quit)
@@ -24,8 +24,10 @@ int main(int argc, char* args[])
         long start = Window::GetCurrentTime();
         
         Window::Clear();
-
-        Director::LevelOrderTraversal (currentScene, e, SDL_PollEvent(&e));
+        
+        int res = SDL_PollEvent(&event);
+        
+        Director::LevelOrderTraversal (currentScene, event, res);
         
         Window::Present();
         

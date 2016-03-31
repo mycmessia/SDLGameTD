@@ -25,6 +25,8 @@ bool Heroine::init (std::string texture, int x, int y)
         
         _speed = 1;
     
+        _counter = Window::GetCurrentTime();
+        
         return true;
     }
     
@@ -44,11 +46,15 @@ void Heroine::changeState(HeroineState* state)
 
 void Heroine::handleInput(SDL_Event e)
 {
-//    std::cout << "handle Input Heroine" << std::endl;
+//    std::cout << "handle Input Heroine" << Window::GetCurrentTime() - _counter << std::endl;
+//    
+//    _counter = Window::GetCurrentTime();
     
     HeroineState* state = _state->handleInput(*this, e);
-    if (state != NULL)
+    if (state != nullptr)
     {
+//        std::cout << "change state" << std::endl;
+//        std::cout << Window::GetCurrentTime() << std::endl;
         changeState(state);
     }
 }

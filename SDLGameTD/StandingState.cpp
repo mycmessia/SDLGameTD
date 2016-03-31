@@ -23,7 +23,7 @@ HeroineState* StandingState::handleInput (Heroine& heroine, SDL_Event e)
     }
     else
     {
-        if (e.type == SDL_MOUSEBUTTONDOWN)
+        if (heroine.getFocus() && e.type == SDL_MOUSEBUTTONDOWN)
         {
             return new MovingState (e.button.x, e.button.y);
         }
