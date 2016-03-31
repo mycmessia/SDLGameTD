@@ -43,7 +43,7 @@ void Director::DrawSprite (Sprite* ge)
     Window::Draw(texture, dest);
 }
 
-void Director::LevelOrderTraversal (GameEntity* root, SDL_Event e, int isEvent)
+void Director::LevelOrderTraversal (GameEntity* root)
 {
     std::queue<GameEntity*> queue;
     
@@ -60,11 +60,6 @@ void Director::LevelOrderTraversal (GameEntity* root, SDL_Event e, int isEvent)
             if (ge->isVisible())
             {
                 Director::DrawSprite((Sprite*)ge);
-            }
-            
-            if (ge->isHandleInput() && isEvent == 1)
-            {
-                ge->handleInput (e);
             }
             
             for (int i = 0; i < ge->children.size(); i++)

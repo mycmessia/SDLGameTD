@@ -19,7 +19,7 @@ bool Heroine::init (std::string texture, int x, int y)
     
     if (bo)
     {
-        _handleInput = true;
+        setHandleInput(true);
         
         _state = new StandingState ();
         

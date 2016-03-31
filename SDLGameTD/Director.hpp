@@ -28,7 +28,7 @@ public:
     void InitStartScene ();
     
     static void DrawSprite (Sprite* ge);
-    static void LevelOrderTraversal (GameEntity* root, SDL_Event e, int isEvent);
+    static void LevelOrderTraversal (GameEntity* root);
 };
 
 #endif /* Director_hpp */

@@ -28,6 +28,7 @@ public:
     std::vector<GameEntity*> children;
     
     void addChild (GameEntity* child);
+    void removeChild (GameEntity* child);
     
     bool getFocus ();
     void setFocus (bool bo);
@@ -47,6 +48,7 @@ public:
     bool isVisible ();
     
     bool isHandleInput ();
+    void setHandleInput (bool bo);
     virtual void handleInput (SDL_Event e) {};
     
     virtual void update () {};

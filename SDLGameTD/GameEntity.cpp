@@ -7,6 +7,7 @@
 //
 
 #include "GameEntity.hpp"
+#include "EventListener.hpp"
 
 GameEntity::GameEntity ()
 {
@@ -22,6 +23,20 @@ bool GameEntity::isVisible ()
 bool GameEntity::isHandleInput ()
 {
     return _handleInput;
+}
+
+void GameEntity::setHandleInput(bool bo)
+{
+    _handleInput = bo;
+    
+    if (bo)
+    {
+        EventListener::getInstance()->addChild(this);
+    }
+    else
+    {
+        EventListener::getInstance()->removeChild(this);
+    }
 }
 
 bool GameEntity::getFocus()
@@ -41,6 +56,22 @@ void GameEntity::addChild(GameEntity *child)
     child->parent = this;
     
     children.push_back(child);
+}
+
+void GameEntity::removeChild(GameEntity *child)
+{
+    child->release();
+    
+    child->parent = nullptr;
+    
+    for (int i = 0; i < children.size(); i++)
+    {
+        if (children[i] == this)
+        {
+            children.erase(children.begin() + i);
+            break;
+        }
+    }
 }
 
 void GameEntity::addComponent(Component *compo)
