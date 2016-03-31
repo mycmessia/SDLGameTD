@@ -24,6 +24,22 @@ bool Heroine::init (std::string texture, int x, int y)
         _state = new StandingState ();
         
         _speed = 1;
+        
+        _width = 32;
+        
+        _height = 48;
+        
+        _moveDir = Down;
+        
+        frame = 0;
+        
+        for (int i = 0; i < 4; i++)
+        {
+            downClips[i] = {i * _width, 0, _width, _height};
+            leftClips[i] = {i * _width, _height, _width, _height};
+            rightClips[i] = {i * _width, 2 * _height, _width, _height};
+            upClips[i] = {i * _width, 3 * _height, _width, _height};
+        }
     
         _counter = Window::GetCurrentTime();
         
@@ -36,6 +52,11 @@ bool Heroine::init (std::string texture, int x, int y)
 int Heroine::getSpeed()
 {
     return _speed;
+}
+
+int Heroine::getCounter()
+{
+    return (int)_counter;
 }
 
 void Heroine::changeState(HeroineState* state)
@@ -61,6 +82,9 @@ void Heroine::handleInput(SDL_Event e)
 
 void Heroine::update ()
 {
+    _counter++;
+    if (_counter > 100) _counter = 0;
+    
     _state->update (*this);
 }
 

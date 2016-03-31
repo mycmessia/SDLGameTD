@@ -12,13 +12,34 @@
 #include "GameEntity.hpp"
 #include "Transform.hpp"
 
+enum MoveDir {Left, Right, Up, Down};
+
 class Sprite : public GameEntity
 {
 private:
     SDL_Texture* _texture;
     
+protected:
+    int _width;
+    int _height;
+    MoveDir _moveDir;
+    
 public:
+    SDL_Rect leftClips[4];
+    SDL_Rect rightClips[4];
+    SDL_Rect upClips[4];
+    SDL_Rect downClips[4];
+    int frame;
+    
     Sprite () {};
+    
+    int getWidth ();
+    int getHeight ();
+    
+    MoveDir getMoveDir ();
+    void setMoveDir (MoveDir md);
+    
+    SDL_Rect* getClip ();
     
     SDL_Texture* getTexture ();
     

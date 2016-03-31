@@ -39,21 +39,27 @@ void MovingState::update(Heroine &heroine)
     {
         if (curPos.x < _dest.x)
         {
+            heroine.setMoveDir(Right);
             newPos.x += heroine.getSpeed();
         }
         else if (curPos.x > _dest.x)
         {
+            heroine.setMoveDir(Left);
             newPos.x -= heroine.getSpeed();
         }
         else if (curPos.y < _dest.y)
         {
+            heroine.setMoveDir(Down);
             newPos.y += heroine.getSpeed();
         }
         else if (curPos.y > _dest.y)
         {
+            heroine.setMoveDir(Up);
             newPos.y -= heroine.getSpeed();
         }
         
+        if (heroine.getCounter() % 3 == 0) heroine.frame++;
+        heroine.frame%=4;
         heroine.setPosition(newPos.x, newPos.y);
     }
     else

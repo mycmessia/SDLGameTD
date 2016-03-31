@@ -20,12 +20,33 @@ const SDL_Rect Sprite::getRect()
     int x = trans->x;
     int y = trans->y;
     
-    int w, h;
-    SDL_Texture* texture = this->getTexture();
-    SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
+//    int w, h;
+//    SDL_Texture* texture = this->getTexture();
+//    SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
     
-    return {x, y, w, h};
+    return {x, y, _width, _height};
 }
+
+SDL_Rect* Sprite::getClip()
+{
+    switch (_moveDir)
+    {
+        case Left:
+            return &leftClips[frame];
+        case Right:
+            return &rightClips[frame];
+        case Up:
+            return &upClips[frame];
+        case Down:
+            return &downClips[frame];
+    }
+}
+
+int Sprite::getWidth() {return _width;}
+int Sprite::getHeight() {return _height;}
+
+MoveDir Sprite::getMoveDir () {return _moveDir;}
+void Sprite::setMoveDir (MoveDir md) {_moveDir = md;}
 
 bool Sprite::init(std::string texture, int x, int y)
 {

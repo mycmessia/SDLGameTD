@@ -17,16 +17,18 @@ class Heroine : public Sprite
 {
 private:
     HeroineState* _state;
-    
     int _speed;
     
     long _counter;
     
 public:
+    
     Heroine ();
     ~Heroine ();
     
     int getSpeed ();
+    
+    int getCounter ();
     
     void changeState (HeroineState * state);
     

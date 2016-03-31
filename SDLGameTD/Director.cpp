@@ -37,10 +37,9 @@ GameEntity* Director::getCurrentScene ()
 
 void Director::DrawSprite (Sprite* ge)
 {
-    SDL_Texture* texture = ge->getTexture();
     SDL_Rect dest = ge->getRect();
     
-    Window::Draw(texture, dest);
+    Window::Draw(ge->getTexture(), dest, ge->getClip());
 }
 
 void Director::LevelOrderTraversal (GameEntity* root)

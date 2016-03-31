@@ -13,7 +13,7 @@ bool StartScene::init()
 {
     if (GameEntity::init())
     {
-        Heroine* hero = Heroine::create("./images/image.png", 100, 100);
+        Heroine* hero = Heroine::create("./images/heroine01.png", 100, 100);
         this->addChild(hero);
         
         return true;
