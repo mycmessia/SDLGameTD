@@ -1,7 +1,6 @@
 #include "AutoReleasePool.hpp"
 #include "Director.hpp"
 #include "EventListener.hpp"
-#include "Heroine.hpp"
 
 int main(int argc, char* args[])
 {
