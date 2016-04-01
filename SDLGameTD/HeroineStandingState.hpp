@@ -11,10 +11,10 @@
 
 #include "HeroineState.hpp"
 
-class StandingState : public HeroineState
+class HeroineStandingState : public HeroineState
 {
 public:
-    StandingState () {}
+    HeroineStandingState () {}
     virtual HeroineState* handleInput (Heroine& heroine, SDL_Event e);
     virtual void update (Heroine& heroine);
 };

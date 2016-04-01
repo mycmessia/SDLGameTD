@@ -7,10 +7,10 @@
 //
 
 #include "Heroine.hpp"
-#include "MovingState.hpp"
-#include "StandingState.hpp"
+#include "HeroineMovingState.hpp"
+#include "HeroineStandingState.hpp"
 
-HeroineState* StandingState::handleInput (Heroine& heroine, SDL_Event e)
+HeroineState* HeroineStandingState::handleInput (Heroine& heroine, SDL_Event e)
 {
     if (heroine.isClickIn (e))
     {
@@ -25,14 +25,14 @@ HeroineState* StandingState::handleInput (Heroine& heroine, SDL_Event e)
     {
         if (heroine.getFocus() && e.type == SDL_MOUSEBUTTONDOWN)
         {
-            return new MovingState (e.button.x, e.button.y);
+            return new HeroineMovingState (e.button.x, e.button.y);
         }
     }
     
     return nullptr;
 }
 
-void StandingState::update (Heroine& heroine)
+void HeroineStandingState::update (Heroine& heroine)
 {
 //    std::cout << "update standingState" << std::endl;
 }

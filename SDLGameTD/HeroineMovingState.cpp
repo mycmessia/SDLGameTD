@@ -7,16 +7,16 @@
 //
 
 #include "Heroine.hpp"
-#include "StandingState.hpp"
-#include "MovingState.hpp"
+#include "HeroineStandingState.hpp"
+#include "HeroineMovingState.hpp"
 
-MovingState::MovingState (int x, int y)
+HeroineMovingState::HeroineMovingState (int x, int y)
 {
     _dest.x = x;
     _dest.y = y;
 }
 
-HeroineState* MovingState::handleInput (Heroine& heroine, SDL_Event e)
+HeroineState* HeroineMovingState::handleInput (Heroine& heroine, SDL_Event e)
 {
     if (!heroine.isClickIn (e))
     {
@@ -30,7 +30,7 @@ HeroineState* MovingState::handleInput (Heroine& heroine, SDL_Event e)
     return nullptr;
 }
 
-void MovingState::update(Heroine &heroine)
+void HeroineMovingState::update(Heroine &heroine)
 {
     SDL_Point curPos = heroine.getPosition();
     SDL_Point newPos = curPos;
@@ -58,13 +58,13 @@ void MovingState::update(Heroine &heroine)
             newPos.y -= heroine.getSpeed();
         }
         
-        if (heroine.getCounter() % 3 == 0) heroine.frame++;
-        heroine.frame%=4;
+        if (heroine.getCounter() % 4 == 0) heroine.frame++;
+        if (heroine.frame == 4) heroine.frame = 0;
         heroine.setPosition(newPos.x, newPos.y);
     }
     else
     {
         // arrive dest
-        heroine.changeState(new StandingState ());
+        heroine.changeState(new HeroineStandingState ());
     }
 }

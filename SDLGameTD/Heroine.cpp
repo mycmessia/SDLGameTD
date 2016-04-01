@@ -7,8 +7,8 @@
 //
 
 #include "Heroine.hpp"
-#include "StandingState.hpp"
-#include "MovingState.hpp"
+#include "HeroineMovingState.hpp"
+#include "HeroineStandingState.hpp"
 
 Heroine::Heroine () {}
 Heroine::~Heroine() {delete _state;}
@@ -21,7 +21,7 @@ bool Heroine::init (std::string texture, int x, int y)
     {
         setHandleInput(true);
         
-        _state = new StandingState ();
+        _state = new HeroineStandingState ();
         
         _speed = 1;
         

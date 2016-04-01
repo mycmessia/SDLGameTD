@@ -11,13 +11,13 @@
 
 #include "HeroineState.hpp"
 
-class MovingState : public HeroineState
+class HeroineMovingState : public HeroineState
 {
 private:
     SDL_Point _dest;
     
 public:
-    MovingState (int x, int y);
+    HeroineMovingState (int x, int y);
     virtual HeroineState* handleInput (Heroine& heroine, SDL_Event e);
     virtual void update (Heroine& heroine);
 };
