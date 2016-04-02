@@ -6,4 +6,4 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "Component.hpp"
+#include "SEComponent.hpp"

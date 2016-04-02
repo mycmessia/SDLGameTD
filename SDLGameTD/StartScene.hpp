@@ -12,7 +12,9 @@
 #ifndef StartScene_hpp
 #define StartScene_hpp
 
-class StartScene : public GameEntity
+USING_NS_SE;
+
+class StartScene : public SEGameEntity
 {
 public:
     static StartScene* create ();

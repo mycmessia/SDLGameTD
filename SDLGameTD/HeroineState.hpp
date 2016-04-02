@@ -9,7 +9,7 @@
 #ifndef HeroineState_hpp
 #define HeroineState_hpp
 
-#include "Window.hpp"
+#include "SimpleEngine.h"
 
 class Heroine;
 /**

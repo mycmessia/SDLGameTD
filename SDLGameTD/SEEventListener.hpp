@@ -9,15 +9,19 @@
 #ifndef EventListener_hpp
 #define EventListener_hpp
 
-#include "GameEntity.hpp"
+#include "SEGameEntity.hpp"
 
-class EventListener : public GameEntity
+NS_SE_BEGIN
+
+class SEEventListener : public SEGameEntity
 {
 private:
-    static EventListener* _instance;
+    static SEEventListener* _instance;
 public:
-    static EventListener* getInstance ();
+    static SEEventListener* getInstance ();
     void dispatchEvent (SDL_Event event);
 };
+
+NS_SE_END
 
 #endif /* EventListener_hpp */

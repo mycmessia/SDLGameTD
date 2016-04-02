@@ -6,11 +6,13 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "Transform.hpp"
+#include "SETransform.hpp"
 
-Transform::Transform () {}
+USING_NS_SE;
 
-bool Transform::init(int x, int y)
+SETransform::SETransform () {}
+
+bool SETransform::init(int x, int y)
 {
     _referenceCount = 0;
     
@@ -21,9 +23,9 @@ bool Transform::init(int x, int y)
     return true;
 }
 
-Transform* Transform::create(int x, int y)
+SETransform* SETransform::create(int x, int y)
 {
-    Transform* ge = new Transform ();
+    SETransform* ge = new SETransform ();
     if (ge && ge->init(x, y))
     {
         ge->autorelease();

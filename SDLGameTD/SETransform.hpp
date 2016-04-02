@@ -9,19 +9,23 @@
 #ifndef Transform_hpp
 #define Transform_hpp
 
-#include "Component.hpp"
+#include "SEComponent.hpp"
 
-class Transform : public Component
+NS_SE_BEGIN
+
+class SETransform : public SEComponent
 {
 public:
     int x;
     int y;
     
-    Transform ();
+    SETransform ();
     
-    static Transform* create (int x, int y);
+    static SETransform* create (int x, int y);
     
     virtual bool init (int x, int y);
 };
+
+NS_SE_END
 
 #endif /* Transform_hpp */

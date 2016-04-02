@@ -9,11 +9,13 @@
 #ifndef Heroine_hpp
 #define Heroine_hpp
 
-#include "Sprite.hpp"
+#include "SimpleEngine.h"
+
+USING_NS_SE;
 
 class HeroineState;
 
-class Heroine : public Sprite
+class Heroine : public SESprite
 {
 private:
     HeroineState* _state;
@@ -31,8 +33,6 @@ public:
     int getCounter ();
     
     void changeState (HeroineState * state);
-    
-    bool isClickIn (SDL_Event e);
     
     static Heroine* create (std::string texture, int x, int y);
     

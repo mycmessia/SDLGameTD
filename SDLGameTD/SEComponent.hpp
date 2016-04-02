@@ -14,12 +14,16 @@
 #include <SDL2_image/SDL_image.h>
 #include <SDL2_ttf/SDL_ttf.h>
 
-#include "Ref.hpp"
+#include "SERef.hpp"
 
-class Component : public Ref
+NS_SE_BEGIN
+
+class SEComponent : public SERef
 {
 public:
     std::string title;
 };
+
+NS_SE_END
 
 #endif /* Component_hpp */

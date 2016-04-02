@@ -6,50 +6,52 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "GameEntity.hpp"
-#include "EventListener.hpp"
+#include "SEGameEntity.hpp"
+#include "SEEventListener.hpp"
 
-GameEntity::GameEntity ()
+USING_NS_SE;
+
+SEGameEntity::SEGameEntity ()
 {
     _visible = false;
     _handleInput = false;
 }
 
-bool GameEntity::isVisible ()
+bool SEGameEntity::isVisible ()
 {
     return _visible;
 }
 
-bool GameEntity::isHandleInput ()
+bool SEGameEntity::isHandleInput ()
 {
     return _handleInput;
 }
 
-void GameEntity::setHandleInput(bool bo)
+void SEGameEntity::setHandleInput(bool bo)
 {
     _handleInput = bo;
     
     if (bo)
     {
-        EventListener::getInstance()->addChild(this);
+        SEEventListener::getInstance()->addChild(this);
     }
     else
     {
-        EventListener::getInstance()->removeChild(this);
+        SEEventListener::getInstance()->removeChild(this);
     }
 }
 
-bool GameEntity::getFocus()
+bool SEGameEntity::getFocus()
 {
     return _focus;
 }
 
-void GameEntity::setFocus(bool bo)
+void SEGameEntity::setFocus(bool bo)
 {
     _focus = bo;
 }
 
-void GameEntity::addChild(GameEntity *child)
+void SEGameEntity::addChild(SEGameEntity *child)
 {
     child->retain();
     
@@ -58,7 +60,7 @@ void GameEntity::addChild(GameEntity *child)
     children.push_back(child);
 }
 
-void GameEntity::removeChild(GameEntity *child)
+void SEGameEntity::removeChild(SEGameEntity *child)
 {
     child->release();
     
@@ -74,13 +76,13 @@ void GameEntity::removeChild(GameEntity *child)
     }
 }
 
-void GameEntity::addComponent(Component *compo)
+void SEGameEntity::addComponent(SEComponent *compo)
 {
     compo->retain();
     components.push_back(compo);
 }
 
-Component* GameEntity::getComponent(std::string name)
+SEComponent* SEGameEntity::getComponent(std::string name)
 {
     for (int i = 0; i < components.size(); i++)
     {
@@ -94,9 +96,9 @@ Component* GameEntity::getComponent(std::string name)
     return nullptr;
 }
 
-void GameEntity::removeComponent(std::string name)
+void SEGameEntity::removeComponent(std::string name)
 {
-    Component* compo = getComponent(name);
+    SEComponent* compo = getComponent(name);
     
     if (compo)
     {
@@ -108,30 +110,30 @@ void GameEntity::removeComponent(std::string name)
     }
 }
 
-SDL_Point GameEntity::getPosition()
+SDL_Point SEGameEntity::getPosition()
 {
-    Transform* trans = (Transform*)this->getComponent("Transform");
+    SETransform* trans = (SETransform*)this->getComponent("Transform");
     
     return {trans->x, trans->y};
 }
 
-void GameEntity::setPosition (int x, int y)
+void SEGameEntity::setPosition (int x, int y)
 {
-    Transform* trans = (Transform*)this->getComponent("Transform");
+    SETransform* trans = (SETransform*)this->getComponent("Transform");
     trans->x = x;
     trans->y = y;
 }
 
-bool GameEntity::init()
+bool SEGameEntity::init()
 {
     _referenceCount = 0;
     
     return true;
 }
 
-GameEntity* GameEntity::create()
+SEGameEntity* SEGameEntity::create()
 {
-    GameEntity *ge = new GameEntity ();
+    SEGameEntity *ge = new SEGameEntity ();
     if (ge && ge->init())
     {
         ge->autorelease();
@@ -139,7 +141,7 @@ GameEntity* GameEntity::create()
     }
     else
     {
-//        CC_SAFE_DELETE(ge);
+        SAFE_DELETE(ge);
         return nullptr;
     }
 }

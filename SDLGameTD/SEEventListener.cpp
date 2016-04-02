@@ -6,22 +6,24 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "EventListener.hpp"
+#include "SEEventListener.hpp"
+
+USING_NS_SE;
 
 // 类的静态成员变量必须先初始化再使用，虽然这个静态成员是私有的但是一样可以初始化
-EventListener* EventListener::_instance = nullptr;
+SEEventListener* SEEventListener::_instance = nullptr;
 
-EventListener* EventListener::getInstance ()
+SEEventListener* SEEventListener::getInstance ()
 {
     if (_instance == nullptr)
     {
-        _instance = new EventListener ();
+        _instance = new SEEventListener ();
     }
     
     return _instance;
 }
 
-void EventListener::dispatchEvent(SDL_Event event)
+void SEEventListener::dispatchEvent(SDL_Event event)
 {
     for (int i = 0; i < children.size(); i++)
     {

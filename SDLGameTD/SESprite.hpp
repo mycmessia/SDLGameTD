@@ -9,12 +9,14 @@
 #ifndef Sprite_hpp
 #define Sprite_hpp
 
-#include "GameEntity.hpp"
-#include "Transform.hpp"
+#include "SEGameEntity.hpp"
+#include "SETransform.hpp"
+
+NS_SE_BEGIN
 
 enum MoveDir {Left, Right, Up, Down};
 
-class Sprite : public GameEntity
+class SESprite : public SEGameEntity
 {
 private:
     SDL_Texture* _texture;
@@ -31,7 +33,7 @@ public:
     SDL_Rect downClips[4];
     int frame;
     
-    Sprite () {};
+    SESprite () {};
     
     int getWidth ();
     int getHeight ();
@@ -45,7 +47,9 @@ public:
     
     const SDL_Rect getRect ();
     
-    static Sprite* create (std::string texture, int x, int y);
+    bool isClickIn (SDL_Event e);
+    
+    static SESprite* create (std::string texture, int x, int y);
     
     virtual bool init (std::string texture, int x, int y);
     
@@ -53,5 +57,7 @@ public:
     
     virtual void update () {};
 };
+
+NS_SE_END
 
 #endif /* Sprite_hpp */

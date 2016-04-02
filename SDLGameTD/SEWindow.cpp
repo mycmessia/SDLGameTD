@@ -1,38 +1,40 @@
 //
-//  Window.cpp
+//  SEWindow.cpp
 //  SDLGameTD
 //
 //  Created by 梅宇宸 on 3/23/16.
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "Window.hpp"
+#include "SEWindow.hpp"
+
+USING_NS_SE;
 
 //Initialize the unique_ptr's deleters here
-std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> Window::mWindow
+std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> SEWindow::mWindow
 = std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>(nullptr, SDL_DestroyWindow);
 
-std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> Window::mRenderer
+std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> SEWindow::mRenderer
 = std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>(nullptr, SDL_DestroyRenderer);
 
 //Other static members
-SDL_Rect Window::mBox;
+SDL_Rect SEWindow::mBox;
 
-void Window::Sleep (int milliseconds)
+void SEWindow::Sleep (int milliseconds)
 {
     std::chrono::milliseconds dura(milliseconds);
     std::this_thread::sleep_for(dura);
 }
 
-long Window::GetCurrentTime()
+long SEWindow::GetCurrentTime()
 {
     struct timeval tv;
     gettimeofday(&tv, nullptr);
     return tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }
 
-//In window.cpp
-void Window::Init(std::string title)
+//In SEWindow.cpp
+void SEWindow::Init(std::string title)
 {
     //initialize all SDL subsystems
     if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
@@ -40,17 +42,17 @@ void Window::Init(std::string title)
     if (TTF_Init() == -1)
         throw std::runtime_error("TTF Init Failed");
     
-    //Setup our window size
+    //Setup our SEWindow size
     mBox.x = 0;
     mBox.y = 0;
     mBox.w = 640;
     mBox.h = 480;
-    //Create our window
+    //Create our SEWindow
     mWindow.reset(SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED,
                                    SDL_WINDOWPOS_CENTERED, mBox.w, mBox.h, SDL_WINDOW_SHOWN));
     //Make sure it created ok
     if (mWindow == nullptr)
-        throw std::runtime_error("Failed to create window");
+        throw std::runtime_error("Failed to create SEWindow");
     
     //Create the renderer
     mRenderer.reset(SDL_CreateRenderer(mWindow.get(), -1,
@@ -60,13 +62,13 @@ void Window::Init(std::string title)
         throw std::runtime_error("Failed to create renderer");
 }
 
-void Window::Quit()
+void SEWindow::Quit()
 {
     TTF_Quit();
     SDL_Quit();
 }
 
-void Window::Draw(SDL_Texture *tex, SDL_Rect &dstRect, SDL_Rect *clip, float angle,
+void SEWindow::Draw(SDL_Texture *tex, SDL_Rect &dstRect, SDL_Rect *clip, float angle,
                   int xPivot, int yPivot, SDL_RendererFlip flip)
 {
     //Convert pivot pos from relative to object's center to screen space
@@ -78,7 +80,7 @@ void Window::Draw(SDL_Texture *tex, SDL_Rect &dstRect, SDL_Rect *clip, float ang
     SDL_RenderCopyEx(mRenderer.get(), tex, clip, &dstRect, angle, &pivot, flip);
 }
 
-SDL_Texture* Window::LoadImage (const std::string &file)
+SDL_Texture* SEWindow::LoadImage (const std::string &file)
 {
     SDL_Texture* tex = nullptr;
     tex = IMG_LoadTexture(mRenderer.get(), file.c_str());
@@ -87,7 +89,7 @@ SDL_Texture* Window::LoadImage (const std::string &file)
     return tex;
 }
 
-SDL_Texture* Window::RenderText(const std::string &message, const std::string &fontFile,
+SDL_Texture* SEWindow::RenderText(const std::string &message, const std::string &fontFile,
                                 SDL_Color color, int fontSize)
 {
     //Open the font
@@ -106,19 +108,19 @@ SDL_Texture* Window::RenderText(const std::string &message, const std::string &f
     return texture;
 }
 
-void Window::Clear()
+void SEWindow::Clear()
 {
     SDL_RenderClear(mRenderer.get());
 }
 
-void Window::Present()
+void SEWindow::Present()
 {
     SDL_RenderPresent(mRenderer.get());
 }
 
-SDL_Rect Window::Box()
+SDL_Rect SEWindow::Box()
 {
-    //Update mBox to match the current window size
+    //Update mBox to match the current SEWindow size
     SDL_GetWindowSize(mWindow.get(), &mBox.w, &mBox.h);
     return mBox;
 }

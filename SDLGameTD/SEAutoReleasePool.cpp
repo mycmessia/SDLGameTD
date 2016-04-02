@@ -6,15 +6,17 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "AutoReleasePool.hpp"
+#include "SEAutoReleasePool.hpp"
 
-void AutoReleasePool::addEntity(Ref * ge)
+USING_NS_SE;
+
+void SEAutoReleasePool::addEntity(SERef * ge)
 {
     ge->retain();
     _vectorPool.push_back(ge);
 }
 
-void AutoReleasePool::autoDelete()
+void SEAutoReleasePool::autoDelete()
 {
     for (int i = (int)_vectorPool.size() - 1; i >= 0; i--)
     {
@@ -29,23 +31,23 @@ void AutoReleasePool::autoDelete()
 /**
  * PoolManager
  */
-PoolManager* PoolManager::_instance = nullptr;
+SEPoolManager* SEPoolManager::_instance = nullptr;
 
-void PoolManager::setCurPool()
+void SEPoolManager::setCurPool()
 {
-    _currentPool = new AutoReleasePool;
+    _currentPool = new SEAutoReleasePool;
 }
 
-AutoReleasePool* PoolManager::getCurPool()
+SEAutoReleasePool* SEPoolManager::getCurPool()
 {
     return _currentPool;
 }
 
-PoolManager* PoolManager::getInstance()
+SEPoolManager* SEPoolManager::getInstance()
 {
     if (_instance == nullptr)
     {
-        _instance = new PoolManager;
+        _instance = new SEPoolManager;
         
         _instance->setCurPool();
     }

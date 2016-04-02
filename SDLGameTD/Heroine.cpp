@@ -15,7 +15,7 @@ Heroine::~Heroine() {delete _state;}
 
 bool Heroine::init (std::string texture, int x, int y)
 {
-    bool bo = Sprite::init(texture, x, y);
+    bool bo = SESprite::init(texture, x, y);
     
     if (bo)
     {
@@ -41,7 +41,7 @@ bool Heroine::init (std::string texture, int x, int y)
             upClips[i] = {i * _width, 3 * _height, _width, _height};
         }
     
-        _counter = Window::GetCurrentTime();
+        _counter = SEWindow::GetCurrentTime();
         
         return true;
     }
@@ -67,15 +67,9 @@ void Heroine::changeState(HeroineState* state)
 
 void Heroine::handleInput(SDL_Event e)
 {
-//    std::cout << "handle Input Heroine" << Window::GetCurrentTime() - _counter << std::endl;
-//    
-//    _counter = Window::GetCurrentTime();
-    
     HeroineState* state = _state->handleInput(*this, e);
     if (state != nullptr)
     {
-//        std::cout << "change state" << std::endl;
-//        std::cout << Window::GetCurrentTime() << std::endl;
         changeState(state);
     }
 }
@@ -86,22 +80,6 @@ void Heroine::update ()
     if (_counter > 100) _counter = 0;
     
     _state->update (*this);
-}
-
-bool Heroine::isClickIn(SDL_Event e)
-{
-    SDL_Rect rect = this->getRect();
-    
-    if (e.type == SDL_MOUSEBUTTONDOWN)
-    {
-        if (e.button.x >= rect.x && e.button.x <= rect.x + rect.w &&
-            e.button.y >= rect.y && e.button.y <= rect.y + rect.h)
-        {
-            return true;
-        }
-    }
-    
-    return false;
 }
 
 Heroine* Heroine::create (std::string texture, int x, int y)

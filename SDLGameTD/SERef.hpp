@@ -11,7 +11,11 @@
 
 #include <vector>
 
-class Ref
+#include "SimpleEngineMacros.h"
+
+NS_SE_BEGIN
+
+class SERef
 {
 protected:
     unsigned int _referenceCount;
@@ -25,5 +29,7 @@ public:
     
     void retain ();
 };
+
+NS_SE_END
 
 #endif /* Ref_hpp */

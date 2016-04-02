@@ -9,31 +9,35 @@
 #ifndef AutoReleasePool_hpp
 #define AutoReleasePool_hpp
 
-#include "Ref.hpp"
+#include "SERef.hpp"
 
-class AutoReleasePool
+NS_SE_BEGIN
+
+class SEAutoReleasePool
 {
 private:
-    std::vector<Ref*> _vectorPool;
+    std::vector<SERef*> _vectorPool;
     
 public:
-    void addEntity (Ref*);
+    void addEntity (SERef*);
     
     void autoDelete ();
 };
 
-class PoolManager
+class SEPoolManager
 {
 private:
-    static PoolManager* _instance;
+    static SEPoolManager* _instance;
     
-    AutoReleasePool* _currentPool;
+    SEAutoReleasePool* _currentPool;
     
 public:
-    static PoolManager* getInstance();
+    static SEPoolManager* getInstance();
     
     void setCurPool ();
-    AutoReleasePool* getCurPool ();
+    SEAutoReleasePool* getCurPool ();
 };
+
+NS_SE_END
 
 #endif /* AutoReleasePool_hpp */

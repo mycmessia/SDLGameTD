@@ -18,11 +18,15 @@
 #include <SDL2_image/SDL_image.h>
 #include <SDL2_ttf/SDL_ttf.h>
 
+#include "SimpleEngineMacros.h"
+
 #ifndef Window_hpp
 #define Window_hpp
 
+NS_SE_BEGIN
+
 //What we think our window class should look like
-class Window {
+class SEWindow {
 public:
     
     const static int FPS = 60;
@@ -83,5 +87,7 @@ private:
     static std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> mRenderer;
     static SDL_Rect mBox;
 };
+
+NS_SE_END
 
 #endif /* Window_hpp */

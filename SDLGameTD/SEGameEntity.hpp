@@ -9,11 +9,13 @@
 #ifndef GameEntity_hpp
 #define GameEntity_hpp
 
-#include "Window.hpp"
-#include "Component.hpp"
-#include "Transform.hpp"
+#include "SEWindow.hpp"
+#include "SEComponent.hpp"
+#include "SETransform.hpp"
 
-class GameEntity : public Ref
+NS_SE_BEGIN
+
+class SEGameEntity : public SERef
 {
 protected:
     bool _visible;
@@ -22,13 +24,13 @@ protected:
     bool _focus;
     
 public:
-    GameEntity ();
+    SEGameEntity ();
     
-    GameEntity* parent;
-    std::vector<GameEntity*> children;
+    SEGameEntity* parent;
+    std::vector<SEGameEntity*> children;
     
-    void addChild (GameEntity* child);
-    void removeChild (GameEntity* child);
+    void addChild (SEGameEntity* child);
+    void removeChild (SEGameEntity* child);
     
     bool getFocus ();
     void setFocus (bool bo);
@@ -36,10 +38,10 @@ public:
     /**
      * components
      */
-    std::vector<Component*> components;
+    std::vector<SEComponent*> components;
     
-    Component* getComponent (std::string name);
-    void addComponent (Component* compo);
+    SEComponent* getComponent (std::string name);
+    void addComponent (SEComponent* compo);
     void removeComponent (std::string name);
     
     SDL_Point getPosition ();
@@ -53,9 +55,11 @@ public:
     
     virtual void update () {};
     
-    static GameEntity* create ();
+    static SEGameEntity* create ();
     
     virtual bool init ();
 };
+
+NS_SE_END
 
 #endif /* GameEntity_hpp */

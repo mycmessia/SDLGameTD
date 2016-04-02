@@ -1,31 +1,31 @@
-#include "AutoReleasePool.hpp"
-#include "Director.hpp"
-#include "EventListener.hpp"
+#include "SimpleEngine.h"
+
+USING_NS_SE;
 
 int main(int argc, char* args[])
 {
     try
     {
-        Window::Init("SDL2");
+        SEWindow::Init("SDL2");
     }
     catch (const std::runtime_error &e)
     {
         std::cout << e.what() << std::endl;
-        Window::Quit();
+        SEWindow::Quit();
         return -1;
     }
     
-    EventListener* listener = EventListener::getInstance();
-    GameEntity* currentScene = Director::getInstance()->getCurrentScene();
+    SEEventListener* listener = SEEventListener::getInstance();
+    SEGameEntity* currentScene = SEDirector::getInstance()->getCurrentScene();
     
     SDL_Event event;
     
     bool quit = false;
     while (!quit)
     {
-        long start = Window::GetCurrentTime();
+        long start = SEWindow::GetCurrentTime();
         
-        Window::Clear();
+        SEWindow::Clear();
         
         // 这里的事件循环必须有，而不能是直接取一次，因为一个渲染帧过程中会有很多事件
         // Here must be a while loop to get event instead of just getting once
@@ -40,15 +40,15 @@ int main(int argc, char* args[])
             listener->dispatchEvent(event);
         }
         
-        Director::LevelOrderTraversal (currentScene);
+        SEDirector::LevelOrderTraversal (currentScene);
         
-        Window::Present();
+        SEWindow::Present();
         
-        PoolManager::getInstance()->getCurPool()->autoDelete();
+        SEPoolManager::getInstance()->getCurPool()->autoDelete();
         
-        long sleepTime = start + 1000 / Window::FPS - Window::GetCurrentTime();
+        long sleepTime = start + 1000 / SEWindow::FPS - SEWindow::GetCurrentTime();
         
-        Window::Sleep((int)sleepTime);
+        SEWindow::Sleep((int)sleepTime);
     }
     
     return 0;

@@ -1,23 +1,25 @@
 //
-//  Director.cpp
+//  SEDirector.cpp
 //  SDLGameTD
 //
 //  Created by 梅宇宸 on 3/29/16.
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "Director.hpp"
+#include "SEDirector.hpp"
+
+USING_NS_SE;
 
 // 类的静态成员变量必须先初始化再使用，虽然这个静态成员是私有的但是一样可以初始化
-Director* Director::_instance = nullptr;
+SEDirector* SEDirector::_instance = nullptr;
 
-Director::Director () {}
+SEDirector::SEDirector () {}
 
-Director* Director::getInstance ()
+SEDirector* SEDirector::getInstance ()
 {
     if (_instance == nullptr)
     {
-        _instance = new Director ();
+        _instance = new SEDirector ();
         
         _instance->InitStartScene();
     }
@@ -25,26 +27,26 @@ Director* Director::getInstance ()
     return _instance;
 }
 
-void Director::InitStartScene()
+void SEDirector::InitStartScene()
 {
     _currentScene = StartScene::create();
 }
 
-GameEntity* Director::getCurrentScene ()
+SEGameEntity* SEDirector::getCurrentScene ()
 {
     return _currentScene;
 }
 
-void Director::DrawSprite (Sprite* ge)
+void SEDirector::DrawSprite (SESprite* ge)
 {
     SDL_Rect dest = ge->getRect();
     
-    Window::Draw(ge->getTexture(), dest, ge->getClip());
+    SEWindow::Draw(ge->getTexture(), dest, ge->getClip());
 }
 
-void Director::LevelOrderTraversal (GameEntity* root)
+void SEDirector::LevelOrderTraversal (SEGameEntity* root)
 {
-    std::queue<GameEntity*> queue;
+    std::queue<SEGameEntity*> queue;
     
     if (root != nullptr)
     {
@@ -52,13 +54,13 @@ void Director::LevelOrderTraversal (GameEntity* root)
         
         while(!queue.empty())
         {
-            GameEntity* ge = queue.front();
+            SEGameEntity* ge = queue.front();
             
             ge->update();
             
             if (ge->isVisible())
             {
-                Director::DrawSprite((Sprite*)ge);
+                SEDirector::DrawSprite((SESprite*)ge);
             }
             
             for (int i = 0; i < ge->children.size(); i++)
