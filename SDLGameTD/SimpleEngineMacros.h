@@ -21,6 +21,6 @@
 #define NS_SE
 #endif
 
-#define SAFE_DELETE(p) do { delete (p); (p) = nullptr; } while(0)
+#define SE_SAFE_DELETE(p) do { delete (p); (p) = nullptr; } while(0)
 
 #endif /* Macros_h */

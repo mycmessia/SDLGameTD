@@ -141,7 +141,7 @@ SEGameEntity* SEGameEntity::create()
     }
     else
     {
-        SAFE_DELETE(ge);
+        SE_SAFE_DELETE(ge);
         return nullptr;
     }
 }

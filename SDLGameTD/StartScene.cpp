@@ -7,6 +7,7 @@
 //
 
 #include "Heroine.hpp"
+#include "Monster.hpp"
 #include "StartScene.hpp"
 
 bool StartScene::init()
@@ -15,6 +16,9 @@ bool StartScene::init()
     {
         Heroine* hero = Heroine::create("./images/heroine01.png", 100, 100);
         this->addChild(hero);
+        
+        Monster* monster = Monster::create("./images/undead01.png", 200, 200);
+        this->addChild(monster);
         
         return true;
     }

@@ -1,19 +1,19 @@
 //
-//  Heroine.cpp
+//  Monster.cpp
 //  SDLGameTD
 //
-//  Created by 梅宇宸 on 3/27/16.
+//  Created by 梅宇宸 on 4/3/16.
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "Heroine.hpp"
-#include "HeroineMovingState.hpp"
-#include "HeroineStandingState.hpp"
+#include "Monster.hpp"
+#include "MonsterState.hpp"
+#include "MonsterStandingState.hpp"
 
-Heroine::Heroine () {}
-Heroine::~Heroine() {delete _state;}
+Monster::Monster () {}
+Monster::~Monster() {SE_SAFE_DELETE(_state);}
 
-bool Heroine::init (std::string texture, int x, int y)
+bool Monster::init (std::string texture, int x, int y)
 {
     bool bo = SESprite::init(texture, x, y);
     
@@ -21,7 +21,7 @@ bool Heroine::init (std::string texture, int x, int y)
     {
         setHandleInput(true);
         
-        _state = new HeroineStandingState ();
+        _state = new MonsterStandingState ();
         
         _speed = 1;
         
@@ -40,7 +40,7 @@ bool Heroine::init (std::string texture, int x, int y)
             rightClips[i] = {i * _width, 2 * _height, _width, _height};
             upClips[i] = {i * _width, 3 * _height, _width, _height};
         }
-    
+        
         _counter = SEWindow::GetCurrentTime();
         
         return true;
@@ -49,32 +49,32 @@ bool Heroine::init (std::string texture, int x, int y)
     return false;
 }
 
-int Heroine::getSpeed()
+int Monster::getSpeed()
 {
     return _speed;
 }
 
-int Heroine::getCounter()
+int Monster::getCounter()
 {
     return (int)_counter;
 }
 
-void Heroine::changeState(HeroineState* state)
+void Monster::changeState(MonsterState* state)
 {
     delete _state;
     _state = state;
 }
 
-void Heroine::handleInput(SDL_Event e)
+void Monster::handleInput(SDL_Event e)
 {
-    HeroineState* state = _state->handleInput(*this, e);
+    MonsterState* state = _state->handleInput(*this, e);
     if (state != nullptr)
     {
         changeState(state);
     }
 }
 
-void Heroine::update ()
+void Monster::update ()
 {
     _counter++;
     if (_counter > 100) _counter = 0;
@@ -82,9 +82,9 @@ void Heroine::update ()
     _state->update (*this);
 }
 
-Heroine* Heroine::create (std::string texture, int x, int y)
+Monster* Monster::create (std::string texture, int x, int y)
 {
-    Heroine *ge = new Heroine ();
+    Monster *ge = new Monster ();
     if (ge && ge->init(texture, x, y))
     {
         ge->autorelease();
