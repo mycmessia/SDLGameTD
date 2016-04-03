@@ -63,6 +63,8 @@ public:
     static SEGameEntity* create ();
     
     virtual bool init ();
+    
+    void autoRelease ();
 };
 
 NS_SE_END

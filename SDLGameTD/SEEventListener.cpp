@@ -25,8 +25,27 @@ SEEventListener* SEEventListener::getInstance ()
 
 void SEEventListener::dispatchEvent(SDL_Event event)
 {
-    for (int i = 0; i < children.size(); i++)
+    for (int i = 0; i < _listerners.size(); i++)
     {
-        children[i]->handleInput(event);
+        _listerners[i]->handleInput(event);
     }
 }
+
+void SEEventListener::addListener(SEGameEntity* ge)
+{
+    _listerners.push_back(ge);
+}
+
+void SEEventListener::removeListener(SEGameEntity* ge)
+{
+    for (int i = 0; i < _listerners.size(); i++)
+    {
+        if (_listerners[i] == ge)
+        {
+            _listerners[i] = nullptr;
+            _listerners.erase(_listerners.begin() + i);
+            break;
+        }
+    }
+}
+

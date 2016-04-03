@@ -14,11 +14,23 @@ bool StartScene::init()
 {
     if (SEGameEntity::init())
     {
-        Heroine* hero = Heroine::create("./images/heroine01.png", 100, 100);
-        this->addChild(hero, 1);
+//        SEGameEntity* enemyCollector = SEGameEntity::create();
+//        this->addChild(enemyCollector);
         
-        Monster* monster = Monster::create("./images/undead01.png", 200, 200);
-        this->addChild(monster);
+        SEGameEntity* playerCollector = SEGameEntity::create();
+        this->addChild(playerCollector);
+        
+        std::cout << playerCollector->getRefCount() << std::endl;
+        
+        Heroine* hero = Heroine::create("./images/heroine01.png", 100, 100);
+        playerCollector->addChild(hero, 1);
+        
+        std::cout << hero->getRefCount() << std::endl;
+        
+//        Monster* monster = Monster::create("./images/undead01.png", 200, 200);
+//        enemyCollector->addChild(monster);
+        
+        playerCollector->removeChild(hero);
         
         return true;
     }
@@ -31,7 +43,7 @@ StartScene* StartScene::create()
     StartScene *ge = new StartScene ();
     if (ge && ge->init())
     {
-        ge->autorelease();
+        ge->autoRelease();
         return ge;
     }
     else

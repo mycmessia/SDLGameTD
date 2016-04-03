@@ -12,10 +12,14 @@
 
 void MonsterStandingState::update (Monster& monster)
 {
-    if (!monster.isNearHeroine())
+    if (monster.getTarget())
     {
-        SDL_Point point = SEDirector::getInstance()->getCurrentScene()->getChildByTag(1)->getPosition();
+        SDL_Point point = monster.getTarget()->getPosition();
         monster.changeState(new MonsterMovingState (point.x, point.y));
     }
-    //    std::cout << "update standingState" << std::endl;
+    else
+    {
+        // looking for the target
+        
+    }
 }

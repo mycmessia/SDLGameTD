@@ -9,17 +9,17 @@
 #ifndef AutoReleasePool_hpp
 #define AutoReleasePool_hpp
 
-#include "SERef.hpp"
+#include "SEGameEntity.hpp"
 
 NS_SE_BEGIN
 
 class SEAutoReleasePool
 {
 private:
-    std::vector<SERef*> _vectorPool;
+    std::vector<SEGameEntity*> _vectorPool;
     
 public:
-    void addEntity (SERef*);
+    void addEntity (SEGameEntity*);
     
     void autoDelete ();
 };

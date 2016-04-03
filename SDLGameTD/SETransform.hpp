@@ -19,11 +19,7 @@ public:
     int x;
     int y;
     
-    SETransform ();
-    
-    static SETransform* create (int x, int y);
-    
-    virtual bool init (int x, int y);
+    SETransform (int x, int y);
 };
 
 NS_SE_END

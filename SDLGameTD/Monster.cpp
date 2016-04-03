@@ -42,7 +42,7 @@ bool Monster::init (std::string texture, int x, int y)
         
         _counter = SEWindow::GetCurrentTime();
         
-        _heroine = (Heroine*)SEDirector::getInstance()->getCurrentScene()->getChildByTag(1);
+        _target = nullptr;
         
         return true;
     }
@@ -60,18 +60,31 @@ int Monster::getCounter()
     return (int)_counter;
 }
 
-bool Monster::isNearHeroine()
+bool Monster::isNearTarget()
 {
-    SDL_Point heroPos = _heroine->getPosition();
-    SDL_Point monsterPos = getPosition();
-    
-    if (abs(heroPos.x - monsterPos.x) <= Monster::NEAR_DIS_X &&
-        abs(heroPos.y - monsterPos.y) <= Monster::NEAR_DIS_Y)
+    if (_target)
     {
-        return true;
+        SDL_Point heroPos = _target->getPosition();
+        SDL_Point monsterPos = getPosition();
+        
+        if (abs(heroPos.x - monsterPos.x) <= Monster::NEAR_DIS_X &&
+            abs(heroPos.y - monsterPos.y) <= Monster::NEAR_DIS_Y)
+        {
+            return true;
+        }
     }
     
     return false;
+}
+
+SESprite* Monster::getTarget ()
+{
+    return _target;
+}
+
+void Monster::setTarget (SESprite* target)
+{
+    _target = target;
 }
 
 void Monster::changeState(MonsterState* state)
@@ -93,7 +106,7 @@ Monster* Monster::create (std::string texture, int x, int y)
     Monster *ge = new Monster ();
     if (ge && ge->init(texture, x, y))
     {
-        ge->autorelease();
+        ge->autoRelease();
         return ge;
     }
     else

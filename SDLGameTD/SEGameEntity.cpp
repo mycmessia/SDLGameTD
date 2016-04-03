@@ -6,6 +6,7 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
+#include "SEAutoReleasePool.hpp" // 这句inclue不能放在Ref.hpp里，但是可以放在.cpp里，费解
 #include "SEGameEntity.hpp"
 #include "SEEventListener.hpp"
 
@@ -33,11 +34,11 @@ void SEGameEntity::setHandleInput(bool bo)
     
     if (bo)
     {
-        SEEventListener::getInstance()->addChild(this);
+        SEEventListener::getInstance()->addListener(this);
     }
     else
     {
-        SEEventListener::getInstance()->removeChild(this);
+        SEEventListener::getInstance()->removeListener(this);
     }
 }
 
@@ -95,8 +96,9 @@ void SEGameEntity::removeChild(SEGameEntity *child)
     
     for (int i = 0; i < children.size(); i++)
     {
-        if (children[i] == this)
+        if (children[i] == child)
         {
+            children[i] = nullptr;  // Is this necessary?
             children.erase(children.begin() + i);
             break;
         }
@@ -105,7 +107,6 @@ void SEGameEntity::removeChild(SEGameEntity *child)
 
 void SEGameEntity::addComponent(SEComponent *compo)
 {
-    compo->retain();
     components.push_back(compo);
 }
 
@@ -125,15 +126,14 @@ SEComponent* SEGameEntity::getComponent(std::string name)
 
 void SEGameEntity::removeComponent(std::string name)
 {
-    SEComponent* compo = getComponent(name);
-    
-    if (compo)
+    for (int i = 0; i < components.size(); i++)
     {
-        compo->release();
-    }
-    else
-    {
-        std::cout << "Could not remove component " << name << std::endl;
+        if (components[i]->title == name)
+        {
+            SE_SAFE_DELETE(components[i]);
+            components.erase(components.begin() + i);
+            break;
+        }
     }
 }
 
@@ -158,12 +158,17 @@ bool SEGameEntity::init()
     return true;
 }
 
+void SEGameEntity::autoRelease()
+{
+    SEPoolManager::getInstance()->getCurPool()->addEntity(this);
+}
+
 SEGameEntity* SEGameEntity::create()
 {
     SEGameEntity *ge = new SEGameEntity ();
     if (ge && ge->init())
     {
-        ge->autorelease();
+        ge->autoRelease();
         return ge;
     }
     else

@@ -10,9 +10,8 @@
 
 USING_NS_SE;
 
-void SEAutoReleasePool::addEntity(SERef * ge)
+void SEAutoReleasePool::addEntity(SEGameEntity* ge)
 {
-    ge->retain();
     _vectorPool.push_back(ge);
 }
 
@@ -22,7 +21,15 @@ void SEAutoReleasePool::autoDelete()
     {
         if (_vectorPool[i]->getRefCount() == 0)
         {
-            delete _vectorPool[i];
+            std::cout << "auto release sth" << std::endl;
+            
+            if (_vectorPool[i]->isHandleInput())
+            {
+                _vectorPool[i]->setHandleInput(false);
+            }
+            
+            SE_SAFE_DELETE(_vectorPool[i]);
+            
             _vectorPool.erase(_vectorPool.begin()+i);
         }
     }

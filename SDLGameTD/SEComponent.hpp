@@ -18,7 +18,7 @@
 
 NS_SE_BEGIN
 
-class SEComponent : public SERef
+class SEComponent
 {
 public:
     std::string title;

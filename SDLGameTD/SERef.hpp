@@ -9,6 +9,7 @@
 #ifndef Ref_hpp
 #define Ref_hpp
 
+#include <iostream>
 #include <vector>
 
 #include "SimpleEngineMacros.h"
@@ -18,12 +19,10 @@ NS_SE_BEGIN
 class SERef
 {
 protected:
-    unsigned int _referenceCount;
+    int _referenceCount = 0;
     
 public:
     int getRefCount ();
-    
-    void autorelease ();
     
     void release ();
     

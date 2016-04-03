@@ -22,7 +22,7 @@ private:
     MonsterState* _state;
     int _speed;
     long _counter;
-    Heroine* _heroine;
+    SESprite* _target;
     
 public:
     static const int NEAR_DIS_X = 32;
@@ -35,7 +35,9 @@ public:
     
     int getCounter ();
     
-    bool isNearHeroine ();
+    bool isNearTarget ();
+    SESprite* getTarget ();
+    void setTarget (SESprite* target);
     
     void changeState (MonsterState * state);
     
