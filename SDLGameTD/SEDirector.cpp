@@ -29,7 +29,10 @@ SEDirector* SEDirector::getInstance ()
 
 void SEDirector::InitStartScene()
 {
-    _currentScene = StartScene::create();
+    // 这个改动很重要，因为我在StartScene的初始化过程中获取_currentScene指针所以我必须确保
+    // 在获取的时候这个指针有意义
+    _currentScene = new StartScene ();
+    _currentScene->init ();
 }
 
 SEGameEntity* SEDirector::getCurrentScene ()

@@ -16,26 +16,17 @@ MonsterMovingState::MonsterMovingState (int x, int y)
     _dest.y = y;
 }
 
-MonsterState* MonsterMovingState::handleInput (Monster& monster, SDL_Event e)
-{
-    if (!monster.isClickIn (e))
-    {
-        if (e.type == SDL_MOUSEBUTTONDOWN)
-        {
-            _dest.x = e.button.x;
-            _dest.y = e.button.y;
-        }
-    }
-    
-    return nullptr;
-}
-
 void MonsterMovingState::update(Monster &monster)
 {
+    SDL_Point point = SEDirector::getInstance()->getCurrentScene()->getChildByTag(1)->getPosition();
+    
+    _dest.x = point.x;
+    _dest.y = point.y;
+    
     SDL_Point curPos = monster.getPosition();
     SDL_Point newPos = curPos;
     
-    if (curPos.x != _dest.x || curPos.y != _dest.y)
+    if (!monster.isNearHeroine())
     {
         if (curPos.x < _dest.x)
         {

@@ -14,7 +14,6 @@
 class MonsterStandingState : public MonsterState
 {
 public:
-    virtual MonsterState* handleInput (Monster& heroine, SDL_Event e);
     virtual void update (Monster& heroine);
 };
 

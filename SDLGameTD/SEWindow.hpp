@@ -13,6 +13,7 @@
 #include <chrono>
 #include <thread>
 #include <sys/time.h>
+#include <math.h>
 
 #include <SDL2/SDL.h>
 #include <SDL2_image/SDL_image.h>

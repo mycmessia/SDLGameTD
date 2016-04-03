@@ -51,11 +51,38 @@ void SEGameEntity::setFocus(bool bo)
     _focus = bo;
 }
 
-void SEGameEntity::addChild(SEGameEntity *child)
+int SEGameEntity::getTag()
+{
+    return _tag;
+}
+
+void SEGameEntity::setTag(int tag)
+{
+    _tag = tag;
+}
+
+SEGameEntity* SEGameEntity::getChildByTag(int tag)
+{
+    for (int i = 0; i < children.size(); i++)
+    {
+        if (children[i]->getTag() == tag)
+        {
+            return children[i];
+        }
+    }
+    
+    std::cout << "Could not find a child tag = " << tag << std::endl;
+    
+    return nullptr;
+}
+
+void SEGameEntity::addChild(SEGameEntity *child, int tag)
 {
     child->retain();
     
     child->parent = this;
+    
+    child->setTag(tag);
     
     children.push_back(child);
 }

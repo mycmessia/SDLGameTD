@@ -10,29 +10,12 @@
 #include "MonsterMovingState.hpp"
 #include "MonsterStandingState.hpp"
 
-MonsterState* MonsterStandingState::handleInput (Monster& monster, SDL_Event e)
-{
-    if (monster.isClickIn (e))
-    {
-        for (int i = 0; i < monster.parent->children.size (); i++)
-        {
-            monster.parent->children[i]->setFocus (false);
-        }
-        
-        monster.setFocus (true);
-    }
-    else
-    {
-        if (monster.getFocus() && e.type == SDL_MOUSEBUTTONDOWN)
-        {
-            return new MonsterMovingState (e.button.x, e.button.y);
-        }
-    }
-    
-    return nullptr;
-}
-
 void MonsterStandingState::update (Monster& monster)
 {
+    if (!monster.isNearHeroine())
+    {
+        SDL_Point point = SEDirector::getInstance()->getCurrentScene()->getChildByTag(1)->getPosition();
+        monster.changeState(new MonsterMovingState (point.x, point.y));
+    }
     //    std::cout << "update standingState" << std::endl;
 }

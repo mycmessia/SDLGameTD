@@ -14,16 +14,19 @@
 USING_NS_SE;
 
 class MonsterState;
+class Heroine;
 
 class Monster : public SESprite
 {
 private:
     MonsterState* _state;
     int _speed;
-    
     long _counter;
+    Heroine* _heroine;
     
 public:
+    static const int NEAR_DIS_X = 32;
+    static const int NEAR_DIS_Y = 48;
     
     Monster ();
     ~Monster ();
@@ -32,13 +35,13 @@ public:
     
     int getCounter ();
     
+    bool isNearHeroine ();
+    
     void changeState (MonsterState * state);
     
     static Monster* create (std::string texture, int x, int y);
     
     virtual bool init (std::string texture, int x, int y);
-    
-    virtual void handleInput (SDL_Event e);
     
     virtual void update ();
 };

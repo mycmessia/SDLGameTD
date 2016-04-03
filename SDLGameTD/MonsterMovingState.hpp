@@ -18,7 +18,6 @@ private:
     
 public:
     MonsterMovingState (int x, int y);
-    virtual MonsterState* handleInput (Monster& heroine, SDL_Event e);
     virtual void update (Monster& heroine);
 };
 

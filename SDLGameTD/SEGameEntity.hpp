@@ -22,6 +22,7 @@ protected:
     bool _handleInput;
     unsigned int _referenceCount;
     bool _focus;
+    int _tag;
     
 public:
     SEGameEntity ();
@@ -29,8 +30,12 @@ public:
     SEGameEntity* parent;
     std::vector<SEGameEntity*> children;
     
-    void addChild (SEGameEntity* child);
+    SEGameEntity* getChildByTag (int tag);
+    void addChild (SEGameEntity* child, int tag = 0);
     void removeChild (SEGameEntity* child);
+    
+    int getTag ();
+    void setTag (int tag);
     
     bool getFocus ();
     void setFocus (bool bo);
