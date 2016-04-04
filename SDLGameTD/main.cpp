@@ -26,7 +26,7 @@ int main(int argc, char* args[])
         long start = SEWindow::GetCurrentTime();
         
         SEWindow::Clear();
-        
+
         // 这里的事件循环必须有，而不能是直接取一次，因为一个渲染帧过程中会有很多事件
         // Here must be a while loop to get event instead of just getting once
         // 一次取一个很可能取不到鼠标或者键盘事件，结果就是点了以后半天才取到事件开始处理，时间时快时而慢
@@ -39,13 +39,13 @@ int main(int argc, char* args[])
         {
             listener->dispatchEvent(event);
         }
-        
+
         SEDirector::LevelOrderTraversal (currentScene);
-        
+
         SEWindow::Present();
-        
+
         SEPoolManager::getInstance()->getCurPool()->autoDelete();
-        
+
         long sleepTime = start + 1000 / SEWindow::FPS - SEWindow::GetCurrentTime();
         
         SEWindow::Sleep((int)sleepTime);

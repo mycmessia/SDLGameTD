@@ -18,6 +18,16 @@ SEGameEntity::SEGameEntity ()
     _handleInput = false;
 }
 
+SEGameEntity::~SEGameEntity()
+{
+    std::cout << "SEGameEntity::~SEGameEntity()" << std::endl;
+    
+    // TODO remove all components and children
+    removeAllComponents();
+    
+    removeAllChildren();
+}
+
 bool SEGameEntity::isVisible ()
 {
     return _visible;
@@ -105,6 +115,17 @@ void SEGameEntity::removeChild(SEGameEntity *child)
     }
 }
 
+void SEGameEntity::removeAllChildren()
+{
+    for (int i = (int)(children.size() - 1); i >= 0; i--)
+    {
+        children[i]->release();
+        children[i]->parent = nullptr;
+        children[i] = nullptr;
+        children.erase(children.begin() + i);
+    }
+}
+
 void SEGameEntity::addComponent(SEComponent *compo)
 {
     components.push_back(compo);
@@ -137,6 +158,15 @@ void SEGameEntity::removeComponent(std::string name)
     }
 }
 
+void SEGameEntity::removeAllComponents()
+{
+    for (int i = (int)(components.size() - 1); i >= 0; i--)
+    {
+        SE_SAFE_DELETE(components[i]);
+        components.erase(components.begin() + i);
+    }
+}
+
 SDL_Point SEGameEntity::getPosition()
 {
     SETransform* trans = (SETransform*)this->getComponent("Transform");
@@ -154,6 +184,8 @@ void SEGameEntity::setPosition (int x, int y)
 bool SEGameEntity::init()
 {
     _referenceCount = 0;
+    
+    addComponent(new SETransform(0, 0));
     
     return true;
 }

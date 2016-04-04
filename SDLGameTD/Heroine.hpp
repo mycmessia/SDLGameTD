@@ -18,8 +18,13 @@ class HeroineState;
 class Heroine : public SESprite
 {
 private:
+    SESprite* _target;
+    
     HeroineState* _state;
     int _speed;
+    float _hp;
+    float _attack;
+    float _armor;
     
     long _counter;
     

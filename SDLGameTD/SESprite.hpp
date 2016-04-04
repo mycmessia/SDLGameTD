@@ -10,7 +10,6 @@
 #define Sprite_hpp
 
 #include "SEGameEntity.hpp"
-#include "SETransform.hpp"
 
 NS_SE_BEGIN
 
@@ -34,6 +33,7 @@ public:
     int frame;
     
     SESprite () {};
+    virtual ~SESprite () {};
     
     int getWidth ();
     int getHeight ();

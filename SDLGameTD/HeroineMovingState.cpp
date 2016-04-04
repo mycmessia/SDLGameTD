@@ -30,7 +30,7 @@ HeroineState* HeroineMovingState::handleInput (Heroine& heroine, SDL_Event e)
     return nullptr;
 }
 
-void HeroineMovingState::update(Heroine &heroine)
+void HeroineMovingState::update (Heroine &heroine)
 {
     SDL_Point curPos = heroine.getPosition();
     SDL_Point newPos = curPos;

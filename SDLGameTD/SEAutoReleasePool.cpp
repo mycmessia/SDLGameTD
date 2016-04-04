@@ -21,8 +21,6 @@ void SEAutoReleasePool::autoDelete()
     {
         if (_vectorPool[i]->getRefCount() == 0)
         {
-            std::cout << "auto release sth" << std::endl;
-            
             if (_vectorPool[i]->isHandleInput())
             {
                 _vectorPool[i]->setHandleInput(false);

@@ -72,7 +72,7 @@ bool SESprite::init(std::string texture, int x, int y)
         
         _texture = SEWindow::LoadImage(texture);
         
-        addComponent(new SETransform(x, y));
+        setPosition(x, y);
         
         return true;
     }

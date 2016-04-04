@@ -14,23 +14,19 @@ bool StartScene::init()
 {
     if (SEGameEntity::init())
     {
-//        SEGameEntity* enemyCollector = SEGameEntity::create();
-//        this->addChild(enemyCollector);
+        SEGameEntity* campLeft = SEGameEntity::create();
+        this->addChild(campLeft);
         
-        SEGameEntity* playerCollector = SEGameEntity::create();
-        this->addChild(playerCollector);
+        Monster* monster = Monster::create("./images/undead01.png", 200, 200);
+        campLeft->addChild(monster);
         
-        std::cout << playerCollector->getRefCount() << std::endl;
+        campLeft->removeChild(monster);
+        
+        SEGameEntity* campRight = SEGameEntity::create();
+        this->addChild(campRight);
         
         Heroine* hero = Heroine::create("./images/heroine01.png", 100, 100);
-        playerCollector->addChild(hero, 1);
-        
-        std::cout << hero->getRefCount() << std::endl;
-        
-//        Monster* monster = Monster::create("./images/undead01.png", 200, 200);
-//        enemyCollector->addChild(monster);
-        
-        playerCollector->removeChild(hero);
+        campRight->addChild(hero, 1);
         
         return true;
     }

@@ -26,6 +26,7 @@ protected:
     
 public:
     SEGameEntity ();
+    virtual ~SEGameEntity ();
     
     SEGameEntity* parent;
     std::vector<SEGameEntity*> children;
@@ -33,6 +34,7 @@ public:
     SEGameEntity* getChildByTag (int tag);
     void addChild (SEGameEntity* child, int tag = 0);
     void removeChild (SEGameEntity* child);
+    void removeAllChildren ();
     
     int getTag ();
     void setTag (int tag);
@@ -48,6 +50,7 @@ public:
     SEComponent* getComponent (std::string name);
     void addComponent (SEComponent* compo);
     void removeComponent (std::string name);
+    void removeAllComponents ();
     
     SDL_Point getPosition ();
     void setPosition (int x, int y);

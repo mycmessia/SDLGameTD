@@ -19,10 +19,15 @@ class Heroine;
 class Monster : public SESprite
 {
 private:
+    SESprite* _target;
+    
     MonsterState* _state;
     int _speed;
+    float _hp;
+    float _attack;
+    float _armor;
+    
     long _counter;
-    SESprite* _target;
     
 public:
     static const int NEAR_DIS_X = 32;
