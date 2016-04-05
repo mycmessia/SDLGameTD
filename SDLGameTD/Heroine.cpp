@@ -6,6 +6,7 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
+#include "Monster.hpp"
 #include "Heroine.hpp"
 #include "HeroineMovingState.hpp"
 #include "HeroineStandingState.hpp"
@@ -25,6 +26,14 @@ bool Heroine::init (std::string texture, int x, int y)
         
         _speed = 1;
         
+        _hp = 20;
+        
+        _attack = 10;
+        
+        _attackSpeed = 30;       // every 5 frames attack once
+        
+        _armor = 8;
+        
         _width = 32;
         
         _height = 48;
@@ -41,7 +50,9 @@ bool Heroine::init (std::string texture, int x, int y)
             upClips[i] = {i * _width, 3 * _height, _width, _height};
         }
     
-        _counter = SEWindow::GetCurrentTime();
+        _counter = 0;
+        
+        _target = nullptr;
         
         return true;
     }
@@ -49,15 +60,53 @@ bool Heroine::init (std::string texture, int x, int y)
     return false;
 }
 
-int Heroine::getSpeed()
+bool Heroine::isNear(SEGameEntity* ge)
 {
-    return _speed;
+    SDL_Point gePos = ge->getPosition();
+    SDL_Point thisPos = getPosition();
+    
+    if (abs(gePos.x - thisPos.x) <= Heroine::NEAR_DIS_X &&
+        abs(gePos.y - thisPos.y) <= Heroine::NEAR_DIS_Y)
+    {
+        return true;
+    }
+    
+    return false;
 }
 
-int Heroine::getCounter()
+SEGameEntity* Heroine::getTarget () {return _target;}
+void Heroine::setTarget (SEGameEntity* ge) {_target = ge;}
+
+int Heroine::getSpeed() {return _speed;}
+
+float Heroine::getHp () {return _hp;}
+void Heroine::setHp (float hp) {_hp = hp;}
+
+float Heroine::getAttack () {return _attack;}
+void Heroine::setAttack (float attack) {_attack = attack;}
+
+int Heroine::getAttackSpeed () {return _attackSpeed;}
+void Heroine::setAttackSpeed (int as) {_attackSpeed = as;}
+
+float Heroine::getArmor () {return _armor;}
+void Heroine::setArmor (float armor) {_armor = armor;}
+
+void Heroine::attack(Monster* target)
 {
-    return (int)_counter;
+    if (_counter % _attackSpeed == 0)
+    {
+        if (this->getAttack() > target->getArmor())
+        {
+            target->setHp(target->getHp() - (this->getAttack() - target->getArmor()));
+        }
+        else
+        {
+            std::cout << "your attack is lower than target's armor" << std::endl;
+        }
+    }
 }
+
+int Heroine::getCounter(){return (int)_counter;}
 
 void Heroine::changeState(HeroineState* state)
 {
@@ -67,17 +116,13 @@ void Heroine::changeState(HeroineState* state)
 
 void Heroine::handleInput(SDL_Event e)
 {
-    HeroineState* state = _state->handleInput(*this, e);
-    if (state != nullptr)
-    {
-        changeState(state);
-    }
+    _state->handleInput(*this, e);
 }
 
 void Heroine::update ()
 {
     _counter++;
-    if (_counter > 100) _counter = 0;
+//    if (_counter > 100) _counter = 0;
     
     _state->update (*this);
 }

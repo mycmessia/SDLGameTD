@@ -6,11 +6,13 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
+#include "TagManager.hpp"
 #include "Heroine.hpp"
 #include "HeroineMovingState.hpp"
 #include "HeroineStandingState.hpp"
+#include "HeroineAttackingState.hpp"
 
-HeroineState* HeroineStandingState::handleInput (Heroine& heroine, SDL_Event e)
+void HeroineStandingState::handleInput (Heroine& heroine, SDL_Event e)
 {
     if (heroine.isClickIn (e))
     {
@@ -25,14 +27,28 @@ HeroineState* HeroineStandingState::handleInput (Heroine& heroine, SDL_Event e)
     {
         if (heroine.getFocus() && e.type == SDL_MOUSEBUTTONDOWN)
         {
-            return new HeroineMovingState (e.button.x, e.button.y);
+            heroine.changeState(new HeroineMovingState (e.button.x, e.button.y));
         }
     }
-    
-    return nullptr;
 }
 
 void HeroineStandingState::update (Heroine& heroine)
 {
-//    std::cout << "update standingState" << std::endl;
+    if (heroine.getTarget())
+    {
+        std::cout << "change to attack" << std::endl;
+        heroine.changeState(new HeroineAttackingState ());
+    }
+    else
+    {
+        SEGameEntity* camp1 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_1);
+        for (int i = 0; i < camp1->children.size(); i++)
+        {
+            if (heroine.isNear(camp1->children[i]))
+            {
+                heroine.setTarget(camp1->children[i]);
+                break;
+            }
+        }
+    }
 }

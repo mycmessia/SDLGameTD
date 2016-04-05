@@ -16,7 +16,7 @@ HeroineMovingState::HeroineMovingState (int x, int y)
     _dest.y = y;
 }
 
-HeroineState* HeroineMovingState::handleInput (Heroine& heroine, SDL_Event e)
+void HeroineMovingState::handleInput (Heroine& heroine, SDL_Event e)
 {
     if (!heroine.isClickIn (e))
     {
@@ -26,8 +26,6 @@ HeroineState* HeroineMovingState::handleInput (Heroine& heroine, SDL_Event e)
             _dest.y = e.button.y;
         }
     }
-    
-    return nullptr;
 }
 
 void HeroineMovingState::update (Heroine &heroine)

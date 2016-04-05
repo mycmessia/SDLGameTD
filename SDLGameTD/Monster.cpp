@@ -24,6 +24,12 @@ bool Monster::init (std::string texture, int x, int y)
         
         _speed = 1;
         
+        _hp = 20;
+        
+        _attack = 10;
+        
+        _armor = 8;
+        
         _width = 32;
         
         _height = 48;
@@ -50,15 +56,18 @@ bool Monster::init (std::string texture, int x, int y)
     return false;
 }
 
-int Monster::getSpeed()
-{
-    return _speed;
-}
+int Monster::getSpeed() {return _speed;}
 
-int Monster::getCounter()
-{
-    return (int)_counter;
-}
+float Monster::getHp () {return _hp;}
+void Monster::setHp (float hp) {_hp = hp;}
+
+float Monster::getAttack () {return _attack;}
+void Monster::setAttack (float attack) {_attack = attack;}
+
+float Monster::getArmor () {return _armor;}
+void Monster::setArmor (float armor) {_armor = armor;}
+
+int Monster::getCounter() {return (int)_counter;}
 
 bool Monster::isNear(SEGameEntity* ge)
 {

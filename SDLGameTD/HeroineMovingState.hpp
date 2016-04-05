@@ -18,7 +18,7 @@ private:
     
 public:
     HeroineMovingState (int x, int y);
-    virtual HeroineState* handleInput (Heroine& heroine, SDL_Event e);
+    virtual void handleInput (Heroine& heroine, SDL_Event e);
     virtual void update (Heroine& heroine);
 };
 

@@ -35,6 +35,7 @@ public:
     void addChild (SEGameEntity* child, int tag = 0);
     void removeChild (SEGameEntity* child);
     void removeAllChildren ();
+    void removeFromParent ();
     
     int getTag ();
     void setTag (int tag);

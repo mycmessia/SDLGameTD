@@ -19,7 +19,7 @@ void MonsterStandingState::update (Monster& monster)
     }
     else
     {
-        // looking for the target
+        // waiting for the target
         SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
         for (int i = 0; i < camp2->children.size(); i++)
         {

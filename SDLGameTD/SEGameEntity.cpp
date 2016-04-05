@@ -126,6 +126,11 @@ void SEGameEntity::removeAllChildren()
     }
 }
 
+void SEGameEntity::removeFromParent()
+{
+    this->parent->removeChild(this);
+}
+
 void SEGameEntity::addComponent(SEComponent *compo)
 {
     components.push_back(compo);

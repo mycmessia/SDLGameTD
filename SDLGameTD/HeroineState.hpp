@@ -18,7 +18,7 @@ class Heroine;
 class HeroineState
 {
 public:
-    virtual HeroineState* handleInput (Heroine& heroine, SDL_Event e) {return new HeroineState ();}
+    virtual void handleInput (Heroine& heroine, SDL_Event e) {}
     virtual void update (Heroine& heroine) {}
 };
 

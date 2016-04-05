@@ -38,6 +38,13 @@ public:
     
     int getSpeed ();
     
+    float getHp ();
+    void setHp (float hp);
+    float getAttack ();
+    void setAttack (float attack);
+    float getArmor ();
+    void setArmor (float armor);
+    
     int getCounter ();
     
     bool isNear (SEGameEntity* ge);

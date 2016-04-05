@@ -15,7 +15,7 @@ class HeroineAttackingState : public HeroineState
 {
 public:
     HeroineAttackingState () {}
-    virtual HeroineState* handleInput (Heroine& heroine, SDL_Event e);
+//    virtual HeroineState* handleInput (Heroine& heroine, SDL_Event e);
     virtual void update (Heroine& heroine);
 };
 

@@ -13,27 +13,45 @@
 
 USING_NS_SE;
 
+class Monster;
 class HeroineState;
 
 class Heroine : public SESprite
 {
 private:
-    SESprite* _target;
+    SEGameEntity* _target;
     
     HeroineState* _state;
     int _speed;
     float _hp;
     float _attack;
+    int _attackSpeed;
     float _armor;
     
     long _counter;
     
 public:
+    static const int NEAR_DIS_X = 32;
+    static const int NEAR_DIS_Y = 48;
     
     Heroine ();
     ~Heroine ();
     
+    bool isNear (SEGameEntity* ge);
+    SEGameEntity* getTarget ();
+    void setTarget (SEGameEntity* ge);
+    
     int getSpeed ();
+    float getHp ();
+    void setHp (float hp);
+    float getAttack ();
+    void setAttack (float attack);
+    int getAttackSpeed ();
+    void setAttackSpeed (int as);
+    float getArmor ();
+    void setArmor (float armor);
+    
+    void attack (Monster* target);
     
     int getCounter ();
     
