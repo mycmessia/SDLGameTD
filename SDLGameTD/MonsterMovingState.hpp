@@ -17,7 +17,7 @@ private:
     SDL_Point _dest;
     
 public:
-    MonsterMovingState (int x, int y);
+    MonsterMovingState ();
     virtual void update (Monster& heroine);
 };
 

@@ -19,7 +19,7 @@ class Heroine;
 class Monster : public SESprite
 {
 private:
-    SESprite* _target;
+    SEGameEntity* _target;
     
     MonsterState* _state;
     int _speed;
@@ -40,11 +40,11 @@ public:
     
     int getCounter ();
     
-    bool isNearTarget ();
-    SESprite* getTarget ();
-    void setTarget (SESprite* target);
+    bool isNear (SEGameEntity* ge);
+    SEGameEntity* getTarget ();
+    void setTarget (SEGameEntity* target);
     
-    void changeState (MonsterState * state);
+    void changeState (MonsterState* state);
     
     static Monster* create (std::string texture, int x, int y);
     

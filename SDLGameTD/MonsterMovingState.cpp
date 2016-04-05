@@ -10,11 +10,7 @@
 #include "MonsterStandingState.hpp"
 #include "MonsterMovingState.hpp"
 
-MonsterMovingState::MonsterMovingState (int x, int y)
-{
-    _dest.x = x;
-    _dest.y = y;
-}
+MonsterMovingState::MonsterMovingState () {}
 
 void MonsterMovingState::update(Monster &monster)
 {
@@ -28,7 +24,7 @@ void MonsterMovingState::update(Monster &monster)
         SDL_Point curPos = monster.getPosition();
         SDL_Point newPos = curPos;
         
-        if (monster.isNearTarget())
+        if (monster.isNear(monster.getTarget()))
         {
             monster.changeState(new MonsterStandingState ());
         }

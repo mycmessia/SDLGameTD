@@ -6,6 +6,7 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
+#include "TagManager.hpp"
 #include "Heroine.hpp"
 #include "Monster.hpp"
 #include "StartScene.hpp"
@@ -14,19 +15,17 @@ bool StartScene::init()
 {
     if (SEGameEntity::init())
     {
-        SEGameEntity* campLeft = SEGameEntity::create();
-        this->addChild(campLeft);
+        SEGameEntity* camp1 = SEGameEntity::create();
+        this->addChild(camp1, TagManager::CAMP_1);
         
         Monster* monster = Monster::create("./images/undead01.png", 200, 200);
-        campLeft->addChild(monster);
+        camp1->addChild(monster);
         
-        campLeft->removeChild(monster);
-        
-        SEGameEntity* campRight = SEGameEntity::create();
-        this->addChild(campRight);
+        SEGameEntity* camp2 = SEGameEntity::create();
+        this->addChild(camp2, TagManager::CAMP_2);
         
         Heroine* hero = Heroine::create("./images/heroine01.png", 100, 100);
-        campRight->addChild(hero, 1);
+        camp2->addChild(hero, TagManager::PLAYER);
         
         return true;
     }

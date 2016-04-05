@@ -60,29 +60,26 @@ int Monster::getCounter()
     return (int)_counter;
 }
 
-bool Monster::isNearTarget()
+bool Monster::isNear(SEGameEntity* ge)
 {
-    if (_target)
+    SDL_Point gePos = ge->getPosition();
+    SDL_Point monsterPos = getPosition();
+    
+    if (abs(gePos.x - monsterPos.x) <= Monster::NEAR_DIS_X &&
+        abs(gePos.y - monsterPos.y) <= Monster::NEAR_DIS_Y)
     {
-        SDL_Point heroPos = _target->getPosition();
-        SDL_Point monsterPos = getPosition();
-        
-        if (abs(heroPos.x - monsterPos.x) <= Monster::NEAR_DIS_X &&
-            abs(heroPos.y - monsterPos.y) <= Monster::NEAR_DIS_Y)
-        {
-            return true;
-        }
+        return true;
     }
     
     return false;
 }
 
-SESprite* Monster::getTarget ()
+SEGameEntity* Monster::getTarget ()
 {
     return _target;
 }
 
-void Monster::setTarget (SESprite* target)
+void Monster::setTarget (SEGameEntity* target)
 {
     _target = target;
 }
