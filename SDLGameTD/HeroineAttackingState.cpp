@@ -34,18 +34,18 @@ void HeroineAttackingState::handleInput (Heroine& heroine, SDL_Event e)
 
 void HeroineAttackingState::update(Heroine &heroine)
 {
-    Monster* targetMonster = (Monster*)heroine.getTarget();
+    Monster* target = (Monster*)heroine.getTarget();
     
-    if (targetMonster == nullptr) return;
+    if (target == nullptr) return;
     
-    if (targetMonster->getHp () > 0.0f)
+    if (target->getHp () > 0.0f)
     {
-        heroine.attack(targetMonster);
+        heroine.attack(target);
     }
     else
     {
         //TODO monster change to die state
-        targetMonster->removeFromParent();
+        target->removeFromParent();
         heroine.setTarget(nullptr);
         heroine.changeState(new HeroineStandingState ());
     }

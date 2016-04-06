@@ -25,6 +25,7 @@ private:
     int _speed;
     float _hp;
     float _attack;
+    int _attackSpeed;
     int _attackDis;
     float _armor;
     int _patrolDis;                         // 玩家达到多少距离开始追击
@@ -60,6 +61,8 @@ public:
     bool isInDis (SEGameEntity* ge, int dis);
     SEGameEntity* getTarget ();
     void setTarget (SEGameEntity* target);
+    
+    void attack (Heroine* target);
     
     void changeState (MonsterState* state);
     

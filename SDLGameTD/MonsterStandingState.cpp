@@ -9,25 +9,26 @@
 #include "TagManager.hpp"
 #include "Monster.hpp"
 #include "MonsterMovingState.hpp"
+#include "MonsterAttackingState.hpp"
 #include "MonsterStandingState.hpp"
 
 void MonsterStandingState::update (Monster& monster)
 {
-    if (monster.getTarget())
+    // waiting for the target
+    SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
+    for (int i = 0; i < camp2->children.size(); i++)
     {
-        monster.changeState(new MonsterMovingState ());
-    }
-    else
-    {
-        // waiting for the target
-        SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
-        for (int i = 0; i < camp2->children.size(); i++)
+        if (monster.isInDis(camp2->children[i], monster.getAttackDis()))
         {
-            if (monster.isInDis(camp2->children[i], monster.getPatrolDis()))
-            {
-                monster.setTarget(camp2->children[i]);
-                break;
-            }
+            monster.setTarget(camp2->children[i]);
+            monster.changeState(new MonsterAttackingState());
+            break;
+        }
+        if (monster.isInDis(camp2->children[i], monster.getPatrolDis()))
+        {
+            monster.setTarget(camp2->children[i]);
+            monster.changeState(new MonsterMovingState());
+            break;
         }
     }
 }

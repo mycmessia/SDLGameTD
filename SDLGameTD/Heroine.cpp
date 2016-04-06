@@ -34,7 +34,7 @@ bool Heroine::init (std::string texture, int x, int y)
         
         _attackSpeed = 2;
         
-        _armor = 8;
+        _armor = 12;
         
         _width = 32;
         

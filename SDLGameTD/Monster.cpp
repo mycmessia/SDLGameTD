@@ -22,23 +22,25 @@ bool Monster::init (std::string texture, int x, int y)
     {
         _state = new MonsterStandingState ();
         
-        _speed = 1;
-        
-        _hp = 20;
-        
-        _attack = 10;
-        
-        _armor = 8;
-        
         _width = 32;
         
         _height = 48;
         
         _moveDir = Down;
         
-        _patrolDis = 96;
+        _speed = 1;
+        
+        _hp = 20;
+        
+        _attack = 16;
+        
+        _attackSpeed = 2;
+        
+        _armor = 8;
         
         _attackDis = 48;
+        
+        _patrolDis = 96;
         
         frame = 0;
         
@@ -100,6 +102,21 @@ SEGameEntity* Monster::getTarget ()
 void Monster::setTarget (SEGameEntity* target)
 {
     _target = target;
+}
+
+void Monster::attack(Heroine* target)
+{
+    if (getCounter() % (SEWindow::FPS / _attackSpeed) == 0)
+    {
+        if (this->getAttack() > target->getArmor())
+        {
+            target->setHp(target->getHp() - (this->getAttack() - target->getArmor()));
+        }
+        else
+        {
+            std::cout << "your attack is equal or lower than target's armor" << std::endl;
+        }
+    }
 }
 
 void Monster::changeState(MonsterState* state)

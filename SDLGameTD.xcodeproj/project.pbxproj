@@ -33,6 +33,7 @@
 		09BB28FD1CA3974F00BE74A2 /* SEGameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BB28FB1CA3974F00BE74A2 /* SEGameEntity.cpp */; };
 		09E21B6E1CB280000095C444 /* HeroineAttackingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B6C1CB280000095C444 /* HeroineAttackingState.cpp */; };
 		09E21B721CB3364A0095C444 /* TagManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B701CB3364A0095C444 /* TagManager.cpp */; };
+		09E21B751CB4F4930095C444 /* MonsterAttackingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B731CB4F4930095C444 /* MonsterAttackingState.cpp */; };
 		09F178391CAA161D00ECED44 /* SEDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09F178371CAA161D00ECED44 /* SEDirector.cpp */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,8 @@
 		09E21B6D1CB280000095C444 /* HeroineAttackingState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeroineAttackingState.hpp; sourceTree = "<group>"; };
 		09E21B701CB3364A0095C444 /* TagManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TagManager.cpp; sourceTree = "<group>"; };
 		09E21B711CB3364A0095C444 /* TagManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TagManager.hpp; sourceTree = "<group>"; };
+		09E21B731CB4F4930095C444 /* MonsterAttackingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterAttackingState.cpp; sourceTree = "<group>"; };
+		09E21B741CB4F4930095C444 /* MonsterAttackingState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MonsterAttackingState.hpp; sourceTree = "<group>"; };
 		09F178371CAA161D00ECED44 /* SEDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SEDirector.cpp; sourceTree = "<group>"; };
 		09F178381CAA161D00ECED44 /* SEDirector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SEDirector.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +202,8 @@
 				090F5C361CB0E2BC00705DC3 /* MonsterStandingState.hpp */,
 				090F5C381CB0E3CA00705DC3 /* MonsterMovingState.cpp */,
 				090F5C391CB0E3CA00705DC3 /* MonsterMovingState.hpp */,
+				09E21B731CB4F4930095C444 /* MonsterAttackingState.cpp */,
+				09E21B741CB4F4930095C444 /* MonsterAttackingState.hpp */,
 			);
 			name = Monster;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				09F178391CAA161D00ECED44 /* SEDirector.cpp in Sources */,
 				090145A71CA7F03000EC0C59 /* Heroine.cpp in Sources */,
 				090145B71CA91DEB00EC0C59 /* SESprite.cpp in Sources */,
+				09E21B751CB4F4930095C444 /* MonsterAttackingState.cpp in Sources */,
 				09BB28FD1CA3974F00BE74A2 /* SEGameEntity.cpp in Sources */,
 				09BB28E31CA293E200BE74A2 /* SEWindow.cpp in Sources */,
 				09BB28F91CA394F700BE74A2 /* InputHandler.cpp in Sources */,

@@ -8,13 +8,20 @@
 
 #include "Monster.hpp"
 #include "MonsterStandingState.hpp"
+#include "MonsterAttackingState.hpp"
 #include "MonsterMovingState.hpp"
 
 MonsterMovingState::MonsterMovingState () {}
 
 void MonsterMovingState::update(Monster &monster)
 {
-    if (monster.getTarget())
+    if (monster.getTarget() == nullptr) return;
+    
+    if (monster.isInDis(monster.getTarget(), monster.getAttackDis()))
+    {
+        monster.changeState(new MonsterAttackingState ());
+    }
+    else
     {
         SDL_Point point = monster.getTarget()->getPosition();
         
@@ -24,9 +31,9 @@ void MonsterMovingState::update(Monster &monster)
         SDL_Point curPos = monster.getPosition();
         SDL_Point newPos = curPos;
         
-        if (!monster.isInDis(monster.getTarget(), monster.getPatrolDis()) ||
-             monster.isInDis(monster.getTarget(), monster.getAttackDis()))
+        if (!monster.isInDis(monster.getTarget(), monster.getPatrolDis()))
         {
+            monster.setTarget(nullptr);
             monster.changeState(new MonsterStandingState ());
         }
         else
@@ -56,9 +63,5 @@ void MonsterMovingState::update(Monster &monster)
             if (monster.frame == Monster::ANI_FRAMES ) monster.frame = 0;
             monster.setPosition(newPos.x, newPos.y);
         }
-    }
-    else
-    {
-        monster.changeState(new MonsterStandingState ());
     }
 }
