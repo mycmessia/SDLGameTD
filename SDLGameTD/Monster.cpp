@@ -36,6 +36,10 @@ bool Monster::init (std::string texture, int x, int y)
         
         _moveDir = Down;
         
+        _patrolDis = 96;
+        
+        _attackDis = 48;
+        
         frame = 0;
         
         for (int i = 0; i < 4; i++)
@@ -46,7 +50,7 @@ bool Monster::init (std::string texture, int x, int y)
             upClips[i] = {i * _width, 3 * _height, _width, _height};
         }
         
-        _counter = SEWindow::GetCurrentTime();
+        _counter = 0;
         
         _target = nullptr;
         
@@ -58,6 +62,12 @@ bool Monster::init (std::string texture, int x, int y)
 
 int Monster::getSpeed() {return _speed;}
 
+int Monster::getPatrolDis () {return _patrolDis;}
+void Monster::setPatrolDis (int pd) {_patrolDis = pd;}
+
+int Monster::getAttackDis () {return _attackDis;}
+void Monster::setAttackDis (int attackDis) {_attackDis = attackDis;}
+
 float Monster::getHp () {return _hp;}
 void Monster::setHp (float hp) {_hp = hp;}
 
@@ -67,15 +77,14 @@ void Monster::setAttack (float attack) {_attack = attack;}
 float Monster::getArmor () {return _armor;}
 void Monster::setArmor (float armor) {_armor = armor;}
 
-int Monster::getCounter() {return (int)_counter;}
+int Monster::getCounter() {return _counter;}
 
-bool Monster::isNear(SEGameEntity* ge)
+bool Monster::isInDis(SEGameEntity* ge, int dis)
 {
     SDL_Point gePos = ge->getPosition();
-    SDL_Point monsterPos = getPosition();
+    SDL_Point thisPos = getPosition();
     
-    if (abs(gePos.x - monsterPos.x) <= Monster::NEAR_DIS_X &&
-        abs(gePos.y - monsterPos.y) <= Monster::NEAR_DIS_Y)
+    if ((gePos.x - thisPos.x) * (gePos.x - thisPos.x) + (gePos.y - thisPos.y) * (gePos.y - thisPos.y) <= dis * dis)
     {
         return true;
     }
@@ -102,7 +111,7 @@ void Monster::changeState(MonsterState* state)
 void Monster::update ()
 {
     _counter++;
-    if (_counter > 100) _counter = 0;
+    if (_counter >= Monster::COUNTER_MAX) _counter = 0;
     
     _state->update (*this);
 }

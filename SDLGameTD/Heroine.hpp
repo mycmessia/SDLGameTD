@@ -26,28 +26,36 @@ private:
     float _hp;
     float _attack;
     int _attackSpeed;
+    int _attackDis;
     float _armor;
     
     long _counter;
     
 public:
-    static const int NEAR_DIS_X = 32;
-    static const int NEAR_DIS_Y = 48;
+    static const int COUNTER_MAX = 100;
+    static const int ANI_FRAMES = 4;        // ani sprite change every 4 frames
     
     Heroine ();
     ~Heroine ();
     
-    bool isNear (SEGameEntity* ge);
+    bool isInDis (SEGameEntity* ge, int dis);
     SEGameEntity* getTarget ();
     void setTarget (SEGameEntity* ge);
     
     int getSpeed ();
+    
     float getHp ();
     void setHp (float hp);
+    
     float getAttack ();
     void setAttack (float attack);
+    
+    int getAttackDis ();
+    void setAttackDis (int attackDis);
+    
     int getAttackSpeed ();
     void setAttackSpeed (int as);
+    
     float getArmor ();
     void setArmor (float armor);
     

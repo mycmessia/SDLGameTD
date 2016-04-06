@@ -23,7 +23,7 @@ void MonsterStandingState::update (Monster& monster)
         SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
         for (int i = 0; i < camp2->children.size(); i++)
         {
-            if (monster.isNear(camp2->children[i]))
+            if (monster.isInDis(camp2->children[i], monster.getPatrolDis()))
             {
                 monster.setTarget(camp2->children[i]);
                 break;

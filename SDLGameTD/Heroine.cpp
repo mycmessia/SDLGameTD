@@ -30,7 +30,9 @@ bool Heroine::init (std::string texture, int x, int y)
         
         _attack = 10;
         
-        _attackSpeed = 30;       // every 5 frames attack once
+        _attackDis = 48;
+        
+        _attackSpeed = 2;
         
         _armor = 8;
         
@@ -60,13 +62,12 @@ bool Heroine::init (std::string texture, int x, int y)
     return false;
 }
 
-bool Heroine::isNear(SEGameEntity* ge)
+bool Heroine::isInDis(SEGameEntity* ge, int dis)
 {
     SDL_Point gePos = ge->getPosition();
     SDL_Point thisPos = getPosition();
     
-    if (abs(gePos.x - thisPos.x) <= Heroine::NEAR_DIS_X &&
-        abs(gePos.y - thisPos.y) <= Heroine::NEAR_DIS_Y)
+    if ((gePos.x - thisPos.x) * (gePos.x - thisPos.x) + (gePos.y - thisPos.y) * (gePos.y - thisPos.y) <= dis * dis)
     {
         return true;
     }
@@ -85,6 +86,9 @@ void Heroine::setHp (float hp) {_hp = hp;}
 float Heroine::getAttack () {return _attack;}
 void Heroine::setAttack (float attack) {_attack = attack;}
 
+int Heroine::getAttackDis () {return _attackDis;}
+void Heroine::setAttackDis (int attackDis) {_attackDis = attackDis;}
+
 int Heroine::getAttackSpeed () {return _attackSpeed;}
 void Heroine::setAttackSpeed (int as) {_attackSpeed = as;}
 
@@ -93,7 +97,7 @@ void Heroine::setArmor (float armor) {_armor = armor;}
 
 void Heroine::attack(Monster* target)
 {
-    if (_counter % _attackSpeed == 0)
+    if (getCounter() % (SEWindow::FPS / _attackSpeed) == 0)
     {
         if (this->getAttack() > target->getArmor())
         {
@@ -122,7 +126,7 @@ void Heroine::handleInput(SDL_Event e)
 void Heroine::update ()
 {
     _counter++;
-//    if (_counter > 100) _counter = 0;
+    if (_counter > Heroine::COUNTER_MAX) _counter = 0;
     
     _state->update (*this);
 }

@@ -25,29 +25,39 @@ private:
     int _speed;
     float _hp;
     float _attack;
+    int _attackDis;
     float _armor;
+    int _patrolDis;                         // 玩家达到多少距离开始追击
     
-    long _counter;
+    int _counter;
     
 public:
-    static const int NEAR_DIS_X = 32;
-    static const int NEAR_DIS_Y = 48;
+    static const int COUNTER_MAX = 100;
+    static const int ANI_FRAMES = 4;        // ani sprite change every 4 frames
     
     Monster ();
     ~Monster ();
     
     int getSpeed ();
     
+    int getPatrolDis ();
+    void setPatrolDis (int pd);
+    
     float getHp ();
     void setHp (float hp);
+    
     float getAttack ();
     void setAttack (float attack);
+    
+    int getAttackDis ();
+    void setAttackDis (int attackDis);
+    
     float getArmor ();
     void setArmor (float armor);
     
     int getCounter ();
     
-    bool isNear (SEGameEntity* ge);
+    bool isInDis (SEGameEntity* ge, int dis);
     SEGameEntity* getTarget ();
     void setTarget (SEGameEntity* target);
     

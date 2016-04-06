@@ -24,7 +24,8 @@ void MonsterMovingState::update(Monster &monster)
         SDL_Point curPos = monster.getPosition();
         SDL_Point newPos = curPos;
         
-        if (monster.isNear(monster.getTarget()))
+        if (!monster.isInDis(monster.getTarget(), monster.getPatrolDis()) ||
+             monster.isInDis(monster.getTarget(), monster.getAttackDis()))
         {
             monster.changeState(new MonsterStandingState ());
         }
@@ -51,8 +52,8 @@ void MonsterMovingState::update(Monster &monster)
                 newPos.y -= monster.getSpeed();
             }
             
-            if (monster.getCounter() % 4 == 0) monster.frame++;
-            if (monster.frame == 4) monster.frame = 0;
+            if (monster.getCounter() % Monster::COUNTER_MAX == 0) monster.frame++;
+            if (monster.frame == Monster::COUNTER_MAX ) monster.frame = 0;
             monster.setPosition(newPos.x, newPos.y);
         }
     }

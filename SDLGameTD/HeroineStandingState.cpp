@@ -44,7 +44,7 @@ void HeroineStandingState::update (Heroine& heroine)
         SEGameEntity* camp1 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_1);
         for (int i = 0; i < camp1->children.size(); i++)
         {
-            if (heroine.isNear(camp1->children[i]))
+            if (heroine.isInDis(camp1->children[i], heroine.getAttackDis()))
             {
                 heroine.setTarget(camp1->children[i]);
                 break;

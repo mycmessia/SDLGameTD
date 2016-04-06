@@ -56,8 +56,8 @@ void HeroineMovingState::update (Heroine &heroine)
             newPos.y -= heroine.getSpeed();
         }
         
-        if (heroine.getCounter() % 4 == 0) heroine.frame++;
-        if (heroine.frame == 4) heroine.frame = 0;
+        if (heroine.getCounter() % Heroine::ANI_FRAMES == 0) heroine.frame++;
+        if (heroine.frame == Heroine::ANI_FRAMES) heroine.frame = 0;
         heroine.setPosition(newPos.x, newPos.y);
     }
     else

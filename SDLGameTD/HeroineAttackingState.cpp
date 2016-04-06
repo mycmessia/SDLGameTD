@@ -9,7 +9,28 @@
 #include "Heroine.hpp"
 #include "Monster.hpp"
 #include "HeroineStandingState.hpp"
+#include "HeroineMovingState.hpp"
 #include "HeroineAttackingState.hpp"
+
+void HeroineAttackingState::handleInput (Heroine& heroine, SDL_Event e)
+{
+    if (heroine.isClickIn (e))
+    {
+        for (int i = 0; i < heroine.parent->children.size (); i++)
+        {
+            heroine.parent->children[i]->setFocus (false);
+        }
+        
+        heroine.setFocus (true);
+    }
+    else
+    {
+        if (heroine.getFocus() && e.type == SDL_MOUSEBUTTONDOWN)
+        {
+            heroine.changeState(new HeroineMovingState (e.button.x, e.button.y));
+        }
+    }
+}
 
 void HeroineAttackingState::update(Heroine &heroine)
 {
