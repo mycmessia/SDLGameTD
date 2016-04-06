@@ -52,8 +52,8 @@ void MonsterMovingState::update(Monster &monster)
                 newPos.y -= monster.getSpeed();
             }
             
-            if (monster.getCounter() % Monster::COUNTER_MAX == 0) monster.frame++;
-            if (monster.frame == Monster::COUNTER_MAX ) monster.frame = 0;
+            if (monster.getCounter() % Monster::ANI_FRAMES == 0) monster.frame++;
+            if (monster.frame == Monster::ANI_FRAMES ) monster.frame = 0;
             monster.setPosition(newPos.x, newPos.y);
         }
     }
