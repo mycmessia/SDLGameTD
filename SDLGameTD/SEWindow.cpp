@@ -26,13 +26,6 @@ void SEWindow::Sleep (int milliseconds)
     std::this_thread::sleep_for(dura);
 }
 
-long SEWindow::GetCurrentTime()
-{
-    struct timeval tv;
-    gettimeofday(&tv, nullptr);
-    return tv.tv_sec * 1000 + tv.tv_usec / 1000;
-}
-
 //In SEWindow.cpp
 void SEWindow::Init(std::string title)
 {

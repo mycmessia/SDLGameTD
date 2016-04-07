@@ -23,7 +23,8 @@ int main(int argc, char* args[])
     bool quit = false;
     while (!quit)
     {
-        long start = SEWindow::GetCurrentTime();
+        // Returns an unsigned 32-bit value representing the number of milliseconds since the SDL library initialized.
+        unsigned int start = SDL_GetTicks();
         
         SEWindow::Clear();
 
@@ -46,9 +47,9 @@ int main(int argc, char* args[])
 
         SEPoolManager::getInstance()->getCurPool()->autoDelete();
 
-        long sleepTime = start + 1000 / SEWindow::FPS - SEWindow::GetCurrentTime();
+        unsigned int sleepTime = start + 1000 / SEWindow::FPS - SDL_GetTicks();
         
-        SEWindow::Sleep((int)sleepTime);
+        SEWindow::Sleep(sleepTime);
     }
     
     return 0;
