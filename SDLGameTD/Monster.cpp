@@ -6,10 +6,12 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
+#include "TagManager.hpp"
 #include "Heroine.hpp"
 #include "Monster.hpp"
 #include "MonsterState.hpp"
-#include "MonsterStandingState.hpp"
+#include "MonsterMovingState.hpp"
+#include "MonsterAttackingState.hpp"
 
 Monster::Monster () {}
 Monster::~Monster() {SE_SAFE_DELETE(_state);}
@@ -20,7 +22,16 @@ bool Monster::init (std::string texture, int x, int y)
     
     if (bo)
     {
-        _state = new MonsterStandingState ();
+        _state = new MonsterMovingState ();
+        
+        movePath.push_back({240, 80});
+        movePath.push_back({240, 560});
+        movePath.push_back({720, 560});
+        movePath.push_back({720, 80});
+        movePath.push_back({480, 80});
+        movePath.push_back({480, 320});
+        
+        movePathCounter = 0;
         
         _width = 32;
         
@@ -28,7 +39,7 @@ bool Monster::init (std::string texture, int x, int y)
         
         _moveDir = Down;
         
-        _speed = 30;
+        _speed = 120;
         
         _hp = 20;
         
@@ -89,6 +100,27 @@ SEGameEntity* Monster::getTarget ()
 void Monster::setTarget (SEGameEntity* target)
 {
     _target = target;
+}
+
+void Monster::findTarget()
+{
+    SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
+    for (int i = 0; i < camp2->children.size(); i++)
+    {
+        if (isInDis(camp2->children[i], getAttackDis()))
+        {
+            setTarget(camp2->children[i]);
+            changeState(new MonsterAttackingState());
+            break;
+        }
+        
+        if (isInDis(camp2->children[i], getPatrolDis()))
+        {
+            setTarget(camp2->children[i]);
+            changeState(new MonsterMovingState());
+            break;
+        }
+    }
 }
 
 void Monster::attack(Heroine* target)

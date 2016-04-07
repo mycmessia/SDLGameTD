@@ -29,7 +29,7 @@ void MonsterAttackingState::update(Monster &monster)
             //TODO monster change to die state
             target->removeFromParent();
             monster.setTarget(nullptr);
-            monster.changeState(new MonsterStandingState ());
+            monster.changeState(new MonsterMovingState ());
         }
     }
     else

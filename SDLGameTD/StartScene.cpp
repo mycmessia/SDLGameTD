@@ -18,13 +18,13 @@ bool StartScene::init()
         SEGameEntity* camp1 = SEGameEntity::create();
         this->addChild(camp1, TagManager::CAMP_1);
         
-        Monster* monster = Monster::create("./images/undead01.png", 200, 200);
+        Monster* monster = Monster::create("./images/undead01.png", 240, 0);
         camp1->addChild(monster);
         
         SEGameEntity* camp2 = SEGameEntity::create();
         this->addChild(camp2, TagManager::CAMP_2);
-        
-        Heroine* hero = Heroine::create("./images/heroine01.png", 100, 100);
+
+        Heroine* hero = Heroine::create("./images/heroine01.png", 230, 520);
         camp2->addChild(hero, TagManager::PLAYER);
         
         return true;

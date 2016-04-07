@@ -13,61 +13,84 @@
 
 MonsterMovingState::MonsterMovingState () {}
 
+void MonsterMovingState::move(Monster &monster)
+{
+    SE_Point curPos = monster.getPosition();
+    SE_Point newPos = curPos;
+    
+    float moveDisPerFrame = monster.getSpeed() / SEWindow::FPS;
+    
+    if (curPos.x < _dest.x)
+    {
+        monster.setMoveDir(Right);
+        newPos.x += moveDisPerFrame;
+        if (newPos.x > _dest.x) newPos.x = _dest.x;
+    }
+    else if (curPos.x > _dest.x)
+    {
+        monster.setMoveDir(Left);
+        newPos.x -= moveDisPerFrame;
+        if (newPos.x < _dest.x) newPos.x = _dest.x;
+    }
+    else if (curPos.y < _dest.y)
+    {
+        monster.setMoveDir(Down);
+        newPos.y += moveDisPerFrame;
+        if (newPos.y > _dest.y) newPos.y = _dest.y;
+    }
+    else if (curPos.y > _dest.y)
+    {
+        monster.setMoveDir(Up);
+        newPos.y -= moveDisPerFrame;
+        if (newPos.y < _dest.y) newPos.y = _dest.y;
+    }
+    
+    if (monster.getCounter() % Monster::ANI_FRAMES == 0) monster.frame++;
+    if (monster.frame == Monster::ANI_FRAMES ) monster.frame = 0;
+    monster.setPosition(newPos.x, newPos.y);
+}
+
 void MonsterMovingState::update(Monster &monster)
 {
-    if (monster.getTarget() == nullptr) return;
+    monster.findTarget();
     
-    if (monster.isInDis(monster.getTarget(), monster.getAttackDis()))
+    if (monster.getTarget() == nullptr)
     {
-        monster.changeState(new MonsterAttackingState ());
-    }
-    else
-    {
-        SE_Point point = monster.getTarget()->getPosition();
+        _dest.x = monster.movePath[monster.movePathCounter].x;
+        _dest.y = monster.movePath[monster.movePathCounter].y;
         
-        _dest.x = point.x;
-        _dest.y = point.y;
-        
-        SE_Point curPos = monster.getPosition();
-        SE_Point newPos = curPos;
-        
-        float moveDisPerFrame = monster.getSpeed() / SEWindow::FPS;
-        
-        if (!monster.isInDis(monster.getTarget(), monster.getPatrolDis()))
+        if (monster.isInDis(_dest, 1))
         {
-            monster.setTarget(nullptr);
-            monster.changeState(new MonsterStandingState ());
+            if (monster.movePathCounter < monster.movePath.size() - 1)
+                monster.movePathCounter++;
+            else
+            {
+                monster.changeState(new MonsterStandingState ());
+            }
         }
         else
         {
-            if (curPos.x < _dest.x)
-            {
-                monster.setMoveDir(Right);
-                newPos.x += moveDisPerFrame;
-                if (newPos.x > _dest.x) newPos.x = _dest.x;
-            }
-            else if (curPos.x > _dest.x)
-            {
-                monster.setMoveDir(Left);
-                newPos.x -= moveDisPerFrame;
-                if (newPos.x < _dest.x) newPos.x = _dest.x;
-            }
-            else if (curPos.y < _dest.y)
-            {
-                monster.setMoveDir(Down);
-                newPos.y += moveDisPerFrame;
-                if (newPos.y > _dest.y) newPos.y = _dest.y;
-            }
-            else if (curPos.y > _dest.y)
-            {
-                monster.setMoveDir(Up);
-                newPos.y -= moveDisPerFrame;
-                if (newPos.y < _dest.y) newPos.y = _dest.y;
-            }
+            move (monster);
+        }
+    }
+    else
+    {
+        if (monster.isInDis(monster.getTarget(), monster.getAttackDis()))
+        {
+            monster.changeState(new MonsterAttackingState ());
+        }
+        else if (!monster.isInDis(monster.getTarget(), monster.getPatrolDis()))
+        {
+            monster.setTarget(nullptr);
+        }
+        else
+        {
+            SE_Point point = monster.getTarget()->getPosition();
             
-            if (monster.getCounter() % Monster::ANI_FRAMES == 0) monster.frame++;
-            if (monster.frame == Monster::ANI_FRAMES ) monster.frame = 0;
-            monster.setPosition(newPos.x, newPos.y);
+            _dest.x = point.x;
+            _dest.y = point.y;
+            
+            move (monster);
         }
     }
 }

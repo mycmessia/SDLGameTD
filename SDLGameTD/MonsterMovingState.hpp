@@ -15,10 +15,11 @@ class MonsterMovingState : public MonsterState
 {
 private:
     SE_Point _dest;
+    void move (Monster& monster);
     
 public:
     MonsterMovingState ();
-    virtual void update (Monster& heroine);
+    virtual void update (Monster& monster);
 };
 
 #endif /* MonsterMovingState_hpp */
