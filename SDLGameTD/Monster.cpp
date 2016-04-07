@@ -28,7 +28,7 @@ bool Monster::init (std::string texture, int x, int y)
         
         _moveDir = Down;
         
-        _speed = 1;
+        _speed = 30;
         
         _hp = 20;
         
@@ -62,7 +62,7 @@ bool Monster::init (std::string texture, int x, int y)
     return false;
 }
 
-int Monster::getSpeed() {return _speed;}
+float Monster::getSpeed() {return _speed;}
 
 int Monster::getPatrolDis () {return _patrolDis;}
 void Monster::setPatrolDis (int pd) {_patrolDis = pd;}
@@ -80,19 +80,6 @@ float Monster::getArmor () {return _armor;}
 void Monster::setArmor (float armor) {_armor = armor;}
 
 int Monster::getCounter() {return _counter;}
-
-bool Monster::isInDis(SEGameEntity* ge, int dis)
-{
-    SE_Point gePos = ge->getPosition();
-    SE_Point thisPos = getPosition();
-    
-    if ((gePos.x - thisPos.x) * (gePos.x - thisPos.x) + (gePos.y - thisPos.y) * (gePos.y - thisPos.y) <= dis * dis)
-    {
-        return true;
-    }
-    
-    return false;
-}
 
 SEGameEntity* Monster::getTarget ()
 {

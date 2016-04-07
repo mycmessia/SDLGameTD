@@ -22,7 +22,7 @@ private:
     SEGameEntity* _target;
     
     MonsterState* _state;
-    int _speed;
+    float _speed;
     float _hp;
     float _attack;
     int _attackSpeed;
@@ -39,7 +39,7 @@ public:
     Monster ();
     ~Monster ();
     
-    int getSpeed ();
+    float getSpeed ();
     
     int getPatrolDis ();
     void setPatrolDis (int pd);
@@ -58,7 +58,6 @@ public:
     
     int getCounter ();
     
-    bool isInDis (SEGameEntity* ge, int dis);
     SEGameEntity* getTarget ();
     void setTarget (SEGameEntity* target);
     

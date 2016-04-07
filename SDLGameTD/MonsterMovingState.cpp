@@ -31,6 +31,8 @@ void MonsterMovingState::update(Monster &monster)
         SE_Point curPos = monster.getPosition();
         SE_Point newPos = curPos;
         
+        float moveDisPerFrame = monster.getSpeed() / SEWindow::FPS;
+        
         if (!monster.isInDis(monster.getTarget(), monster.getPatrolDis()))
         {
             monster.setTarget(nullptr);
@@ -41,22 +43,26 @@ void MonsterMovingState::update(Monster &monster)
             if (curPos.x < _dest.x)
             {
                 monster.setMoveDir(Right);
-                newPos.x += monster.getSpeed();
+                newPos.x += moveDisPerFrame;
+                if (newPos.x > _dest.x) newPos.x = _dest.x;
             }
             else if (curPos.x > _dest.x)
             {
                 monster.setMoveDir(Left);
-                newPos.x -= monster.getSpeed();
+                newPos.x -= moveDisPerFrame;
+                if (newPos.x < _dest.x) newPos.x = _dest.x;
             }
             else if (curPos.y < _dest.y)
             {
                 monster.setMoveDir(Down);
-                newPos.y += monster.getSpeed();
+                newPos.y += moveDisPerFrame;
+                if (newPos.y > _dest.y) newPos.y = _dest.y;
             }
             else if (curPos.y > _dest.y)
             {
                 monster.setMoveDir(Up);
-                newPos.y -= monster.getSpeed();
+                newPos.y -= moveDisPerFrame;
+                if (newPos.y < _dest.y) newPos.y = _dest.y;
             }
             
             if (monster.getCounter() % Monster::ANI_FRAMES == 0) monster.frame++;
