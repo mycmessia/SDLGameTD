@@ -22,7 +22,7 @@ private:
     SEGameEntity* _target;
     
     HeroineState* _state;
-    int _speed;
+    float _speed;
     float _hp;
     float _attack;
     int _attackSpeed;
@@ -38,11 +38,10 @@ public:
     Heroine ();
     ~Heroine ();
     
-    bool isInDis (SEGameEntity* ge, int dis);
     SEGameEntity* getTarget ();
     void setTarget (SEGameEntity* ge);
     
-    int getSpeed ();
+    float getSpeed ();
     
     float getHp ();
     void setHp (float hp);

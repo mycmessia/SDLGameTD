@@ -10,7 +10,7 @@
 
 USING_NS_SE;
 
-SETransform::SETransform (int x, int y)
+SETransform::SETransform (float x, float y)
 {
     this->x = x;
     this->y = y;

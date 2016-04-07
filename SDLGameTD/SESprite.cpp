@@ -19,8 +19,8 @@ const SDL_Rect SESprite::getRect()
 {
     SETransform* trans = (SETransform *)this->getComponent("Transform");
     
-    int x = trans->x;
-    int y = trans->y;
+    int x = (int)(trans->x);
+    int y = (int)(trans->y);
     
     return {x, y, _width, _height};
 }

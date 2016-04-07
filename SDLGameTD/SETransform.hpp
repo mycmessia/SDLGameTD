@@ -16,10 +16,10 @@ NS_SE_BEGIN
 class SETransform : public SEComponent
 {
 public:
-    int x;
-    int y;
+    float x;
+    float y;
     
-    SETransform (int x, int y);
+    SETransform (float x, float y);
 };
 
 NS_SE_END

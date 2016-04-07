@@ -24,7 +24,7 @@ bool Heroine::init (std::string texture, int x, int y)
         
         _state = new HeroineStandingState ();
         
-        _speed = 1;
+        _speed = 90.0f;
         
         _hp = 20;
         
@@ -62,23 +62,10 @@ bool Heroine::init (std::string texture, int x, int y)
     return false;
 }
 
-bool Heroine::isInDis(SEGameEntity* ge, int dis)
-{
-    SDL_Point gePos = ge->getPosition();
-    SDL_Point thisPos = getPosition();
-    
-    if ((gePos.x - thisPos.x) * (gePos.x - thisPos.x) + (gePos.y - thisPos.y) * (gePos.y - thisPos.y) <= dis * dis)
-    {
-        return true;
-    }
-    
-    return false;
-}
-
 SEGameEntity* Heroine::getTarget () {return _target;}
 void Heroine::setTarget (SEGameEntity* ge) {_target = ge;}
 
-int Heroine::getSpeed() {return _speed;}
+float Heroine::getSpeed() {return _speed;}
 
 float Heroine::getHp () {return _hp;}
 void Heroine::setHp (float hp) {_hp = hp;}

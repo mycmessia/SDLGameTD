@@ -30,30 +30,35 @@ void HeroineMovingState::handleInput (Heroine& heroine, SDL_Event e)
 
 void HeroineMovingState::update (Heroine &heroine)
 {
-    SDL_Point curPos = heroine.getPosition();
-    SDL_Point newPos = curPos;
+    SE_Point curPos = heroine.getPosition();
+    SE_Point newPos = curPos;
+    float moveDisPerFrame = heroine.getSpeed() / SEWindow::FPS;;
     
-    if (curPos.x != _dest.x || curPos.y != _dest.y)
+    if (!heroine.isInDis(_dest, 1))
     {
         if (curPos.x < _dest.x)
         {
             heroine.setMoveDir(Right);
-            newPos.x += heroine.getSpeed();
+            newPos.x += moveDisPerFrame;
+            if (newPos.x > _dest.x) newPos.x = _dest.x;
         }
         else if (curPos.x > _dest.x)
         {
             heroine.setMoveDir(Left);
-            newPos.x -= heroine.getSpeed();
+            newPos.x -= moveDisPerFrame;
+            if (newPos.x < _dest.x) newPos.x = _dest.x;
         }
         else if (curPos.y < _dest.y)
         {
             heroine.setMoveDir(Down);
-            newPos.y += heroine.getSpeed();
+            newPos.y += moveDisPerFrame;
+            if (newPos.y > _dest.y) newPos.y = _dest.y;
         }
         else if (curPos.y > _dest.y)
         {
             heroine.setMoveDir(Up);
-            newPos.y -= heroine.getSpeed();
+            newPos.y -= moveDisPerFrame;
+            if (newPos.y < _dest.y) newPos.y = _dest.y;
         }
         
         if (heroine.getCounter() % Heroine::ANI_FRAMES == 0) heroine.frame++;

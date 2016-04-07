@@ -172,18 +172,43 @@ void SEGameEntity::removeAllComponents()
     }
 }
 
-SDL_Point SEGameEntity::getPosition()
+SE_Point SEGameEntity::getPosition()
 {
     SETransform* trans = (SETransform*)this->getComponent("Transform");
     
     return {trans->x, trans->y};
 }
 
-void SEGameEntity::setPosition (int x, int y)
+void SEGameEntity::setPosition (float x, float y)
 {
     SETransform* trans = (SETransform*)this->getComponent("Transform");
     trans->x = x;
     trans->y = y;
+}
+
+bool SEGameEntity::isInDis(SEGameEntity* ge, int dis)
+{
+    SE_Point gePos = ge->getPosition();
+    SE_Point thisPos = getPosition();
+    
+    if ((gePos.x - thisPos.x) * (gePos.x - thisPos.x) + (gePos.y - thisPos.y) * (gePos.y - thisPos.y) <= dis * dis)
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+bool SEGameEntity::isInDis(SE_Point point, int dis)
+{
+    SE_Point thisPos = getPosition();
+    
+    if ((point.x - thisPos.x) * (point.x - thisPos.x) + (point.y - thisPos.y) * (point.y - thisPos.y) <= dis * dis)
+    {
+        return true;
+    }
+    
+    return false;
 }
 
 bool SEGameEntity::init()

@@ -14,7 +14,7 @@
 class MonsterMovingState : public MonsterState
 {
 private:
-    SDL_Point _dest;
+    SE_Point _dest;
     
 public:
     MonsterMovingState ();

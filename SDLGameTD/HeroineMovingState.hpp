@@ -14,7 +14,7 @@
 class HeroineMovingState : public HeroineState
 {
 private:
-    SDL_Point _dest;
+    SE_Point _dest;
     
 public:
     HeroineMovingState (int x, int y);

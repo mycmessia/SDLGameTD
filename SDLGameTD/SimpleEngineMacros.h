@@ -23,4 +23,10 @@
 
 #define SE_SAFE_DELETE(p) do { delete (p); (p) = nullptr; } while(0)
 
+typedef struct
+{
+    float x;
+    float y;
+} SE_Point;
+
 #endif /* Macros_h */

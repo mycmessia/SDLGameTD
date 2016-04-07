@@ -53,8 +53,10 @@ public:
     void removeComponent (std::string name);
     void removeAllComponents ();
     
-    SDL_Point getPosition ();
-    void setPosition (int x, int y);
+    bool isInDis (SEGameEntity* ge, int dis);
+    bool isInDis (SE_Point point, int dis);
+    SE_Point getPosition ();
+    void setPosition (float x, float y);
     
     bool isVisible ();
     

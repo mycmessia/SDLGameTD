@@ -83,8 +83,8 @@ int Monster::getCounter() {return _counter;}
 
 bool Monster::isInDis(SEGameEntity* ge, int dis)
 {
-    SDL_Point gePos = ge->getPosition();
-    SDL_Point thisPos = getPosition();
+    SE_Point gePos = ge->getPosition();
+    SE_Point thisPos = getPosition();
     
     if ((gePos.x - thisPos.x) * (gePos.x - thisPos.x) + (gePos.y - thisPos.y) * (gePos.y - thisPos.y) <= dis * dis)
     {

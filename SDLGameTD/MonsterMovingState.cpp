@@ -23,13 +23,13 @@ void MonsterMovingState::update(Monster &monster)
     }
     else
     {
-        SDL_Point point = monster.getTarget()->getPosition();
+        SE_Point point = monster.getTarget()->getPosition();
         
         _dest.x = point.x;
         _dest.y = point.y;
         
-        SDL_Point curPos = monster.getPosition();
-        SDL_Point newPos = curPos;
+        SE_Point curPos = monster.getPosition();
+        SE_Point newPos = curPos;
         
         if (!monster.isInDis(monster.getTarget(), monster.getPatrolDis()))
         {
