@@ -13,6 +13,7 @@
 #include "SERef.hpp"
 #include "SEGameEntity.hpp"
 #include "SESprite.hpp"
+#include "SEClipSprite.hpp"
 #include "SEDirector.hpp"
 #include "SEAutoReleasePool.hpp"
 #include "SEEventListener.hpp"

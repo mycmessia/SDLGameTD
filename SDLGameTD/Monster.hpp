@@ -10,13 +10,14 @@
 #define Monster_hpp
 
 #include "SimpleEngine.h"
+#include "MoveEntity.hpp"
 
 USING_NS_SE;
 
 class MonsterState;
 class Heroine;
 
-class Monster : public SESprite
+class Monster : public MoveEntity
 {
 private:
     SEGameEntity* _target;
@@ -60,6 +61,8 @@ public:
     void setArmor (float armor);
     
     int getCounter ();
+    
+    virtual SDL_Rect* getClip();
     
     SEGameEntity* getTarget ();
     void setTarget (SEGameEntity* target);

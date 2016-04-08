@@ -41,32 +41,33 @@ bool SESprite::isClickIn(SDL_Event e)
     return false;
 }
 
-SDL_Rect* SESprite::getClip()
-{
-    switch (_moveDir)
-    {
-        case Left:
-            return &leftClips[frame];
-        case Right:
-            return &rightClips[frame];
-        case Up:
-            return &upClips[frame];
-        case Down:
-            return &downClips[frame];
-    }
-}
+//SDL_Rect* SESprite::getClip()
+//{
+//    return nullptr;
+////    switch (_moveDir)
+////    {
+////        case Left:
+////            return &leftClips[frame];
+////        case Right:
+////            return &rightClips[frame];
+////        case Up:
+////            return &upClips[frame];
+////        case Down:
+////            return &downClips[frame];
+////    }
+//}
+bool SESprite::isUseClip() {return _useClip;};
 
 int SESprite::getWidth() {return _width;}
 int SESprite::getHeight() {return _height;}
-
-MoveDir SESprite::getMoveDir () {return _moveDir;}
-void SESprite::setMoveDir (MoveDir md) {_moveDir = md;}
 
 bool SESprite::init(std::string texture, int x, int y)
 {
     if(SEGameEntity::init())
     {
         _visible = true;
+        
+        _useClip = false;
         
         _focus = false;
         

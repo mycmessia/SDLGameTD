@@ -13,8 +13,6 @@
 
 NS_SE_BEGIN
 
-enum MoveDir {Left, Right, Up, Down};
-
 class SESprite : public SEGameEntity
 {
 private:
@@ -23,25 +21,16 @@ private:
 protected:
     int _width;
     int _height;
-    MoveDir _moveDir;
+    bool _useClip;
     
 public:
-    SDL_Rect leftClips[4];
-    SDL_Rect rightClips[4];
-    SDL_Rect upClips[4];
-    SDL_Rect downClips[4];
-    int frame;
-    
     SESprite () {};
     virtual ~SESprite () {};
     
+    bool isUseClip ();
+    
     int getWidth ();
     int getHeight ();
-    
-    MoveDir getMoveDir ();
-    void setMoveDir (MoveDir md);
-    
-    SDL_Rect* getClip ();
     
     SDL_Texture* getTexture ();
     

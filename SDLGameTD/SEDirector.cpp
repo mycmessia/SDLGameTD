@@ -44,7 +44,14 @@ void SEDirector::DrawSprite (SESprite* ge)
 {
     SDL_Rect dest = ge->getRect();
     
-    SEWindow::Draw(ge->getTexture(), dest, ge->getClip());
+    if (ge->isUseClip())
+    {
+        SEWindow::Draw(ge->getTexture(), dest, ((SEClipSprite*)ge)->getClip());
+    }
+    else
+    {
+        SEWindow::Draw(ge->getTexture(), dest);
+    }
 }
 
 void SEDirector::LevelOrderTraversal (SEGameEntity* root)

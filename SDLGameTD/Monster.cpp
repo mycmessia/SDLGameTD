@@ -18,7 +18,7 @@ Monster::~Monster() {SE_SAFE_DELETE(_state);}
 
 bool Monster::init (std::string texture, int x, int y)
 {
-    bool bo = SESprite::init(texture, x, y);
+    bool bo = MoveEntity::init(texture, x, y);
     
     if (bo)
     {
@@ -120,6 +120,21 @@ void Monster::findTarget()
             changeState(new MonsterMovingState());
             break;
         }
+    }
+}
+
+SDL_Rect* Monster::getClip()
+{
+    switch (_moveDir)
+    {
+        case Left:
+            return &leftClips[frame];
+        case Right:
+            return &rightClips[frame];
+        case Up:
+            return &upClips[frame];
+        case Down:
+            return &downClips[frame];
     }
 }
 

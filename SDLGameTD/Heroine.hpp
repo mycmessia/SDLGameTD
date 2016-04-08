@@ -10,13 +10,14 @@
 #define Heroine_hpp
 
 #include "SimpleEngine.h"
+#include "MoveEntity.hpp"
 
 USING_NS_SE;
 
 class Monster;
 class HeroineState;
 
-class Heroine : public SESprite
+class Heroine : public MoveEntity
 {
 private:
     SEGameEntity* _target;
@@ -61,6 +62,8 @@ public:
     void attack (Monster* target);
     
     int getCounter ();
+    
+    virtual SDL_Rect* getClip();
     
     void changeState (HeroineState * state);
     

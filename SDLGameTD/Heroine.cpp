@@ -16,7 +16,7 @@ Heroine::~Heroine() {delete _state;}
 
 bool Heroine::init (std::string texture, int x, int y)
 {
-    bool bo = SESprite::init(texture, x, y);
+    bool bo = MoveEntity::init(texture, x, y);
     
     if (bo)
     {
@@ -103,6 +103,21 @@ void Heroine::changeState(HeroineState* state)
 {
     delete _state;
     _state = state;
+}
+
+SDL_Rect* Heroine::getClip()
+{
+    switch (_moveDir)
+    {
+        case Left:
+            return &leftClips[frame];
+        case Right:
+            return &rightClips[frame];
+        case Up:
+            return &upClips[frame];
+        case Down:
+            return &downClips[frame];
+    }
 }
 
 void Heroine::handleInput(SDL_Event e)
