@@ -25,8 +25,8 @@ bool Monster::init (std::string texture, int x, int y)
         _state = new MonsterMovingState ();
         
         movePath.push_back({240, 80});
-        movePath.push_back({240, 560});
-        movePath.push_back({720, 560});
+        movePath.push_back({240, 400});
+        movePath.push_back({720, 400});
         movePath.push_back({720, 80});
         movePath.push_back({480, 80});
         movePath.push_back({480, 320});

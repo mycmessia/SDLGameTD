@@ -15,6 +15,7 @@ public:
     const static int CAMP_1 = 1;
     const static int CAMP_2 = 2;
     const static int PLAYER = 3;
+    const static int UI_ROOT = 4;
 };
 
 #endif /* TagManager_hpp */

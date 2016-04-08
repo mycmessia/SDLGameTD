@@ -27,6 +27,8 @@ public:
     static SEDirector* getInstance ();
     SEGameEntity* getCurrentScene ();
     
+    
+    
     void InitStartScene ();
     
     static void DrawSprite (SESprite* ge);

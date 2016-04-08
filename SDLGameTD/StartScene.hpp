@@ -12,6 +12,9 @@
 #ifndef StartScene_hpp
 #define StartScene_hpp
 
+#include "SimpleEngine.h"
+#include "TagManager.hpp"
+
 USING_NS_SE;
 
 class StartScene : public SEGameEntity
