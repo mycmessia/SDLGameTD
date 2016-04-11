@@ -21,13 +21,13 @@ SEDirector* SEDirector::getInstance ()
     {
         _instance = new SEDirector ();
         
-        _instance->InitStartScene();
+        _instance->initStartScene();
     }
     
     return _instance;
 }
 
-void SEDirector::InitStartScene()
+void SEDirector::initStartScene()
 {
     // 这个改动很重要，因为我在StartScene的初始化过程中获取_currentScene指针所以我必须确保
     // 在获取的时候这个指针有意义
@@ -40,7 +40,7 @@ SEGameEntity* SEDirector::getCurrentScene ()
     return _currentScene;
 }
 
-void SEDirector::LevelOrderTraversal (SEGameEntity* root)
+void SEDirector::levelOrderTraversal (SEGameEntity* root)
 {
     std::queue<SEGameEntity*> queue;
     

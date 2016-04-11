@@ -41,7 +41,7 @@ int main(int argc, char* args[])
             listener->dispatchEvent(event);
         }
 
-        SEDirector::LevelOrderTraversal (currentScene);
+        SEDirector::levelOrderTraversal (currentScene);
 
         SEWindow::Present();
 

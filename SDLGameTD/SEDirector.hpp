@@ -27,9 +27,9 @@ public:
     static SEDirector* getInstance ();
     SEGameEntity* getCurrentScene ();
     
-    void InitStartScene ();
+    void initStartScene ();
     
-    static void LevelOrderTraversal (SEGameEntity* root);
+    static void levelOrderTraversal (SEGameEntity* root);
 };
 
 NS_SE_END
