@@ -17,7 +17,8 @@ SDL_Rect* SEClipSprite::getClip()
 
 void SEClipSprite::draw ()
 {
-    SEWindow::Draw(getTexture(), getRect(), getClip());
+    if (isVisible())
+        SEWindow::Draw(getTexture(), getRect(), getClip());
 }
 
 bool SEClipSprite::init(std::string texture, int x, int y)

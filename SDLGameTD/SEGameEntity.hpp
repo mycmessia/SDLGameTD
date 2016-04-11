@@ -64,6 +64,8 @@ public:
     void setHandleInput (bool bo);
     virtual void handleInput (SDL_Event e) {};
     
+    virtual void draw ();
+    
     virtual void update () {};
     
     static SEGameEntity* create ();

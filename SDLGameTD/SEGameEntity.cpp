@@ -211,6 +211,11 @@ bool SEGameEntity::isInDis(SE_Point point, int dis)
     return false;
 }
 
+void SEGameEntity::draw()
+{
+    
+}
+
 bool SEGameEntity::init()
 {
     _referenceCount = 0;

@@ -54,10 +54,7 @@ void SEDirector::LevelOrderTraversal (SEGameEntity* root)
             
             ge->update();
             
-            if (ge->isVisible())
-            {
-                ((SESprite*)ge)->draw();
-            }
+            ge->draw();
             
             for (int i = 0; i < ge->children.size(); i++)
             {
