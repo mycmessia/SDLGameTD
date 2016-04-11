@@ -61,7 +61,7 @@ void SEWindow::Quit()
     SDL_Quit();
 }
 
-void SEWindow::Draw(SDL_Texture *tex, SDL_Rect &dstRect, SDL_Rect *clip, float angle,
+void SEWindow::Draw(SDL_Texture *tex, const SDL_Rect &dstRect, SDL_Rect *clip, float angle,
                   int xPivot, int yPivot, SDL_RendererFlip flip)
 {
     //Convert pivot pos from relative to object's center to screen space

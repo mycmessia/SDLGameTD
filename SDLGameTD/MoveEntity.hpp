@@ -32,8 +32,6 @@ public:
     MoveDir getMoveDir ();
     void setMoveDir (MoveDir md);
     
-    static MoveEntity* create (std::string texture, int x, int y);
-    
     virtual bool init (std::string texture, int x, int y);
 };
 

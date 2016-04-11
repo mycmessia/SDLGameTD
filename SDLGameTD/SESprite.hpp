@@ -21,13 +21,10 @@ private:
 protected:
     int _width;
     int _height;
-    bool _useClip;
     
 public:
     SESprite () {};
     virtual ~SESprite () {};
-    
-    bool isUseClip ();
     
     int getWidth ();
     int getHeight ();
@@ -37,6 +34,8 @@ public:
     const SDL_Rect getRect ();
     
     bool isClickIn (SDL_Event e);
+    
+    virtual void draw ();
     
     static SESprite* create (std::string texture, int x, int y);
     

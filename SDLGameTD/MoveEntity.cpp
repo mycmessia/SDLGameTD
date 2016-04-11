@@ -10,7 +10,7 @@
 
 SDL_Rect* MoveEntity::getClip()
 {
-    return nullptr;
+    return &defaultRect;
 }
 
 MoveDir MoveEntity::getMoveDir () {return _moveDir;}

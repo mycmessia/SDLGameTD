@@ -40,20 +40,6 @@ SEGameEntity* SEDirector::getCurrentScene ()
     return _currentScene;
 }
 
-void SEDirector::DrawSprite (SESprite* ge)
-{
-    SDL_Rect dest = ge->getRect();
-    
-    if (ge->isUseClip())
-    {
-        SEWindow::Draw(ge->getTexture(), dest, ((SEClipSprite*)ge)->getClip());
-    }
-    else
-    {
-        SEWindow::Draw(ge->getTexture(), dest);
-    }
-}
-
 void SEDirector::LevelOrderTraversal (SEGameEntity* root)
 {
     std::queue<SEGameEntity*> queue;
@@ -70,7 +56,7 @@ void SEDirector::LevelOrderTraversal (SEGameEntity* root)
             
             if (ge->isVisible())
             {
-                SEDirector::DrawSprite((SESprite*)ge);
+                ((SESprite*)ge)->draw();
             }
             
             for (int i = 0; i < ge->children.size(); i++)

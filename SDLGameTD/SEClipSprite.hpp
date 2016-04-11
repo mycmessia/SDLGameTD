@@ -16,7 +16,11 @@ NS_SE_BEGIN
 class SEClipSprite : public SESprite
 {
 public:
+    SDL_Rect defaultRect;
+    
     virtual SDL_Rect* getClip ();
+    
+    virtual void draw ();
     
     static SEClipSprite* create (std::string texture, int x, int y);
     

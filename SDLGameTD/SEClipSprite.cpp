@@ -12,14 +12,19 @@ USING_NS_SE;
 
 SDL_Rect* SEClipSprite::getClip()
 {
-    return nullptr;
+    return &defaultRect;
+}
+
+void SEClipSprite::draw ()
+{
+    SEWindow::Draw(getTexture(), getRect(), getClip());
 }
 
 bool SEClipSprite::init(std::string texture, int x, int y)
 {
     if(SESprite::init(texture, x, y))
     {
-        _useClip = true;
+        defaultRect = {0, 0, _width, _height};
         
         return true;
     }

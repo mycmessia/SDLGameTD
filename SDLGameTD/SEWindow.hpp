@@ -52,7 +52,7 @@ public:
      *  @param yPivot The y coordinate of the pivot, relative to (0, 0) being center of dstRect
      *  @param flip The flip to apply to the image, default is none
      */
-    static void Draw(SDL_Texture *tex, SDL_Rect &dstRect, SDL_Rect *clip = NULL,
+    static void Draw(SDL_Texture *tex, const SDL_Rect &dstRect, SDL_Rect *clip = NULL,
                      float angle = 0.0, int xPivot = 0, int yPivot = 0,
                      SDL_RendererFlip flip = SDL_FLIP_NONE);
 
