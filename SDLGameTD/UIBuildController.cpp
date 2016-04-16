@@ -1,20 +1,18 @@
 //
-//  UIRoot.cpp
+//  UIBuildController.cpp
 //  SDLGameTD
 //
-//  Created by 梅宇宸 on 4/8/16.
+//  Created by 梅宇宸 on 4/16/16.
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "UIRoot.hpp"
 #include "UIBuildController.hpp"
 
-bool UIRoot::init()
+bool UIBuildController::init(std::string texture)
 {
     if (SEGameEntity::init())
     {
-        UIBuildController* build = UIBuildController::create("./images/ui/ui_atlas_icon_char.png");
-        this->addChild(build);
+        _sharedTexture = SEWindow::LoadImage(texture);
         
         return true;
     }
@@ -22,10 +20,10 @@ bool UIRoot::init()
     return false;
 }
 
-UIRoot* UIRoot::create()
+UIBuildController* UIBuildController::create(std::string texture)
 {
-    UIRoot *ge = new UIRoot();
-    if (ge && ge->init())
+    UIBuildController *ge = new UIBuildController();
+    if (ge && ge->init(texture))
     {
         ge->autoRelease();
         return ge;
