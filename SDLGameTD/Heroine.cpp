@@ -20,8 +20,6 @@ bool Heroine::init (std::string texture, int x, int y)
     
     if (bo)
     {
-        setHandleInput(true);
-        
         _state = new HeroineStandingState ();
         
         _speed = 90;
@@ -55,6 +53,10 @@ bool Heroine::init (std::string texture, int x, int y)
         _counter = 0;
         
         _target = nullptr;
+        
+        setHandleInput(true);
+        
+        setSwallowEvent(true);
         
         return true;
     }

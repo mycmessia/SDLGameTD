@@ -29,7 +29,7 @@ bool SESprite::isClickIn(SDL_Event e)
 {
     SDL_Rect rect = this->getRect();
     
-    if (e.type == SDL_MOUSEBUTTONDOWN)
+    if (e.type == SDL_MOUSEBUTTONUP)
     {
         if (e.button.x >= rect.x && e.button.x <= rect.x + rect.w &&
             e.button.y >= rect.y && e.button.y <= rect.y + rect.h)
@@ -48,6 +48,24 @@ void SESprite::draw()
 {
     if (isVisible())
         SEWindow::Draw(getTexture(), getRect());
+}
+
+bool SESprite::initWithSharedTexture(SDL_Texture* sharedTexture, int x, int y)
+{
+    if(SEGameEntity::init())
+    {
+        _visible = true;
+        
+        _focus = false;
+        
+        _texture = sharedTexture;
+        
+        setPosition(x, y);
+        
+        return true;
+    }
+    
+    return false;
 }
 
 bool SESprite::init(std::string texture, int x, int y)

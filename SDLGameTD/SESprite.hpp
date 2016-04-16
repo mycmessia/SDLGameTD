@@ -33,13 +33,15 @@ public:
     
     const SDL_Rect getRect ();
     
-    bool isClickIn (SDL_Event e);
+    virtual bool isClickIn (SDL_Event e);
     
     virtual void draw ();
     
     static SESprite* create (std::string texture, int x, int y);
     
     virtual bool init (std::string texture, int x, int y);
+    
+    virtual bool initWithSharedTexture (SDL_Texture* sharedTexture, int x, int y);
     
     virtual void handleInput (SDL_Event e) {};
     

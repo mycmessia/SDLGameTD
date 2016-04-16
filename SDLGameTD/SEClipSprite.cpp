@@ -18,7 +18,21 @@ SDL_Rect* SEClipSprite::getClip()
 void SEClipSprite::draw ()
 {
     if (isVisible())
+    {
         SEWindow::Draw(getTexture(), getRect(), getClip());
+    }
+}
+
+bool SEClipSprite::initWithSharedTexture(SDL_Texture* sharedTexture, int x, int y)
+{
+    if(SESprite::initWithSharedTexture(sharedTexture, x, y))
+    {
+        defaultRect = {0, 0, _width, _height};
+        
+        return true;
+    }
+    
+    return false;
 }
 
 bool SEClipSprite::init(std::string texture, int x, int y)

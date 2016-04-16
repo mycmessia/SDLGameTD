@@ -20,6 +20,7 @@ class SEGameEntity : public SERef
 protected:
     bool _visible;
     bool _handleInput;
+    bool _swallowEvent;
     unsigned int _referenceCount;
     bool _focus;
     int _tag;
@@ -60,9 +61,14 @@ public:
     
     bool isVisible ();
     
+    virtual bool isClickIn (SDL_Event e);
+    
     bool isHandleInput ();
     void setHandleInput (bool bo);
     virtual void handleInput (SDL_Event e) {};
+    
+    bool getSwallowEvent ();
+    void setSwallowEvent (bool bo);
     
     virtual void draw ();
     

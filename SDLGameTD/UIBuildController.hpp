@@ -19,11 +19,15 @@ private:
     SDL_Texture* _sharedTexture;
     
 public:
+    SDL_Texture* getSharedTexture ();
+    
+    void setBuildName (std::string name);
+    
+    virtual void handleInput (SDL_Event e);
+    
     static UIBuildController* create (std::string texture);
     
     virtual bool init (std::string texture);
-    
-    
 };
 
 #endif /* UIBuildController_hpp */

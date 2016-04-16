@@ -25,6 +25,8 @@ public:
     static SEClipSprite* create (std::string texture, int x, int y);
     
     virtual bool init (std::string texture, int x, int y);
+    
+    virtual bool initWithSharedTexture (SDL_Texture* sharedTexture, int x, int y);
 };
 
 NS_SE_END

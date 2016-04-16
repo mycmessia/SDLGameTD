@@ -33,6 +33,14 @@ bool SEGameEntity::isVisible ()
     return _visible;
 }
 
+bool SEGameEntity::isClickIn(SDL_Event e)
+{
+    if (e.type == SDL_MOUSEBUTTONUP)
+        return true;
+    
+    return false;
+}
+
 bool SEGameEntity::isHandleInput ()
 {
     return _handleInput;
@@ -50,6 +58,16 @@ void SEGameEntity::setHandleInput(bool bo)
     {
         SEEventListener::getInstance()->removeListener(this);
     }
+}
+
+void SEGameEntity::setSwallowEvent(bool bo)
+{
+    _swallowEvent = bo;
+}
+
+bool SEGameEntity::getSwallowEvent()
+{
+    return _swallowEvent;
 }
 
 bool SEGameEntity::getFocus()
