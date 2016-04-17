@@ -15,6 +15,7 @@ std::string buildName;
 void buildHero1 (SDL_Event e)
 {
     buildName = "hero1";
+    std::cout << "click button1" << std::endl;
 }
 
 SDL_Texture* UIBuildController::getSharedTexture()
@@ -26,9 +27,11 @@ void UIBuildController::handleInput(SDL_Event e)
 {
     if (isClickIn (e) && buildName == "hero1")
     {
+        std::cout << "UIBuildController::handleInput" << std::endl;
+        
         SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
         
-        Heroine* hero = Heroine::create("./images/heroine01.png", e.button.x, e.button.y);
+        Heroine* hero = Heroine::create("./resources/role/1.png", e.button.x, e.button.y);
         camp2->addChild(hero, TagManager::PLAYER);
         
         buildName = "";
@@ -41,7 +44,7 @@ bool UIBuildController::init(std::string texture)
     {
         _sharedTexture = SEWindow::LoadImage(texture);
         
-        UIButton* button1 = UIButton::createFromSharedTexture(_sharedTexture, 100, 100);
+        UIButton* button1 = UIButton::createFromSharedTexture(_sharedTexture, 0, 480 -32);
         this->addChild(button1);
         
         button1->onClick = buildHero1;

@@ -38,8 +38,8 @@ void SEWindow::Init(std::string title)
     //Setup our SEWindow size
     mBox.x = 0;
     mBox.y = 0;
-    mBox.w = 960;
-    mBox.h = 640;
+    mBox.w = 320;
+    mBox.h = 568;
     //Create our SEWindow
     mWindow.reset(SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED,
                                    SDL_WINDOWPOS_CENTERED, mBox.w, mBox.h, SDL_WINDOW_SHOWN));

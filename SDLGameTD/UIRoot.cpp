@@ -13,7 +13,7 @@ bool UIRoot::init()
 {
     if (SEGameEntity::init())
     {
-        UIBuildController* build = UIBuildController::create("./images/ui/ui_atlas_icon_char.png");
+        UIBuildController* build = UIBuildController::create("./resources/UI/mercenary.png");
         this->addChild(build);
         
         return true;

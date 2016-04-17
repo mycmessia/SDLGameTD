@@ -92,6 +92,7 @@
 		099939FB1CC1F1DB00B38173 /* UIBuildController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIBuildController.hpp; sourceTree = "<group>"; };
 		099939FD1CC2329500B38173 /* UIButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIButton.cpp; sourceTree = "<group>"; };
 		099939FE1CC2329500B38173 /* UIButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIButton.hpp; sourceTree = "<group>"; };
+		09993A001CC3940700B38173 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 		09AEB0A81CACBAE3008A403D /* SEEventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SEEventListener.cpp; sourceTree = "<group>"; };
 		09AEB0A91CACBAE3008A403D /* SEEventListener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SEEventListener.hpp; sourceTree = "<group>"; };
 		09BB28DB1CA236BA00BE74A2 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
@@ -99,8 +100,6 @@
 		09BB28DD1CA236BA00BE74A2 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
 		09BB28E11CA293E200BE74A2 /* SEWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SEWindow.cpp; sourceTree = "<group>"; };
 		09BB28E21CA293E200BE74A2 /* SEWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SEWindow.hpp; sourceTree = "<group>"; };
-		09BB28E51CA2DEA900BE74A2 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
-		09BB28E61CA2DEA900BE74A2 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		09BB28F41CA394F700BE74A2 /* Command.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Command.cpp; sourceTree = "<group>"; };
 		09BB28F51CA394F700BE74A2 /* Command.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Command.hpp; sourceTree = "<group>"; };
 		09BB28F61CA394F700BE74A2 /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
@@ -183,10 +182,9 @@
 		0985B5A01C9E916A00DF6093 /* SDLGameTD */ = {
 			isa = PBXGroup;
 			children = (
+				09993A001CC3940700B38173 /* resources */,
 				09BB28FA1CA396CE00BE74A2 /* Engine */,
 				09E21B6F1CB332B60095C444 /* Logic */,
-				09BB28E51CA2DEA900BE74A2 /* fonts */,
-				09BB28E61CA2DEA900BE74A2 /* images */,
 			);
 			path = SDLGameTD;
 			sourceTree = "<group>";

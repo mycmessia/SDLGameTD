@@ -38,8 +38,10 @@ public:
     virtual void draw ();
     
     static SESprite* create (std::string texture, int x, int y);
+    static SESprite* create (std::string texture, int x, int y, int width, int height);
     
     virtual bool init (std::string texture, int x, int y);
+    virtual bool init (std::string texture, int x, int y, int width, int height);
     
     virtual bool initWithSharedTexture (SDL_Texture* sharedTexture, int x, int y);
     

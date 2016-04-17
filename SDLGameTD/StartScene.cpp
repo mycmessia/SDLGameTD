@@ -15,6 +15,9 @@ bool StartScene::init()
 {
     if (SEGameEntity::init())
     {
+        SESprite* bg = SESprite::create("./resources/battle_background/cave.png", 0, 0, 320, 568);
+        this->addChild(bg);
+        
         UIRoot* root = UIRoot::create();
         this->addChild(root, TagManager::UI_ROOT);
         

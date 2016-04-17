@@ -86,10 +86,47 @@ bool SESprite::init(std::string texture, int x, int y)
     return false;
 }
 
+bool SESprite::init(std::string texture, int x, int y, int width, int height)
+{
+    if(SEGameEntity::init())
+    {
+        _visible = true;
+        
+        _focus = false;
+        
+        _width = width;
+        
+        _height = height;
+        
+        _texture = SEWindow::LoadImage(texture);
+        
+        setPosition(x, y);
+        
+        return true;
+    }
+    
+    return false;
+}
+
 SESprite* SESprite::create(std::string texture, int x, int y)
 {
     SESprite *ge = new SESprite ();
     if (ge && ge->init(texture, x, y))
+    {
+        ge->autoRelease();
+        return ge;
+    }
+    else
+    {
+        SE_SAFE_DELETE(ge);
+        return nullptr;
+    }
+}
+
+SESprite* SESprite::create(std::string texture, int x, int y, int width, int height)
+{
+    SESprite *ge = new SESprite ();
+    if (ge && ge->init(texture, x, y, width, height))
     {
         ge->autoRelease();
         return ge;

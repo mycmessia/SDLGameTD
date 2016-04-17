@@ -36,13 +36,13 @@ bool Heroine::init (std::string texture, int x, int y)
         
         _width = 32;
         
-        _height = 48;
+        _height = 32;
         
         _moveDir = Down;
         
         frame = 0;
         
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             downClips[i] = {i * _width, 0, _width, _height};
             leftClips[i] = {i * _width, _height, _width, _height};
@@ -124,6 +124,7 @@ SDL_Rect* Heroine::getClip()
 
 void Heroine::handleInput(SDL_Event e)
 {
+    std::cout << "Heroine handle input" << std::endl;
     _state->handleInput(*this, e);
 }
 
