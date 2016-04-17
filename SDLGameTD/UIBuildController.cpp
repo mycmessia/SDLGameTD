@@ -10,9 +10,9 @@
 #include "UIButton.hpp"
 #include "Heroine.hpp"
 
-std::string buildName;
+std::string UIBuildController::buildName = "";
 
-void buildHero1 (SDL_Event e)
+void UIBuildController::buildHero (SDL_Event e)
 {
     buildName = "hero1";
     
@@ -51,7 +51,7 @@ bool UIBuildController::init(std::string texture)
         UIButton* button1 = UIButton::createFromSharedTexture(_sharedTexture, 0, 480 -32);
         this->addChild(button1);
         
-        button1->onClick = buildHero1;
+        button1->onClick = buildHero;
         
         setHandleInput(true);
         

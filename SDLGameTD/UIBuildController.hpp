@@ -19,6 +19,10 @@ private:
     SDL_Texture* _sharedTexture;
     
 public:
+    static std::string buildName;
+    
+    static void buildHero (SDL_Event e);
+    
     SDL_Texture* getSharedTexture ();
     
     void setBuildName (std::string name);
