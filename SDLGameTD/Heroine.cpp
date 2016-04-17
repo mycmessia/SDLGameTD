@@ -124,7 +124,6 @@ SDL_Rect* Heroine::getClip()
 
 void Heroine::handleInput(SDL_Event e)
 {
-    std::cout << "Heroine handle input" << std::endl;
     _state->handleInput(*this, e);
 }
 

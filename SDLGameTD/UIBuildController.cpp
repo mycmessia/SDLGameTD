@@ -15,7 +15,13 @@ std::string buildName;
 void buildHero1 (SDL_Event e)
 {
     buildName = "hero1";
-    std::cout << "click button1" << std::endl;
+    
+    SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
+    
+    for (int i = 0; i < camp2->children.size(); i++)
+    {
+        camp2->children[i]->setFocus (false);
+    }
 }
 
 SDL_Texture* UIBuildController::getSharedTexture()
@@ -27,8 +33,6 @@ void UIBuildController::handleInput(SDL_Event e)
 {
     if (isClickIn (e) && buildName == "hero1")
     {
-        std::cout << "UIBuildController::handleInput" << std::endl;
-        
         SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
         
         Heroine* hero = Heroine::create("./resources/role/1.png", e.button.x, e.button.y);
