@@ -32,7 +32,7 @@ void SEEventListener::dispatchEvent(SDL_Event event)
             
         if (_listerners[i]->isClickIn(event) && _listerners[i]->getSwallowEvent())
         {
-            std::cout << "break event" << std::endl;
+//            std::cout << "break event" << std::endl;
             break;
         }
     }

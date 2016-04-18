@@ -18,6 +18,15 @@ bool StartScene::init()
         SESprite* bg = SESprite::create("./resources/battle_background/cave.png", 0, 0, 320, 568);
         this->addChild(bg);
         
+        SESprite* board = SESprite::create("./resources/UI/board2.png", 5, 60, 310, 48);
+        this->addChild(board);
+        
+        SESprite* life = SESprite::create("./resources/UI/life.png", 220, 10, 32, 32);
+        this->addChild(life);
+        
+//        SESprite* skill = SESprite::create("./resources/UI/skill1.png", 2, 2, 40, 40);
+//        this->addChild(skill);
+        
         UIRoot* root = UIRoot::create();
         this->addChild(root, TagManager::UI_ROOT);
         
