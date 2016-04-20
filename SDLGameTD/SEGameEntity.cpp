@@ -105,8 +105,26 @@ SEGameEntity* SEGameEntity::getChildByTag(int tag)
     return nullptr;
 }
 
+bool SEGameEntity::hasChild(SEGameEntity* child)
+{
+    for (int i = 0; i < children.size(); i++)
+    {
+        if (children[i] == child)
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
 void SEGameEntity::addChild(SEGameEntity *child, int tag)
 {
+    if (this->hasChild(child))
+    {
+        throw std::runtime_error("Can not add a child twice!");
+    }
+    
     child->retain();
     
     child->parent = this;

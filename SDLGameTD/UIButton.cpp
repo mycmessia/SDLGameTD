@@ -25,9 +25,9 @@ bool UIButton::init(SDL_Texture* sharedTexture, int x, int y)
 {
     if (SEClipSprite::initWithSharedTexture(sharedTexture, x, y))
     {
-        _width = 34;
+        _width = 32;
         
-        _height = 34;
+        _height = 32;
         
         _buttonClip = {110, 941, _width, _height};
         

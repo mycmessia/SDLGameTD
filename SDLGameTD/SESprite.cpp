@@ -17,12 +17,23 @@ SDL_Texture* SESprite::getTexture()
 
 const SDL_Rect SESprite::getRect()
 {
-    SETransform* trans = (SETransform *)this->getComponent("Transform");
+    SE_Point destPos = {getPosition().x, getPosition().y};
     
-    int x = (int)(trans->x);
-    int y = (int)(trans->y);
+    SEGameEntity* posParent = this->parent;
+    while (posParent)
+    {
+        destPos = {destPos.x + posParent->getPosition().x, destPos.y + posParent->getPosition().y};
+        posParent = posParent->parent;
+    }
     
-    return {x, y, _width, _height};
+    SDL_Rect worldRect = {
+        (int)(destPos.x),
+        (int)(destPos.y),
+        _width,
+        _height
+    };
+    
+    return worldRect;
 }
 
 bool SESprite::isClickIn(SDL_Event e)
@@ -47,7 +58,9 @@ int SESprite::getHeight() {return _height;}
 void SESprite::draw()
 {
     if (isVisible())
+    {
         SEWindow::Draw(getTexture(), getRect());
+    }
 }
 
 bool SESprite::initWithSharedTexture(SDL_Texture* sharedTexture, int x, int y)

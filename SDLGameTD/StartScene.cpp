@@ -6,7 +6,7 @@
 //  Copyright © 2016 梅宇宸. All rights reserved.
 //
 
-#include "UIRoot.hpp"
+#include "UIBuildController.hpp"
 #include "Heroine.hpp"
 #include "Monster.hpp"
 #include "StartScene.hpp"
@@ -18,8 +18,8 @@ bool StartScene::init()
         SESprite* bg = SESprite::create("./resources/battle_background/cave.png", 0, 0, 320, 568);
         this->addChild(bg);
         
-        SESprite* board = SESprite::create("./resources/UI/board2.png", 5, 60, 310, 48);
-        this->addChild(board);
+        SESprite* board = SESprite::create("./resources/UI/board.png", 0, 50, 320, 100);
+        this->addChild(board, TagManager::BUILD_BORAD);
         
         SESprite* life = SESprite::create("./resources/UI/life.png", 220, 10, 32, 32);
         this->addChild(life);
@@ -27,9 +27,9 @@ bool StartScene::init()
 //        SESprite* skill = SESprite::create("./resources/UI/skill1.png", 2, 2, 40, 40);
 //        this->addChild(skill);
         
-        UIRoot* root = UIRoot::create();
-        this->addChild(root, TagManager::UI_ROOT);
-        
+        UIBuildController* build = UIBuildController::create("./resources/UI/mercenary.png");
+        this->addChild(build);
+
         SEGameEntity* camp1 = SEGameEntity::create();
         this->addChild(camp1, TagManager::CAMP_1);
 

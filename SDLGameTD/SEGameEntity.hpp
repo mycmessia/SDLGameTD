@@ -33,6 +33,7 @@ public:
     std::vector<SEGameEntity*> children;
     
     SEGameEntity* getChildByTag (int tag);
+    bool hasChild (SEGameEntity* se);
     void addChild (SEGameEntity* child, int tag = 0);
     void removeChild (SEGameEntity* child);
     void removeAllChildren ();

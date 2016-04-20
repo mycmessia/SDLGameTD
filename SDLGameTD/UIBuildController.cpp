@@ -48,8 +48,10 @@ bool UIBuildController::init(std::string texture)
     {
         _sharedTexture = SEWindow::LoadImage(texture);
         
-        UIButton* button1 = UIButton::createFromSharedTexture(_sharedTexture, 16, 67);
-        this->addChild(button1);
+        SESprite* board = (SESprite*)(SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::BUILD_BORAD));
+        
+        UIButton* button1 = UIButton::createFromSharedTexture(_sharedTexture, 20, 8);
+        board->addChild(button1);
         
         button1->onClick = buildHero;
         
