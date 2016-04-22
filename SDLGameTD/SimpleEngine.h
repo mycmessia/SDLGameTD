@@ -12,6 +12,7 @@
 #include "SEWindow.hpp"
 #include "SERef.hpp"
 #include "SEGameEntity.hpp"
+#include "SELabel.hpp"
 #include "SESprite.hpp"
 #include "SEClipSprite.hpp"
 #include "SEDirector.hpp"

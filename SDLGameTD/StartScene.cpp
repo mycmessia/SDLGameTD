@@ -24,6 +24,9 @@ bool StartScene::init()
         SESprite* life = SESprite::create("./resources/UI/life.png", 220, 10, 32, 32);
         this->addChild(life);
         
+        SELabel* lifeCount = SELabel::create("100", "./resources/fonts/Miss Issippi Demo.ttf", {255, 255, 255, 0}, 32, 38, 4);
+        life->addChild(lifeCount);
+        
 //        SESprite* skill = SESprite::create("./resources/UI/skill1.png", 2, 2, 40, 40);
 //        this->addChild(skill);
         
