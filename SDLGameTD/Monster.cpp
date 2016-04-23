@@ -24,18 +24,18 @@ bool Monster::init (std::string texture, int x, int y)
     {
         _state = new MonsterMovingState ();
         
-        movePath.push_back({240, 80});
-        movePath.push_back({240, 400});
-        movePath.push_back({720, 400});
-        movePath.push_back({720, 80});
-        movePath.push_back({480, 80});
-        movePath.push_back({480, 320});
+        movePath.push_back({240, 200});
+        movePath.push_back({240, 350});
+        movePath.push_back({40, 350});
+        movePath.push_back({40, 500});
+        movePath.push_back({360, 500});
+//        movePath.push_back({480, 320});
         
         movePathCounter = 0;
         
-        _width = 32;
+        _width = 34;
         
-        _height = 48;
+        _height = 34;
         
         _moveDir = Down;
         
@@ -55,7 +55,7 @@ bool Monster::init (std::string texture, int x, int y)
         
         frame = 0;
         
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             downClips[i] = {i * _width, 0, _width, _height};
             leftClips[i] = {i * _width, _height, _width, _height};

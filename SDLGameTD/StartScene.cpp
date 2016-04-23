@@ -9,6 +9,7 @@
 #include "UIBuildController.hpp"
 #include "Heroine.hpp"
 #include "Monster.hpp"
+#include "MonsterGenerator.hpp"
 #include "StartScene.hpp"
 
 bool StartScene::init()
@@ -35,6 +36,9 @@ bool StartScene::init()
 
         SEGameEntity* camp1 = SEGameEntity::create();
         this->addChild(camp1, TagManager::CAMP_1);
+        
+        MonsterGenerator* monsterGenerator = MonsterGenerator::create();
+        this->addChild(monsterGenerator);
 
 //        Monster* monster = Monster::create("./images/undead01.png", 240, 0);
 //        camp1->addChild(monster);

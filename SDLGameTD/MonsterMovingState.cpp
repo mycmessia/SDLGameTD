@@ -62,10 +62,12 @@ void MonsterMovingState::update(Monster &monster)
         if (monster.isInDis(_dest, 1))
         {
             if (monster.movePathCounter < monster.movePath.size() - 1)
+            {
                 monster.movePathCounter++;
+            }
             else
             {
-                monster.changeState(new MonsterStandingState ());
+                monster.removeFromParent();
             }
         }
         else

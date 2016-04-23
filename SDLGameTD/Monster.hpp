@@ -35,7 +35,7 @@ private:
     
 public:
     static const int COUNTER_MAX = 100;
-    static const int ANI_FRAMES = 4;        // ani sprite change every 4 frames
+    static const int ANI_FRAMES = 3;        // ani sprite change every 4 frames
     
     std::vector<SE_Point> movePath;
     int movePathCounter;

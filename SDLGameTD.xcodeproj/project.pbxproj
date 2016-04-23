@@ -22,6 +22,7 @@
 		092848E51CAB5D2E00E95BA0 /* StartScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 092848E31CAB5D2E00E95BA0 /* StartScene.cpp */; };
 		092848E81CABD9DF00E95BA0 /* HeroineMovingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 092848E61CABD9DF00E95BA0 /* HeroineMovingState.cpp */; };
 		09381FDE1CC9248400A44666 /* SELabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09381FDC1CC9248400A44666 /* SELabel.cpp */; };
+		09381FE11CCB5F1900A44666 /* MonsterGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09381FDF1CCB5F1900A44666 /* MonsterGenerator.cpp */; };
 		0985B5A21C9E916A00DF6093 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0985B5A11C9E916A00DF6093 /* main.cpp */; };
 		0985B5A91C9E91A700DF6093 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0985B5A81C9E91A700DF6093 /* SDL2.framework */; };
 		099939FC1CC1F1DB00B38173 /* UIBuildController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 099939FA1CC1F1DB00B38173 /* UIBuildController.cpp */; };
@@ -87,6 +88,8 @@
 		092848E71CABD9DF00E95BA0 /* HeroineMovingState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeroineMovingState.hpp; sourceTree = "<group>"; };
 		09381FDC1CC9248400A44666 /* SELabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SELabel.cpp; sourceTree = "<group>"; };
 		09381FDD1CC9248400A44666 /* SELabel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SELabel.hpp; sourceTree = "<group>"; };
+		09381FDF1CCB5F1900A44666 /* MonsterGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterGenerator.cpp; sourceTree = "<group>"; };
+		09381FE01CCB5F1900A44666 /* MonsterGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MonsterGenerator.hpp; sourceTree = "<group>"; };
 		0985B59E1C9E916A00DF6093 /* SDLGameTD */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLGameTD; sourceTree = BUILT_PRODUCTS_DIR; };
 		0985B5A11C9E916A00DF6093 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0985B5A81C9E91A700DF6093 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				092848E41CAB5D2E00E95BA0 /* StartScene.hpp */,
 				09E21B701CB3364A0095C444 /* TagManager.cpp */,
 				09E21B711CB3364A0095C444 /* TagManager.hpp */,
+				09381FDF1CCB5F1900A44666 /* MonsterGenerator.cpp */,
+				09381FE01CCB5F1900A44666 /* MonsterGenerator.hpp */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09381FE11CCB5F1900A44666 /* MonsterGenerator.cpp in Sources */,
 				090145B11CA91AE200EC0C59 /* SETransform.cpp in Sources */,
 				092848E81CABD9DF00E95BA0 /* HeroineMovingState.cpp in Sources */,
 				099939FF1CC2329500B38173 /* UIButton.cpp in Sources */,
