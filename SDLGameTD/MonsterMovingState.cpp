@@ -10,6 +10,7 @@
 #include "MonsterStandingState.hpp"
 #include "MonsterAttackingState.hpp"
 #include "MonsterMovingState.hpp"
+#include "Subject.hpp"
 
 MonsterMovingState::MonsterMovingState () {}
 
@@ -67,6 +68,8 @@ void MonsterMovingState::update(Monster &monster)
             }
             else
             {
+                Subject::getInstance()->notify(monster, MONSTER_DIE);
+                
                 monster.removeFromParent();
             }
         }

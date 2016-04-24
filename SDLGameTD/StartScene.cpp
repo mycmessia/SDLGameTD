@@ -10,6 +10,8 @@
 #include "Heroine.hpp"
 #include "Monster.hpp"
 #include "MonsterGenerator.hpp"
+#include "GameController.hpp"
+#include "Subject.hpp"
 #include "StartScene.hpp"
 
 bool StartScene::init()
@@ -48,6 +50,10 @@ bool StartScene::init()
 
 //        Heroine* hero = Heroine::create("./images/heroine01.png", 230, 520);
 //        camp2->addChild(hero, TagManager::PLAYER);
+        
+        Observer* gameController = new GameController ();
+        
+        Subject::getInstance()->addObserver(gameController);
         
         return true;
     }

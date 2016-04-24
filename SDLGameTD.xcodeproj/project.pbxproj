@@ -40,6 +40,9 @@
 		09E21B751CB4F4930095C444 /* MonsterAttackingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B731CB4F4930095C444 /* MonsterAttackingState.cpp */; };
 		09E21B8F1CB791720095C444 /* MoveEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B8D1CB791720095C444 /* MoveEntity.cpp */; };
 		09E21B921CB793160095C444 /* SEClipSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B901CB793160095C444 /* SEClipSprite.cpp */; };
+		09ED9A6B1CCC5DF4001AA4AC /* Observer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09ED9A691CCC5DF4001AA4AC /* Observer.cpp */; };
+		09ED9A6E1CCC5FF9001AA4AC /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09ED9A6C1CCC5FF9001AA4AC /* GameController.cpp */; };
+		09ED9A711CCC6325001AA4AC /* Subject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09ED9A6F1CCC6325001AA4AC /* Subject.cpp */; };
 		09F178391CAA161D00ECED44 /* SEDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09F178371CAA161D00ECED44 /* SEDirector.cpp */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +124,12 @@
 		09E21B8E1CB791720095C444 /* MoveEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MoveEntity.hpp; sourceTree = "<group>"; };
 		09E21B901CB793160095C444 /* SEClipSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SEClipSprite.cpp; sourceTree = "<group>"; };
 		09E21B911CB793160095C444 /* SEClipSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SEClipSprite.hpp; sourceTree = "<group>"; };
+		09ED9A691CCC5DF4001AA4AC /* Observer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Observer.cpp; sourceTree = "<group>"; };
+		09ED9A6A1CCC5DF4001AA4AC /* Observer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Observer.hpp; sourceTree = "<group>"; };
+		09ED9A6C1CCC5FF9001AA4AC /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
+		09ED9A6D1CCC5FF9001AA4AC /* GameController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameController.hpp; sourceTree = "<group>"; };
+		09ED9A6F1CCC6325001AA4AC /* Subject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Subject.cpp; sourceTree = "<group>"; };
+		09ED9A701CCC6325001AA4AC /* Subject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Subject.hpp; sourceTree = "<group>"; };
 		09F178371CAA161D00ECED44 /* SEDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SEDirector.cpp; sourceTree = "<group>"; };
 		09F178381CAA161D00ECED44 /* SEDirector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SEDirector.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				099939F91CC1F17200B38173 /* UI */,
+				09ED9A681CCC5D47001AA4AC /* ObserverPattern */,
 				090145A41CA7EFE400EC0C59 /* StatePattern */,
 				09BB28ED1CA394AD00BE74A2 /* CommandPattern */,
 				092848E31CAB5D2E00E95BA0 /* StartScene.cpp */,
@@ -291,6 +301,19 @@
 				09381FE01CCB5F1900A44666 /* MonsterGenerator.hpp */,
 			);
 			name = Logic;
+			sourceTree = "<group>";
+		};
+		09ED9A681CCC5D47001AA4AC /* ObserverPattern */ = {
+			isa = PBXGroup;
+			children = (
+				09ED9A691CCC5DF4001AA4AC /* Observer.cpp */,
+				09ED9A6A1CCC5DF4001AA4AC /* Observer.hpp */,
+				09ED9A6C1CCC5FF9001AA4AC /* GameController.cpp */,
+				09ED9A6D1CCC5FF9001AA4AC /* GameController.hpp */,
+				09ED9A6F1CCC6325001AA4AC /* Subject.cpp */,
+				09ED9A701CCC6325001AA4AC /* Subject.hpp */,
+			);
+			name = ObserverPattern;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,7 +372,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09ED9A711CCC6325001AA4AC /* Subject.cpp in Sources */,
 				09381FE11CCB5F1900A44666 /* MonsterGenerator.cpp in Sources */,
+				09ED9A6E1CCC5FF9001AA4AC /* GameController.cpp in Sources */,
 				090145B11CA91AE200EC0C59 /* SETransform.cpp in Sources */,
 				092848E81CABD9DF00E95BA0 /* HeroineMovingState.cpp in Sources */,
 				099939FF1CC2329500B38173 /* UIButton.cpp in Sources */,
@@ -373,6 +398,7 @@
 				090145B71CA91DEB00EC0C59 /* SESprite.cpp in Sources */,
 				09E21B751CB4F4930095C444 /* MonsterAttackingState.cpp in Sources */,
 				09BB28FD1CA3974F00BE74A2 /* SEGameEntity.cpp in Sources */,
+				09ED9A6B1CCC5DF4001AA4AC /* Observer.cpp in Sources */,
 				09BB28E31CA293E200BE74A2 /* SEWindow.cpp in Sources */,
 				09BB28F91CA394F700BE74A2 /* InputHandler.cpp in Sources */,
 				09E21B721CB3364A0095C444 /* TagManager.cpp in Sources */,

@@ -14,6 +14,7 @@ USING_NS_SE;
 SEDirector* SEDirector::_instance = nullptr;
 
 SEDirector::SEDirector () {}
+SEDirector::~SEDirector() {SE_SAFE_DELETE(_instance);}
 
 SEDirector* SEDirector::getInstance ()
 {

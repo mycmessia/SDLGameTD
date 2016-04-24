@@ -23,6 +23,7 @@ private:
     
 public:
     SEDirector ();
+    ~SEDirector ();
     
     static SEDirector* getInstance ();
     SEGameEntity* getCurrentScene ();
