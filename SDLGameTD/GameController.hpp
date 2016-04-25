@@ -15,8 +15,16 @@ USING_NS_SE;
 
 class GameController : public Observer
 {
+private:
+    int _life;
+    SELabel* _lifeLabel;
+    
 public:
     virtual void onNotify (const SEGameEntity& entity, GAME_EVENT event);
+    
+    void checkLose ();
+    
+    void createLifeUI ();
 };
 
 #endif /* GameController_hpp */

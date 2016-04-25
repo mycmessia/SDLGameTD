@@ -24,6 +24,7 @@ protected:
     unsigned int _referenceCount;
     bool _focus;
     int _tag;
+    bool _isUI;
     
 public:
     SEGameEntity ();
@@ -44,6 +45,8 @@ public:
     
     bool getFocus ();
     void setFocus (bool bo);
+    
+    bool isUI ();
     
     /**
      * components

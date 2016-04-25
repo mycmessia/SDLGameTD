@@ -40,7 +40,14 @@ void SEEventListener::dispatchEvent(SDL_Event event)
 
 void SEEventListener::addListener(SEGameEntity* ge)
 {
-    _listerners.push_back(ge);
+    if (ge->isUI())
+    {
+        _listerners.insert(_listerners.begin(), ge);
+    }
+    else
+    {
+        _listerners.push_back(ge);
+    }
 }
 
 void SEEventListener::removeListener(SEGameEntity* ge)

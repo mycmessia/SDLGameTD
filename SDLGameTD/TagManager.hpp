@@ -17,6 +17,7 @@ public:
     const static int PLAYER = 3;
     const static int UI_ROOT = 4;
     const static int BUILD_BORAD = 5;
+    const static int LIFE_COUNT = 6;
 };
 
 #endif /* TagManager_hpp */
