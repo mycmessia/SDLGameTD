@@ -47,6 +47,7 @@ std::string SELabel::getString ()
 void SELabel::setString (std::string str)
 {
     _message = str;
+    _width = (int)(_message.length() * _fontSize / 2);
     _texture = SEWindow::RenderText(_message, _fontFile, _fontColor, _fontSize);
 }
 

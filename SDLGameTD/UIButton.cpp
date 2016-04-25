@@ -25,6 +25,8 @@ bool UIButton::init(SDL_Texture* sharedTexture, int x, int y)
 {
     if (SEClipSprite::initWithSharedTexture(sharedTexture, x, y))
     {
+        _isUI = true;
+        
         _width = 32;
         
         _height = 32;

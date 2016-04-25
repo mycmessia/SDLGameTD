@@ -24,12 +24,6 @@ bool StartScene::init()
         SESprite* board = SESprite::create("./resources/UI/board.png", 0, 50, 320, 100);
         this->addChild(board, TagManager::BUILD_BORAD);
         
-        SESprite* life = SESprite::create("./resources/UI/life.png", 220, 10, 32, 32);
-        this->addChild(life);
-        
-        SELabel* lifeCount = SELabel::create("100", "./resources/fonts/Miss Issippi Demo.ttf", {255, 255, 255, 0}, 32, 38, 4);
-        life->addChild(lifeCount);
-        
 //        SESprite* skill = SESprite::create("./resources/UI/skill1.png", 2, 2, 40, 40);
 //        this->addChild(skill);
         
@@ -42,17 +36,11 @@ bool StartScene::init()
         MonsterGenerator* monsterGenerator = MonsterGenerator::create();
         this->addChild(monsterGenerator);
 
-//        Monster* monster = Monster::create("./images/undead01.png", 240, 0);
-//        camp1->addChild(monster);
-
         SEGameEntity* camp2 = SEGameEntity::create();
         this->addChild(camp2, TagManager::CAMP_2);
-
-//        Heroine* hero = Heroine::create("./images/heroine01.png", 230, 520);
-//        camp2->addChild(hero, TagManager::PLAYER);
         
-        Observer* gameController = new GameController ();
-        
+        GameController* gameController = new GameController ();
+        gameController->createLifeUI ();
         Subject::getInstance()->addObserver(gameController);
         
         return true;

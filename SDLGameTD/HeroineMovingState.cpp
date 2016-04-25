@@ -18,9 +18,9 @@ HeroineMovingState::HeroineMovingState (int x, int y)
 
 void HeroineMovingState::handleInput (Heroine& heroine, SDL_Event e)
 {
-    if (!heroine.isClickIn (e))
+    if (!heroine.isClickIn (e) && heroine.getFocus())
     {
-        if (e.type == SDL_MOUSEBUTTONDOWN)
+        if (e.type == SDL_MOUSEBUTTONUP)
         {
             _dest.x = e.button.x;
             _dest.y = e.button.y;

@@ -68,7 +68,7 @@ void MonsterMovingState::update(Monster &monster)
             }
             else
             {
-                Subject::getInstance()->notify(monster, MONSTER_DIE);
+                Subject::getInstance()->notify(monster, MONSTER_PASS);
                 
                 monster.removeFromParent();
             }

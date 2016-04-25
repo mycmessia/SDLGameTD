@@ -33,6 +33,11 @@ bool SEGameEntity::isVisible ()
     return _visible;
 }
 
+bool SEGameEntity::isUI()
+{
+    return _isUI;
+}
+
 bool SEGameEntity::isClickIn(SDL_Event e)
 {
     if (e.type == SDL_MOUSEBUTTONUP)
@@ -254,6 +259,8 @@ void SEGameEntity::draw()
 
 bool SEGameEntity::init()
 {
+    _isUI = false;
+    
     _referenceCount = 0;
     
     addComponent(new SETransform(0, 0));

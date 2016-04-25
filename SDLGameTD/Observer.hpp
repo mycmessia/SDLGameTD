@@ -14,8 +14,7 @@
 USING_NS_SE;
 
 enum GAME_EVENT {
-    MONSTER_DIE,
-    HEROINE_DIE
+    MONSTER_PASS
 };
 
 class Observer
