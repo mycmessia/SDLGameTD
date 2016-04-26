@@ -67,9 +67,9 @@ public:
     
     void changeState (HeroineState * state);
     
-    static Heroine* create (std::string texture, int x, int y);
+    static Heroine* create (std::string texture, SEPos pos, SEArea area, MoveEntityInfo info);
     
-    virtual bool init (std::string texture, int x, int y);
+    virtual bool init (std::string texture, SEPos pos, SEArea area, MoveEntityInfo info);
     
     virtual void handleInput (SDL_Event e);
     

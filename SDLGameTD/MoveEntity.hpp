@@ -14,6 +14,15 @@
 USING_NS_SE;
 
 enum MoveDir {Left, Right, Up, Down};
+struct MoveEntityInfo {
+    float speed;
+    float hp;
+    float attack;
+    int attackSpeed;
+    int attackDis;
+    float armor;
+    int patrolDis;
+};
 
 class MoveEntity : public SEClipSprite
 {

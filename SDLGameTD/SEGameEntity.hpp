@@ -15,6 +15,8 @@
 
 NS_SE_BEGIN
 
+struct SEArea {float width; float height;};
+
 class SEGameEntity : public SERef
 {
 protected:

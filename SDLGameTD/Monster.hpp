@@ -72,9 +72,9 @@ public:
     
     void changeState (MonsterState* state);
     
-    static Monster* create (std::string texture, int x, int y);
+    static Monster* create (std::string texture, SEPos pos, SEArea area, MoveEntityInfo info);
     
-    virtual bool init (std::string texture, int x, int y);
+    virtual bool init (std::string texture, SEPos pos, SEArea area, MoveEntityInfo info);
     
     virtual void update ();
 };

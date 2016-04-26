@@ -14,7 +14,11 @@ void MonsterGenerator::createMonster()
 {
     SEGameEntity* camp = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_1);
     
-    Monster* monster = Monster::create("./resources/role/11000031.png", -100, 200);
+    /**
+     * info
+     * float speed; float hp; float attack; int attackSpeed; int attackDis; float armor; int patrolDis;
+     */
+    Monster* monster = Monster::create("./resources/role/11000031.png", {-100, 200}, {34, 34}, {120, 20, 16, 2, 48, 8, 96});
     
     camp->addChild(monster);
 }

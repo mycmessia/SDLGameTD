@@ -44,9 +44,18 @@ void HeroineAttackingState::update(Heroine &heroine)
     }
     else
     {
-        //TODO monster change to die state
         target->removeFromParent();
-        heroine.setTarget(nullptr);
-        heroine.changeState(new HeroineStandingState ());
+        // TODO set all heroine whose target == this target null
+        
+        for (int i = 0; i < heroine.parent->children.size (); i++)
+        {
+            if (((Heroine*)(heroine.parent->children[i]))->getTarget() == target)
+            {
+                ((Heroine*)(heroine.parent->children[i]))->setTarget(nullptr);
+                ((Heroine*)(heroine.parent->children[i]))->changeState(new HeroineStandingState ());
+            }
+        }
+//        heroine.setTarget(nullptr);
+//        heroine.changeState(new HeroineStandingState ());
     }
 }

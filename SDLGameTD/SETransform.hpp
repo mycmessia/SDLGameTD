@@ -13,6 +13,8 @@
 
 NS_SE_BEGIN
 
+struct SEPos {float x; float y;};
+
 class SETransform : public SEComponent
 {
 public:

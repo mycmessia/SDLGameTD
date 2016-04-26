@@ -35,7 +35,13 @@ void UIBuildController::handleInput(SDL_Event e)
     {
         SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
         
-        Heroine* hero = Heroine::create("./resources/role/1.png", e.button.x, e.button.y);
+        /**
+         * info
+         * float speed; float hp; float attack; int attackSpeed; int attackDis; float armor; int patrolDis;
+         */
+        Heroine* hero = Heroine::create("./resources/role/1.png",
+                                        {(float)e.button.x, (float)e.button.y}, {32, 32},
+                                        {90, 40, 10, 2, 48, 12, 96});
         camp2->addChild(hero, TagManager::PLAYER);
         
         buildName = "";

@@ -14,29 +14,29 @@
 Heroine::Heroine () {}
 Heroine::~Heroine() {delete _state;}
 
-bool Heroine::init (std::string texture, int x, int y)
+bool Heroine::init (std::string texture, SEPos pos, SEArea area, MoveEntityInfo info)
 {
-    bool bo = MoveEntity::init(texture, x, y);
+    bool bo = MoveEntity::init(texture, pos.x, pos.y);
     
     if (bo)
     {
         _state = new HeroineStandingState ();
         
-        _speed = 90;
+        _speed = info.speed;
         
-        _hp = 40;
+        _hp = info.hp;
         
-        _attack = 10;
+        _attack = info.attack;
         
-        _attackDis = 48;
+        _attackDis = info.attackDis;
         
-        _attackSpeed = 2;
+        _attackSpeed = info.attackSpeed;
         
-        _armor = 12;
+        _armor = info.armor;
         
-        _width = 32;
+        _width = area.width;
         
-        _height = 32;
+        _height = area.height;
         
         _moveDir = Down;
         
@@ -135,10 +135,10 @@ void Heroine::update ()
     _state->update (*this);
 }
 
-Heroine* Heroine::create (std::string texture, int x, int y)
+Heroine* Heroine::create (std::string texture, SEPos pos, SEArea area, MoveEntityInfo info)
 {
     Heroine *ge = new Heroine ();
-    if (ge && ge->init(texture, x, y))
+    if (ge && ge->init(texture, pos, area, info))
     {
         ge->autoRelease();
         return ge;

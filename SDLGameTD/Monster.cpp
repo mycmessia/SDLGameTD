@@ -16,9 +16,9 @@
 Monster::Monster () {}
 Monster::~Monster() {SE_SAFE_DELETE(_state);}
 
-bool Monster::init (std::string texture, int x, int y)
+bool Monster::init (std::string texture, SEPos pos, SEArea area, MoveEntityInfo info)
 {
-    bool bo = MoveEntity::init(texture, x, y);
+    bool bo = MoveEntity::init(texture, pos.x, pos.y);
     
     if (bo)
     {
@@ -29,29 +29,28 @@ bool Monster::init (std::string texture, int x, int y)
         movePath.push_back({40, 350});
         movePath.push_back({40, 500});
         movePath.push_back({360, 500});
-//        movePath.push_back({480, 320});
         
         movePathCounter = 0;
         
-        _width = 34;
+        _width = area.width;
         
-        _height = 34;
+        _height = area.height;
         
         _moveDir = Down;
         
-        _speed = 120;
+        _speed = info.speed;
         
-        _hp = 20;
+        _hp = info.hp;
         
-        _attack = 16;
+        _attack = info.attack;
         
-        _attackSpeed = 2;
+        _attackSpeed = info.attackSpeed;
         
-        _armor = 8;
+        _armor = info.armor;
         
-        _attackDis = 48;
+        _attackDis = info.attackDis;
         
-        _patrolDis = 96;
+        _patrolDis = info.patrolDis;
         
         frame = 0;
         
@@ -167,10 +166,10 @@ void Monster::update ()
     _state->update (*this);
 }
 
-Monster* Monster::create (std::string texture, int x, int y)
+Monster* Monster::create (std::string texture, SEPos pos, SEArea area, MoveEntityInfo info)
 {
     Monster *ge = new Monster ();
-    if (ge && ge->init(texture, x, y))
+    if (ge && ge->init(texture, pos, area, info))
     {
         ge->autoRelease();
         return ge;
