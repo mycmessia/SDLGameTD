@@ -9,6 +9,10 @@
 #ifndef TagManager_hpp
 #define TagManager_hpp
 
+#include "SimpleEngine.h"
+
+USING_NS_SE;
+
 class TagManager
 {
 public:

@@ -59,8 +59,7 @@ void SELabel::draw()
     }
 }
 
-bool SELabel::init(const std::string &message, const std::string &fontFile, SDL_Color color, int fontSize,
-                   int posX, int posY)
+bool SELabel::init(const std::string &message, const std::string &fontFile, SDL_Color color, int fontSize, SEPos pos)
 {
     if (SEGameEntity::init())
     {
@@ -74,7 +73,7 @@ bool SELabel::init(const std::string &message, const std::string &fontFile, SDL_
         _width = (int)(message.length() * fontSize / 2);
         _height = fontSize;
         
-        setPosition(posX, posY);
+        setPosition(pos.x, pos.y);
         
         _texture = SEWindow::RenderText(_message, _fontFile, _fontColor, _fontSize);
         
@@ -84,11 +83,10 @@ bool SELabel::init(const std::string &message, const std::string &fontFile, SDL_
     return false;
 }
 
-SELabel* SELabel::create(const std::string &message, const std::string &fontFile, SDL_Color color, int fontSize,
-                         int posX, int posY)
+SELabel* SELabel::create(const std::string &message, const std::string &fontFile, SDL_Color color, int fontSize, SEPos pos)
 {
     SELabel *ge = new SELabel ();
-    if (ge && ge->init(message, fontFile, color, fontSize, posX, posY))
+    if (ge && ge->init(message, fontFile, color, fontSize, pos))
     {
         ge->autoRelease();
         return ge;

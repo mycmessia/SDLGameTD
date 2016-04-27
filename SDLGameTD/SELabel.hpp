@@ -40,10 +40,10 @@ public:
     virtual void draw ();
     
     static SELabel* create (const std::string &message, const std::string &fontFile,
-                            SDL_Color color, int fontSize, int posX, int posY);
+                            SDL_Color color, int fontSize, SEPos pos);
     
     virtual bool init (const std::string &message, const std::string &fontFile,
-                       SDL_Color color, int fontSize, int posX, int posY);
+                       SDL_Color color, int fontSize, SEPos pos);
 };
 
 NS_SE_END

@@ -14,7 +14,7 @@ std::string UIBuildController::buildName = "";
 
 void UIBuildController::buildHero (SDL_Event e)
 {
-    buildName = "hero1";
+    buildName = "hero2";
     
     SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
     
@@ -31,7 +31,7 @@ SDL_Texture* UIBuildController::getSharedTexture()
 
 void UIBuildController::handleInput(SDL_Event e)
 {
-    if (isClickIn (e) && buildName == "hero1")
+    if (isClickIn (e) && buildName != "")
     {
         SEGameEntity* camp2 = SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::CAMP_2);
         
@@ -39,8 +39,10 @@ void UIBuildController::handleInput(SDL_Event e)
          * info
          * float speed; float hp; float attack; int attackSpeed; int attackDis; float armor; int patrolDis;
          */
-        Heroine* hero = Heroine::create("./resources/role/1.png",
-                                        {(float)e.button.x, (float)e.button.y}, {32, 32},
+        std::string url = "./resources/role/" + buildName + ".png";
+        
+        Heroine* hero = Heroine::create(url,
+                                        {(float)e.button.x, (float)e.button.y}, {34, 34},
                                         {90, 40, 10, 2, 48, 12, 96});
         camp2->addChild(hero, TagManager::PLAYER);
         
@@ -56,7 +58,7 @@ bool UIBuildController::init(std::string texture)
         
         SESprite* board = (SESprite*)(SEDirector::getInstance()->getCurrentScene()->getChildByTag(TagManager::BUILD_BORAD));
         
-        UIButton* button1 = UIButton::createFromSharedTexture(_sharedTexture, 20, 8);
+        UIButton* button1 = UIButton::createFromSharedTexture(_sharedTexture, {20, 8});
         board->addChild(button1);
         
         button1->onClick = buildHero;

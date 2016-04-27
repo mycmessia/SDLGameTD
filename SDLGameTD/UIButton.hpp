@@ -29,9 +29,9 @@ public:
     
     virtual void handleInput (SDL_Event e);
     
-    static UIButton* createFromSharedTexture (SDL_Texture* sharedTexture, int x, int y);
+    static UIButton* createFromSharedTexture (SDL_Texture* sharedTexture, SEPos pos);
     
-    virtual bool init (SDL_Texture* sharedTexture, int x, int y);
+    virtual bool init (SDL_Texture* sharedTexture, SEPos pos);
 };
 
 #endif /* UIButton_hpp */

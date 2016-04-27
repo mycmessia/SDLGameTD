@@ -7,6 +7,7 @@
 //
 
 #include "GameController.hpp"
+#include "Config.hpp"
 
 USING_NS_SE;
 
@@ -45,6 +46,6 @@ void GameController::createLifeUI()
     
     _life = 10;
     
-    _lifeLabel = SELabel::create(std::to_string(_life), "./resources/fonts/Miss Issippi Demo.ttf", {255, 255, 255, 0}, 32, 38, 4);
+    _lifeLabel = SELabel::create(std::to_string(_life), Config::DEFAULT_FONT, {255, 255, 255, 0}, 32, {38, 4});
     life->addChild(_lifeLabel, TagManager::LIFE_COUNT);
 }

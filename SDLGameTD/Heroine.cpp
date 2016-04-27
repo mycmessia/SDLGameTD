@@ -10,6 +10,8 @@
 #include "Heroine.hpp"
 #include "HeroineMovingState.hpp"
 #include "HeroineStandingState.hpp"
+#include "MoveLabel.hpp"
+#include "Config.hpp"
 
 Heroine::Heroine () {}
 Heroine::~Heroine() {delete _state;}
@@ -90,7 +92,17 @@ void Heroine::attack(Monster* target)
     {
         if (this->getAttack() > target->getArmor())
         {
-            target->setHp(target->getHp() - (this->getAttack() - target->getArmor()));
+            int loseHP = this->getAttack() - target->getArmor();
+            SEPos labelPos = {target->getPosition().x + target->getWidth() / 3, target->getPosition().y};
+            
+            MoveLabel* loseHPLabel = MoveLabel::create(
+                std::to_string(loseHP),
+                Config::DEFAULT_FONT,
+                {255, 255,255, 0}, 26, labelPos);
+            
+            SEDirector::getInstance()->getCurrentScene()->addChild(loseHPLabel);
+            
+            target->setHp(target->getHp() - loseHP);
         }
         else
         {

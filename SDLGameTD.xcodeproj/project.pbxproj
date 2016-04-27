@@ -35,6 +35,8 @@
 		09BB28F81CA394F700BE74A2 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BB28F41CA394F700BE74A2 /* Command.cpp */; };
 		09BB28F91CA394F700BE74A2 /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BB28F61CA394F700BE74A2 /* InputHandler.cpp */; };
 		09BB28FD1CA3974F00BE74A2 /* SEGameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BB28FB1CA3974F00BE74A2 /* SEGameEntity.cpp */; };
+		09C7B1D71CD09FEC00F7D8D1 /* MoveLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09C7B1D51CD09FEC00F7D8D1 /* MoveLabel.cpp */; };
+		09C7B1DB1CD0A7B000F7D8D1 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09C7B1D91CD0A7B000F7D8D1 /* Config.cpp */; };
 		09E21B6E1CB280000095C444 /* HeroineAttackingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B6C1CB280000095C444 /* HeroineAttackingState.cpp */; };
 		09E21B751CB4F4930095C444 /* MonsterAttackingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B731CB4F4930095C444 /* MonsterAttackingState.cpp */; };
 		09E21B8F1CB791720095C444 /* MoveEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E21B8D1CB791720095C444 /* MoveEntity.cpp */; };
@@ -113,6 +115,10 @@
 		09BB28F71CA394F700BE74A2 /* InputHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputHandler.hpp; sourceTree = "<group>"; };
 		09BB28FB1CA3974F00BE74A2 /* SEGameEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SEGameEntity.cpp; sourceTree = "<group>"; };
 		09BB28FC1CA3974F00BE74A2 /* SEGameEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SEGameEntity.hpp; sourceTree = "<group>"; };
+		09C7B1D51CD09FEC00F7D8D1 /* MoveLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveLabel.cpp; sourceTree = "<group>"; };
+		09C7B1D61CD09FEC00F7D8D1 /* MoveLabel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MoveLabel.hpp; sourceTree = "<group>"; };
+		09C7B1D91CD0A7B000F7D8D1 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		09C7B1DA1CD0A7B000F7D8D1 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		09E21B6C1CB280000095C444 /* HeroineAttackingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroineAttackingState.cpp; sourceTree = "<group>"; };
 		09E21B6D1CB280000095C444 /* HeroineAttackingState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeroineAttackingState.hpp; sourceTree = "<group>"; };
 		09E21B711CB3364A0095C444 /* TagManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TagManager.hpp; sourceTree = "<group>"; };
@@ -206,6 +212,8 @@
 				099939FB1CC1F1DB00B38173 /* UIBuildController.hpp */,
 				099939FD1CC2329500B38173 /* UIButton.cpp */,
 				099939FE1CC2329500B38173 /* UIButton.hpp */,
+				09C7B1D51CD09FEC00F7D8D1 /* MoveLabel.cpp */,
+				09C7B1D61CD09FEC00F7D8D1 /* MoveLabel.hpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -296,6 +304,8 @@
 				09E21B711CB3364A0095C444 /* TagManager.hpp */,
 				09381FDF1CCB5F1900A44666 /* MonsterGenerator.cpp */,
 				09381FE01CCB5F1900A44666 /* MonsterGenerator.hpp */,
+				09C7B1D91CD0A7B000F7D8D1 /* Config.cpp */,
+				09C7B1DA1CD0A7B000F7D8D1 /* Config.hpp */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -397,10 +407,12 @@
 				09BB28FD1CA3974F00BE74A2 /* SEGameEntity.cpp in Sources */,
 				09ED9A6B1CCC5DF4001AA4AC /* Observer.cpp in Sources */,
 				09BB28E31CA293E200BE74A2 /* SEWindow.cpp in Sources */,
+				09C7B1D71CD09FEC00F7D8D1 /* MoveLabel.cpp in Sources */,
 				09BB28F91CA394F700BE74A2 /* InputHandler.cpp in Sources */,
 				090F5C371CB0E2BC00705DC3 /* MonsterStandingState.cpp in Sources */,
 				090145B41CA91B7F00EC0C59 /* SEComponent.cpp in Sources */,
 				09E21B8F1CB791720095C444 /* MoveEntity.cpp in Sources */,
+				09C7B1DB1CD0A7B000F7D8D1 /* Config.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

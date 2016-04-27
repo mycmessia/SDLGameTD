@@ -21,17 +21,17 @@ void UIButton::handleInput(SDL_Event e)
     }
 }
 
-bool UIButton::init(SDL_Texture* sharedTexture, int x, int y)
+bool UIButton::init(SDL_Texture* sharedTexture, SEPos pos)
 {
-    if (SEClipSprite::initWithSharedTexture(sharedTexture, x, y))
+    if (SEClipSprite::initWithSharedTexture(sharedTexture, pos.x, pos.y))
     {
         _isUI = true;
         
-        _width = 32;
+        _width = 34;
         
-        _height = 32;
+        _height = 34;
         
-        _buttonClip = {110, 941, _width, _height};
+        _buttonClip = {110, 905, _width, _height};
         
         setHandleInput(true);
         
@@ -43,10 +43,10 @@ bool UIButton::init(SDL_Texture* sharedTexture, int x, int y)
     return false;
 }
 
-UIButton* UIButton::createFromSharedTexture(SDL_Texture* sharedTexture, int x, int y)
+UIButton* UIButton::createFromSharedTexture(SDL_Texture* sharedTexture, SEPos pos)
 {
     UIButton *ge = new UIButton();
-    if (ge && ge->init(sharedTexture, x, y))
+    if (ge && ge->init(sharedTexture, pos))
     {
         ge->autoRelease();
         return ge;
