@@ -28,8 +28,14 @@ void MonsterAttackingState::update(Monster &monster)
         {
             //TODO monster change to die state
             target->removeFromParent();
-            monster.setTarget(nullptr);
-            monster.changeState(new MonsterMovingState ());
+            for (int i = 0; i < monster.parent->children.size (); i++)
+            {
+                if (((Monster*)(monster.parent->children[i]))->getTarget() == target)
+                {
+                    ((Monster*)(monster.parent->children[i]))->setTarget(nullptr);
+                    ((Monster*)(monster.parent->children[i]))->changeState(new MonsterMovingState ());
+                }
+            }
         }
     }
     else

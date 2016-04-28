@@ -16,8 +16,15 @@ USING_NS_SE;
 class MonsterGenerator : public SEGameEntity
 {
 private:
-    int counter;
-    const int MAX_COUNTER = 120;    // every two seconds create a monster
+    const int TIME_COUNTER = 0;
+    const int WAVE_COUNTER = 1;
+    const int BETWEEN_MONSTER_COUNTER = 2;
+    const int BETWEEN_WAVE_COUNTER = 3;
+    
+    SECounter* _monsterCounter;
+    SECounter* _waveCounter;
+    SECounter* _betweenMonsterCounter;
+    SECounter* _betweenWaveCounter;
     
 public:
     void createMonster ();

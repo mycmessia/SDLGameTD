@@ -25,16 +25,53 @@ void MonsterGenerator::createMonster()
 
 void MonsterGenerator::update()
 {
+    if (_waveCounter->isReachMax())
+    {
+        // you win
+        return;
+    }
     
+    if (_betweenWaveCounter->isReachMax())
+    {
+        if (_betweenMonsterCounter->isReachMax())
+        {
+            createMonster();
+            _monsterCounter->count(1);
+            _betweenMonsterCounter->reset();
+            
+            if (_monsterCounter->isReachMax())
+            {
+                _waveCounter->count(1);
+                _betweenWaveCounter->reset();
+                _monsterCounter->reset();
+            }
+        }
+        else
+        {
+            _betweenMonsterCounter->count(1);
+        }
+    }
+    else
+    {
+        _betweenWaveCounter->count(1);
+    }
 }
 
 bool MonsterGenerator::init()
 {
     if (SEGameEntity::init())
     {
-        counter = 0;
+        _monsterCounter = SECounter::create(5);
+        this->addChild(_monsterCounter, TIME_COUNTER);
         
-        createMonster();
+        _waveCounter = SECounter::create(10);
+        this->addChild(_waveCounter, WAVE_COUNTER);
+        
+        _betweenMonsterCounter = SECounter::create(60);
+        this->addChild(_betweenMonsterCounter, BETWEEN_MONSTER_COUNTER);
+        
+        _betweenWaveCounter = SECounter::create(180);
+        this->addChild(_betweenWaveCounter, BETWEEN_WAVE_COUNTER);
         
         return true;
     }

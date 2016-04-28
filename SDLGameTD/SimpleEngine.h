@@ -19,6 +19,8 @@
 #include "SEAutoReleasePool.hpp"
 #include "SEEventListener.hpp"
 
+#include "SECounter.hpp"
+
 #include "SEComponent.hpp"
 #include "SETransform.hpp"
 
