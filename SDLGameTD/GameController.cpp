@@ -13,8 +13,10 @@ USING_NS_SE;
 
 void GameController::checkLose()
 {
+    if (_life == 0) return;
+    
     _life -= 1;
-    if (_life < 0)
+    if (_life == 0)
     {
         std::cout << "you lose" << std::endl;
     }
