@@ -26,21 +26,6 @@ void GameController::checkLose()
     }
 }
 
-USING_NS_SE;
-
-void GameController::checkLose()
-{
-    _life -= 1;
-    if (_life <= 0)
-    {
-        std::cout << "you win" << std::endl;
-    }
-    else
-    {
-        _lifeLabel->setString(std::to_string(_life));
-    }
-}
-
 void GameController::onNotify (const SEGameEntity& entity, GAME_EVENT event)
 {
     switch (event)
@@ -63,10 +48,7 @@ void GameController::createLifeUI()
     
     _life = 10;
     
-<<<<<<< HEAD
     _lifeLabel = SELabel::create(std::to_string(_life), Config::DEFAULT_FONT, {255, 255, 255, 0}, 32, {38, 4});
-=======
-    _lifeLabel = SELabel::create(std::to_string(_life), "./resources/fonts/Miss Issippi Demo.ttf", {255, 255, 255, 0}, 32, 38, 4);
->>>>>>> 91c371e03816e2832fba8bd145b4d1d88c224b30
+
     life->addChild(_lifeLabel, TagManager::LIFE_COUNT);
 }
