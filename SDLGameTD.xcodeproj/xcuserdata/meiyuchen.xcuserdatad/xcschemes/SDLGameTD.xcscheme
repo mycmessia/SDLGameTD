@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/meiyuchen/Projects/SDL/SDLGameTD"
+      customWorkingDirectory = "/Users/meiyuchen/Projects/SDL/SDLGameTD/SDLGameTD"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
