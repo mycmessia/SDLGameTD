@@ -14,8 +14,11 @@ Also I put the four SDL frameworks used in this project in a separate folder so 
 If you are using a mac, just make sure you copy all the frameworks into the /Library/Frameworks folder.<br />
 
 Another thing is I use relative directory to link the resources like images and fonts, so if your project reports an error said they can not find resources, you need to change the working directory as shown by the followed image.<br />
+
 You can find this window by Product->Scheme->Edit Scheme<br /><br />
+
 ![] (https://github.com/mycmessia/SDLGameTD/blob/master/change_working_directory.png)<br /><br />
 
 Here is a screen shot of this game and hope you are interested in it.<br />
+
 ![] (https://github.com/mycmessia/SDLGameTD/blob/master/SDLGameTD/resources/screen_shot.png)
