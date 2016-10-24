@@ -49,5 +49,6 @@ void GameController::createLifeUI()
     _life = 10;
     
     _lifeLabel = SELabel::create(std::to_string(_life), Config::DEFAULT_FONT, {255, 255, 255, 0}, 32, {38, 4});
+
     life->addChild(_lifeLabel, TagManager::LIFE_COUNT);
 }

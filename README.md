@@ -6,5 +6,6 @@ The project is created by XCode so it is better to see it by that.<br />
 There are also some XCode groups in the project which classify these files.<br />
 Also I put the four SDL frameworks used in this project in a separate folder so you do not need to find them everywhere.<br />
 If you are using a mac, just make sure you copy all the frameworks into the /Library/Frameworks folder.<br /><br />
+
 Here is a screen shot of this game.<br />
 ![] (https://github.com/mycmessia/SDLGameTD/blob/master/SDLGameTD/resources/screen_shot.png)
